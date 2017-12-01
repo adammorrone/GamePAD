@@ -10,22 +10,18 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.support.design.widget.Snackbar;
 import android.widget.Toast;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private EditText dobText;
     private EditText nameText;
     private EditText genderText;
-    private shoppingList masterList;
-    private shoppingList currentList;
+    private PatientList masterList;
+    private PatientList currentList;
+    private PatientList testLIst;
 
     /** This application's preferences */
     private static SharedPreferences settings;
@@ -47,21 +43,12 @@ public class MainActivity extends Activity {
         Gson gson = new Gson();
 
         if(json.equals(""))
-            masterList = new shoppingList();
+            masterList = new PatientList();
         else
-            masterList = gson.fromJson(json, shoppingList.class);
+            masterList = gson.fromJson(json, PatientList.class);
 
-        currentList = new shoppingList();
-        //masterList = new shoppingList();
-
-        Button next = findViewById(R.id.next_button);
-        next.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                Intent myIntent = new Intent (view.getContext(), newGame.class);
-                startActivityForResult(myIntent, 0);
-            }
-        });
-
+        currentList = new PatientList();
+        //masterList = new PatientList();
     }
 
     @Override
@@ -93,14 +80,14 @@ public class MainActivity extends Activity {
 
         nameText.setText("");
         //Snackbar.make(v, name + " was added to your shopping list", Snackbar.LENGTH_LONG).show();
-        Toast toast = Toast.makeText(this, name + " was added as a new patient", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
         toast.show();
         hideSoftKeyboard(this);
     }
 
     public void goto_UserProfile()
     {
-        Intent intent = new Intent(MainActivity.this, UserProfile.class);
+        Intent intent = new Intent(MainActivity.this, PatientOverviewActivity.class);
         startActivity(intent);
     }
 

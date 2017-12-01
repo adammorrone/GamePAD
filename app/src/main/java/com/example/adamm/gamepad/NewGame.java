@@ -1,8 +1,6 @@
 package com.example.adamm.gamepad;
 
 import android.content.Intent;
-import android.support.v4.content.res.TypedArrayUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,15 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.support.design.widget.Snackbar;
-import android.widget.Toast;
-import com.google.gson.Gson;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
-public class newGame extends Activity {
+import com.google.gson.Gson;
+
+public class NewGame extends Activity {
 
     //private EditText itemText;
     //private EditText nameText;
@@ -29,10 +23,10 @@ public class newGame extends Activity {
     //private Button priceCheckButton;
     //private Button next;
     //private shoppingList masterList;
-    private ballWeightList currentList;
+    private BallWeightList currentList;
     //private TextView counterView;
     //private TextView runningTotal;
-    private ballWeightList masterList;
+    private BallWeightList masterList;
     private Button distance;
     private Button time;
     private Button start;
@@ -64,17 +58,17 @@ public class newGame extends Activity {
         Gson gson = new Gson();
 
         if(json.equals(""))
-            masterList = new ballWeightList();
+            masterList = new BallWeightList();
         else
-            masterList = gson.fromJson(json, ballWeightList.class);
+            masterList = gson.fromJson(json, BallWeightList.class);
 
-        currentList = new ballWeightList();
+        currentList = new BallWeightList();
         //masterList = new shoppingList();
 
         Button next = findViewById(R.id.beginButton);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent myIntent = new Intent (view.getContext(), patientView.class);
+                Intent myIntent = new Intent (view.getContext(), PatientView.class);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -207,6 +201,36 @@ public class newGame extends Activity {
         });
         builder.show();
     }
+
+    public void openBallList(View v)
+    {
+        final CharSequence[] weights = masterList.getBallWeightList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select a weight");
+        builder.setItems(weights, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                disView.setText(weights[which]);
+            }
+        });
+        builder.show();
+    }
+
+    public void openTimeList(View v)
+    {
+        final CharSequence[] weights = masterList.getBallWeightList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select a weight");
+        builder.setItems(weights, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                disView.setText(weights[which]);
+            }
+        });
+        builder.show();
+    }
 /*
     public void openShoppingList(View v)
     {
@@ -225,7 +249,7 @@ public class newGame extends Activity {
 
     public void startNewList(View view)
     {
-        currentList = new ballWeightList();
+        currentList = new BallWeightList();
 
         hideSoftKeyboard(this);
         Snackbar.make(view, "You are now editting a new shopping list", Snackbar.LENGTH_LONG).show();

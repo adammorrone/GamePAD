@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Modified for as weighted list by Ernest.
  */
 
-public class ballWeightList
+public class BallWeightList
 {
 
     public ArrayList<Integer>listOfBalls;
@@ -23,17 +23,17 @@ public class ballWeightList
     }
 
 
-    public ballWeightList()
+    public BallWeightList()
     {
         listOfBalls = new ArrayList<Integer>();
     }
 
-    public void addItem(int weight)
+    public void addBall(int weight)
     {
         listOfBalls.add(weight);
     }
 
-    public int getSize()
+    public int getBallSize()
     {
         return listOfBalls.size();
     }

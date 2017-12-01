@@ -8,13 +8,13 @@ import static java.sql.Types.NULL;
  * future proofing (visual dev)
  */
 
-public class ball {
+public class Ball {
     private double weight;
     private String size;
     private String color;
 
 
-    public ball(double w){
+    public Ball(double w){
         setWeight(w);
     }
 

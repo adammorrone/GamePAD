@@ -17,8 +17,8 @@ package="com.example.adamm.gamepad">
         </intent-filter>
     </activity>
     <activity android:name=".PatientOverviewActivity"> </activity>
-    <activity android:name=".newGame"></activity>
-    <activity android:name=".patientView"></activity>
+    <activity android:name=".NewGame"></activity>
+    <activity android:name=".PatientView"></activity>
 </application>
 
 </manifest>

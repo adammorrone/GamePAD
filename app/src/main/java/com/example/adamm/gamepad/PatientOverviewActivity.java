@@ -77,7 +77,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
 
     public void goto_newGame(View view)
     {
-        Intent intent = new Intent(this, newGame.class);
+        Intent intent = new Intent(this, NewGame.class);
         startActivity(intent);
     }
 

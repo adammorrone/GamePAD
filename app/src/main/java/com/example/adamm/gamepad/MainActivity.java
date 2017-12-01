@@ -84,9 +84,10 @@ public class MainActivity extends AppCompatActivity {
         hideSoftKeyboard(this);
     }
 
-    public void goto_UserProfile()
+    public void goto_UserProfile(String name)
     {
         Intent intent = new Intent(MainActivity.this, PatientOverviewActivity.class);
+        intent.putExtra("name", name);
         startActivity(intent);
     }
 
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which)
             {
                 nameText.setText(names[which]);
-                goto_UserProfile();
+                goto_UserProfile(names[which].toString());
             }
         });
         builder.show();

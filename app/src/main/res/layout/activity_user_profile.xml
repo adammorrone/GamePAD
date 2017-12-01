@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/pos5v03" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/patientNameBox"
         android:layout_width="98dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"

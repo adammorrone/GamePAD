@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 public class PatientOverviewActivity extends AppCompatActivity  {
 
-    private EditText itemText;
+    private EditText patientNameText;
     private EditText nameText;
     private EditText priceText;
     private Button newItemButton;
@@ -35,7 +35,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        itemText = (EditText) findViewById(R.id.new_name);
+        patientNameText = findViewById(R.id.patientNameBox);
         nameText = (EditText) findViewById(R.id.new_dob);
         priceText = (EditText) findViewById(R.id.new_gender);
 
@@ -50,6 +50,15 @@ public class PatientOverviewActivity extends AppCompatActivity  {
 
         currentList = new PatientList();
         //masterList = new PatientList();
+
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+
+        if(b!=null)
+        {
+            String name =(String) b.get("name");
+            patientNameText.setText(name);
+        }
     }
 
     @Override

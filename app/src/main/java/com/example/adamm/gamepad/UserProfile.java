@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import com.google.gson.Gson;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity  {
 
     private EditText itemText;
     private EditText nameText;
@@ -241,6 +242,11 @@ public class UserProfile extends AppCompatActivity {
         return sum/list.size();
     }
 
+    public void goto_MainActivity(View view)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 
 }

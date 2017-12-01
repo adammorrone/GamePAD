@@ -1,5 +1,6 @@
 package com.example.adamm.gamepad;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -41,11 +42,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        itemText = (EditText) findViewById(R.id.topTB);
-        nameText = (EditText) findViewById(R.id.nameTB);
-        priceText = (EditText) findViewById(R.id.priceTB);
-        counterView = (TextView) findViewById(R.id.tally);
-        runningTotal = (TextView) findViewById(R.id.runningTotal);
+        itemText = findViewById(R.id.topTB);
+        nameText = findViewById(R.id.nameTB);
+        priceText = findViewById(R.id.priceTB);
+        counterView = findViewById(R.id.tally);
+        runningTotal = findViewById(R.id.runningTotal);
+        Button button = findViewById(R.id.next_button);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
@@ -239,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
         return sum/list.size();
     }
 
-
+    public void nextScreen(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, UserProfile.class);
+        startActivity(intent);
+    }
 
 }

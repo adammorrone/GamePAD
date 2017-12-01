@@ -1,34 +1,26 @@
 package com.example.adamm.gamepad;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.support.design.widget.Snackbar;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-
-public class UserProfile extends AppCompatActivity  {
+public class PatientOverviewActivity extends AppCompatActivity  {
 
     private EditText itemText;
     private EditText nameText;
     private EditText priceText;
     private Button newItemButton;
     private Button priceCheckButton;
-    private shoppingList masterList;
-    private shoppingList currentList;
+    private PatientList masterList;
+    private PatientList currentList;
     private TextView counterView;
     private TextView runningTotal;
 
@@ -52,12 +44,12 @@ public class UserProfile extends AppCompatActivity  {
         Gson gson = new Gson();
 
         if(json.equals(""))
-            masterList = new shoppingList();
+            masterList = new PatientList();
         else
-            masterList = gson.fromJson(json, shoppingList.class);
+            masterList = gson.fromJson(json, PatientList.class);
 
-        currentList = new shoppingList();
-        //masterList = new shoppingList();
+        currentList = new PatientList();
+        //masterList = new PatientList();
     }
 
     @Override
@@ -72,9 +64,6 @@ public class UserProfile extends AppCompatActivity  {
         editor.putString("stored_master_list", json);
         editor.commit();
     }
-
-
-
 
 
     public void goto_MainActivity(View view)

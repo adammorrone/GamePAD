@@ -7,14 +7,14 @@ import java.util.ArrayList;
  * Created by Adam on 3/31/2017.
  */
 
-public class patient
+public class Patient
 {
     public String name;
     public String dob;
     public String gender;
     public ArrayList<Double> scores;
 
-    public patient(String inName, String inDOB, String inGender)
+    public Patient(String inName, String inDOB, String inGender)
     {
         scores = new ArrayList<>();
         name = inName;

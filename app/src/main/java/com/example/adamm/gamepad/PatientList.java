@@ -2,30 +2,26 @@ package com.example.adamm.gamepad;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-
-import java.util.ArrayList;
-
 /**
  * Created by Adam on 3/31/2017.
  */
 
-public class shoppingList
+public class PatientList
 {
 
-    public ArrayList<patient> listOfItems;
+    public ArrayList<Patient> listOfItems;
 
 
 
 
-    public shoppingList()
+    public PatientList()
     {
-        listOfItems = new ArrayList<patient>();
+        listOfItems = new ArrayList<Patient>();
     }
 
     public void addItem(String name, String dob, String gender)
     {
-        listOfItems.add(new patient(name, dob, gender));
+        listOfItems.add(new Patient(name, dob, gender));
     }
 
     public int getSize()
@@ -70,7 +66,7 @@ public class shoppingList
         return -1;
     }
 
-    public ArrayList<patient> getListOfItems()
+    public ArrayList<Patient> getListOfItems()
     {
         return listOfItems;
     }

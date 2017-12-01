@@ -7,12 +7,12 @@ import java.util.ArrayList;
  * Created by Adam on 3/31/2017.
  */
 
-public class listItem
+public class patient
 {
     public String name;
     public ArrayList<Double> prices;
 
-    public listItem(String inName)
+    public patient(String inName)
     {
         prices = new ArrayList<>();
         name = inName;

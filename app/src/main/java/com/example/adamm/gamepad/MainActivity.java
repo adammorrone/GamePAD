@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
     {
         double sum = 0;
 
-        ArrayList<listItem> list = currentList.getListOfItems();
+        ArrayList<patient> list = currentList.getListOfItems();
 
         for(int i = 0; i < list.size(); i++)
             sum += masterList.getPrice(list.get(i).getName());

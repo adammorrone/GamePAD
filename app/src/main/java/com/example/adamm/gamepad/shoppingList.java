@@ -13,20 +13,19 @@ import java.util.ArrayList;
 public class shoppingList
 {
 
-    public ArrayList<listItem> listOfItems;
+    public ArrayList<patient> listOfItems;
 
 
 
 
     public shoppingList()
     {
-        listOfItems = new ArrayList<listItem>();
-
+        listOfItems = new ArrayList<patient>();
     }
 
     public void addItem(String name)
     {
-        listOfItems.add(new listItem(name));
+        listOfItems.add(new patient(name));
     }
 
     public int getSize()
@@ -71,7 +70,7 @@ public class shoppingList
         return -1;
     }
 
-    public ArrayList<listItem> getListOfItems()
+    public ArrayList<patient> getListOfItems()
     {
         return listOfItems;
     }

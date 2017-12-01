@@ -1,173 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.adamm.gamepad.MainActivity">
 
 
     <EditText
-        android:id="@+id/topTB"
+        android:id="@+id/new_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="98dp"
-        android:layout_marginTop="97dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
-        android:hint="Enter New Grocery Item"
+        android:hint="New Patient Name"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/new_dob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/itemButton"
+        android:id="@+id/add_patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add to List"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="153dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/topTB"
         android:onClick="createItem"
-        />
-
-    <TextView
-        android:id="@+id/tally"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_marginTop="243dp"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton"
-        android:layout_marginLeft="130dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginTop="243dp"
-        android:text="Items In Shopping List"
-        app:layout_constraintLeft_toRightOf="@+id/tally"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton" />
+        android:text="Add New Patient"
+        app:layout_constraintBottom_toTopOf="@+id/select_patient"
+        app:layout_constraintEnd_toEndOf="@+id/new_gender"
+        app:layout_constraintStart_toStartOf="@+id/new_gender"
+        app:layout_constraintTop_toBottomOf="@+id/new_gender" />
 
     <EditText
-        android:id="@+id/nameTB"
-        android:layout_width="153dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="0dp"
-        android:ems="10"
-        android:hint="Product"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/purchaseButton"
-        app:layout_constraintLeft_toLeftOf="@+id/topTB" />
-
-    <Button
-        android:id="@+id/purchaseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-4dp"
-        android:layout_marginTop="146dp"
-        android:onClick="addToCart"
-        android:text="add to cart"
-        app:layout_constraintLeft_toLeftOf="@+id/itemButton"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton" />
-
-    <EditText
-        android:id="@+id/priceTB"
-        android:layout_width="79dp"
+        android:id="@+id/new_dob"
+        android:layout_width="215dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="7dp"
         android:ems="10"
-        android:hint="Price"
+        android:hint="New Patient DOB"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/purchaseButton"
-        app:layout_constraintLeft_toRightOf="@+id/nameTB" />
+        app:layout_constraintBottom_toTopOf="@+id/new_gender"
+        app:layout_constraintEnd_toEndOf="@+id/new_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_name"
+        app:layout_constraintTop_toBottomOf="@+id/new_name" />
+
+    <EditText
+        android:id="@+id/new_gender"
+        android:layout_width="214dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="New Patient Gender"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/add_patient"
+        app:layout_constraintEnd_toEndOf="@+id/new_dob"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/new_dob"
+        app:layout_constraintTop_toBottomOf="@+id/new_dob" />
 
     <Button
-        android:id="@+id/viewListButton"
-        android:layout_width="58dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="100dp"
-        android:text="List"
-        android:onClick="openShoppingList"
-        app:layout_constraintRight_toLeftOf="@+id/nameTB"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton"
-        tools:layout_editor_absoluteX="40dp" />
-
-    <Button
-        android:id="@+id/newListButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/select_patient"
+        android:layout_width="149dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="78dp"
-        android:onClick="startNewList"
-        android:text="Start New List"
-        app:layout_constraintBottom_toTopOf="@+id/topTB"
-        app:layout_constraintHorizontal_bias="0.187"
-        app:layout_constraintLeft_toLeftOf="@+id/topTB"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
-
-    <Button
-        android:id="@+id/masterListButton"
-        android:layout_width="60dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="147dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="openMasterList"
-        android:text="List"
-        app:layout_constraintBottom_toTopOf="@+id/viewListButton"
-        app:layout_constraintRight_toLeftOf="@+id/topTB"
-        tools:layout_editor_absoluteY="91dp" />
-
-    <Button
-        android:id="@+id/beginShoppingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="52dp"
-        android:onClick="beginShopping"
-        android:text="begin shopping"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintLeft_toRightOf="@+id/viewListButton"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemButton" />
-
-    <TextView
-        android:id="@+id/runningTotal"
-        android:layout_width="33dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="0dp"
-        android:text="0.00"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:layout_marginRight="53dp"
-        app:layout_constraintRight_toRightOf="@+id/priceTB" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:text="Running Subtotal: $"
-        app:layout_constraintLeft_toLeftOf="@+id/tally"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <Button
-        android:id="@+id/next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:onClick="nextScreen"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:text="Select Existing Patient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.787" />
 
 
 </android.support.constraint.ConstraintLayout>

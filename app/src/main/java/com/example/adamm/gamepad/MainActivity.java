@@ -16,20 +16,16 @@ import android.widget.TextView;
 import android.support.design.widget.Snackbar;
 import android.widget.Toast;
 import com.google.gson.Gson;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText itemText;
+    private EditText dobText;
     private EditText nameText;
-    private EditText priceText;
-    private Button newItemButton;
-    private Button priceCheckButton;
+    private EditText genderText;
     private shoppingList masterList;
     private shoppingList currentList;
-    private TextView counterView;
-    private TextView runningTotal;
 
     /** This application's preferences */
     private static SharedPreferences settings;
@@ -42,12 +38,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        itemText = findViewById(R.id.topTB);
-        nameText = findViewById(R.id.nameTB);
-        priceText = findViewById(R.id.priceTB);
-        counterView = findViewById(R.id.tally);
-        runningTotal = findViewById(R.id.runningTotal);
-        Button button = findViewById(R.id.next_button);
+        nameText = findViewById(R.id.new_name);
+        dobText = findViewById(R.id.new_dob);
+        genderText = findViewById(R.id.new_gender);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
@@ -77,147 +70,45 @@ public class MainActivity extends AppCompatActivity {
 
     public void createItem(View v)
     {
-        String name = itemText.getText().toString();
+        String name = nameText.getText().toString();
+        String dob = dobText.getText().toString();
+        String gender = genderText.getText().toString();
+
         if(masterList.indexOf(name) == -1)
         {
-            masterList.addItem(name);
-            currentList.addItem(name);
+            masterList.addItem(name, dob, gender);
+            currentList.addItem(name, dob, gender);
         }
         else
-            currentList.addItem(name);
-
-        counterView.setText(masterList.getSize() + "");
-        itemText.setText("");
-        //Snackbar.make(v, name + " was added to your shopping list", Snackbar.LENGTH_LONG).show();
-        Toast toast = Toast.makeText(this, name + " was added to your shopping list", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    public void createItem()
-    {
-        String name = itemText.getText().toString();
-        if(masterList.indexOf(name) == -1)
-        {
-            masterList.addItem(name);
-            currentList.addItem(name);
-        }
-        else
-            currentList.addItem(name);
-
-        counterView.setText(masterList.getSize() + "");
-        itemText.setText("");
-        //Snackbar.make(view, name + " was added to your shopping list", Snackbar.LENGTH_LONG).show();
-        Toast toast = Toast.makeText(this, name + " was added to your shopping list", Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    public void addToCart(View v)
-    {
-        final double price = Double.parseDouble(priceText.getText().toString());
-        final String name = nameText.getText().toString();
-        int masterIndex = masterList.indexOf(name);
-
-
-        if(masterIndex == -1)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            builder.setTitle("Item Not Found");
-            builder.setMessage("Would you like to add this item to your shopping list?");
-            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
-            {
-                public void onClick(DialogInterface dialog, int id)
-                {
-                    //adds new item
-                    itemText.setText(nameText.getText());
-                    createItem();
-                    priceCommit(name, price, 0);
-
-                }
-            });
-            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()
-            {
-                public void onClick(DialogInterface dialog, int id)
-                {
-                    // User cancelled the dialog
-                }
-            });
-
-            builder.show();
-        }
-
-        else if(masterList.priceCheck(masterIndex, price) > -1) {
-            new AlertDialog.Builder(this)
-                    .setTitle("TOO MUCH")
-                    .setMessage("You once paid: " + masterList.priceCheck(masterIndex, price))
-                    .show();
-        }
-
-        else
-        {
-            priceCommit(name, price, masterIndex);
-        }
-    }
-
-    public void priceCommit(String name, double price, int index)
-    {
-        masterList.addPrice(index, price);
-
-        double total = Double.parseDouble(runningTotal.getText().toString()) + price;
-        runningTotal.setText(total + "");
+            currentList.addItem(name, dob, gender);
 
         nameText.setText("");
-        priceText.setText("");
-        Toast toast = Toast.makeText(this, name + " was purchased for $" + price, Toast.LENGTH_SHORT);
+        //Snackbar.make(v, name + " was added to your shopping list", Snackbar.LENGTH_LONG).show();
+        Toast toast = Toast.makeText(this, name + " was added as a new patient", Toast.LENGTH_SHORT);
         toast.show();
+        hideSoftKeyboard(this);
+    }
+
+    public void goto_UserProfile()
+    {
+        Intent intent = new Intent(MainActivity.this, UserProfile.class);
+        startActivity(intent);
     }
 
     public void openMasterList(View v)
     {
         final CharSequence[] names = masterList.getNamesList();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Items in your Master List");
-        builder.setItems(names, new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                itemText.setText(names[which]);
-                createItem();
-            }
-        });
-        builder.show();
-    }
-
-    public void openShoppingList(View v)
-    {
-        final CharSequence[] names = currentList.getNamesList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Items in your Current Shopping List");
+        builder.setTitle("Select A Patient");
         builder.setItems(names, new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int which)
             {
                 nameText.setText(names[which]);
+                goto_UserProfile();
             }
         });
         builder.show();
-    }
-
-    public void startNewList(View view)
-    {
-        currentList = new shoppingList();
-
-        hideSoftKeyboard(this);
-        Snackbar.make(view, "You are now editting a new shopping list", Snackbar.LENGTH_LONG).show();
-        runningTotal.setText("0.00");
-    }
-
-    public void beginShopping(View view)
-    {
-        hideSoftKeyboard(this);
-        double priceEst = getPriceEstimate();
-        Snackbar.make(view, "You shopping trip is estimated to cost: $" + priceEst, Snackbar.LENGTH_LONG).show();
-        runningTotal.setText("0.00");
     }
 
     public void hideSoftKeyboard(Activity activity)
@@ -227,24 +118,6 @@ public class MainActivity extends AppCompatActivity {
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-    public double getPriceEstimate()
-    {
-        double sum = 0;
-
-        ArrayList<patient> list = currentList.getListOfItems();
-
-        for(int i = 0; i < list.size(); i++)
-            sum += masterList.getPrice(list.get(i).getName());
-
-        return sum/list.size();
-    }
-
-    public void nextScreen(View view)
-    {
-        Intent intent = new Intent(MainActivity.this, UserProfile.class);
-        startActivity(intent);
     }
 
 }

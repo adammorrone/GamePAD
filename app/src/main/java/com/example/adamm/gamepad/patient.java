@@ -10,22 +10,27 @@ import java.util.ArrayList;
 public class patient
 {
     public String name;
-    public ArrayList<Double> prices;
+    public String dob;
+    public String gender;
+    public ArrayList<Double> scores;
 
-    public patient(String inName)
+    public patient(String inName, String inDOB, String inGender)
     {
-        prices = new ArrayList<>();
+        scores = new ArrayList<>();
         name = inName;
+        dob = inDOB;
+        gender = inGender;
     }
+
 
     //if there exists a smaller value in the price history, return smallest value
     //else returns -1
     public double priceCheck(double price)
     {
         double smallest = -1;
-        for(int i = 0; i < prices.size() - 1; i++)
+        for(int i = 0; i < scores.size() - 1; i++)
         {
-            double tempPrice = prices.get(i);
+            double tempPrice = scores.get(i);
             if(tempPrice < price && (tempPrice < smallest || smallest == -1))
                 smallest = tempPrice;
         }
@@ -35,7 +40,7 @@ public class patient
 
     public void addPrice(double price)
     {
-        prices.add(price);
+        scores.add(price);
     }
 
     public String getName()
@@ -49,8 +54,8 @@ public class patient
     {
         double sum = 0;
 
-        for(int i = 0; i < prices.size(); i++)
-            sum += prices.get(i);
+        for(int i = 0; i < scores.size(); i++)
+            sum += scores.get(i);
 
         return sum;
     }

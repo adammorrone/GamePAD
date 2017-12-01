@@ -23,9 +23,9 @@ public class shoppingList
         listOfItems = new ArrayList<patient>();
     }
 
-    public void addItem(String name)
+    public void addItem(String name, String dob, String gender)
     {
-        listOfItems.add(new patient(name));
+        listOfItems.add(new patient(name, dob, gender));
     }
 
     public int getSize()

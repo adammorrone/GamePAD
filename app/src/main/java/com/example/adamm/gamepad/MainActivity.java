@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private EditText dobText;
     private EditText nameText;
@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
         currentList = new shoppingList();
         //masterList = new shoppingList();
+
+        Button next = findViewById(R.id.next_button);
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                Intent myIntent = new Intent (view.getContext(), newGame.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
+
     }
 
     @Override

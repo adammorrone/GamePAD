@@ -2,42 +2,56 @@ package com.example.adamm.gamepad;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-
-import java.util.ArrayList;
-
 /**
  * Created by Adam on 3/31/2017.
  * Modified for as weighted list by Ernest.
  */
 
-public class shoppingList
+public class ballWeightList
 {
 
-    public ArrayList<patient> listOfItems;
+    public ArrayList<Integer>listOfBalls;
 
-
-
-
-    public shoppingList()
-    {
-        listOfItems = new ArrayList<patient>();
+    public void fillArray(){
+        int i = 6;
+        if(listOfBalls.size() == 0)
+            while(i<=10) {
+                listOfBalls.add(i);
+                i = i + 2;
+            }
+        else{} //Do nothing
     }
 
-    public void addItem(String name, String dob, String gender)
+
+    public ballWeightList()
     {
-        listOfItems.add(new patient(name, dob, gender));
+        listOfBalls = new ArrayList<Integer>();
+    }
+
+    public void addItem(int weight)
+    {
+        listOfBalls.add(weight);
     }
 
     public int getSize()
     {
-        return listOfItems.size();
+        return listOfBalls.size();
+    }
+
+    public CharSequence[] getBallWeightList(){
+        CharSequence[] balls = new CharSequence[listOfBalls.size()];
+
+        for (int i = 0; i < listOfBalls.size(); i++){
+            balls[i] = listOfBalls.get(i).toString();
+        }
+        return balls;
     }
 
 
     //return smaller price is one exists
     //return -1 if no lower price exists
     // returns -2 if item DNE
+    /*
     public double priceCheck(int index, double price)
     {
         return listOfItems.get(index).priceCheck(price);
@@ -84,6 +98,7 @@ public class shoppingList
 
         return 0;
     }
+    */
 
 
 

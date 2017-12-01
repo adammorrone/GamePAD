@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText genderText;
     private PatientList masterList;
     private PatientList currentList;
+    private PatientList testLIst;
 
     /** This application's preferences */
     private static SharedPreferences settings;

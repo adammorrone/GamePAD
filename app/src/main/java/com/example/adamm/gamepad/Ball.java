@@ -18,7 +18,7 @@ public class Ball {
         setWeight(w);
     }
 
-    public void setWeight(double w){weight = w;}
+    private void setWeight(double w){weight = w;}
     public double getWeight(){return weight;}
     public String getColor(){
         return color;

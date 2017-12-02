@@ -29,9 +29,8 @@ public class NewGame extends Activity {
     private BallWeightList ballList;
     private DistanceList distanceList;
     private TimeList timeList;
-    private Button distance;
-    private Button time;
-    private Button start;
+
+    //private Button start;
     private TextView disView;
     private TextView balView;
     private TextView timView;
@@ -52,9 +51,13 @@ public class NewGame extends Activity {
         //priceText = (EditText) findViewById(R.id.priceTB);
         //counterView = (TextView) findViewById(R.id.tally);
         //runningTotal = (TextView) findViewById(R.id.runningTotal);
-        distance = findViewById(R.id.distanceButton);
-        time = findViewById(R.id.timeButton);
-        start = findViewById(R.id.beginButton);
+
+        //Button distance;
+        //Button time;
+
+        //distance = findViewById(R.id.distanceButton);
+        //time = findViewById(R.id.timeButton);
+        //start = findViewById(R.id.beginButton);
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
@@ -115,7 +118,7 @@ public class NewGame extends Activity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("stored_master_list", json);
-        editor.commit();
+        editor.apply();
     }
 
     public void openDistanceList(View v)
@@ -185,7 +188,7 @@ public class NewGame extends Activity {
         Snackbar.make(view, "You are now editting a new shopping list", Snackbar.LENGTH_LONG).show();
         runningTotal.setText("0.00");
     }
-*/
+
 
     public void hideSoftKeyboard(Activity activity)
     {
@@ -196,7 +199,7 @@ public class NewGame extends Activity {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
-
+*/
 
 }
 

@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class DistanceList
 {
 
-    public ArrayList<Integer>listOfDistances;
+    public ArrayList<String>listOfDistances;
 
     public void fillArray(){
-        int i = 6;
-        if(listOfDistances.size() == 0)
-            while(i<=10) {
-                listOfDistances.add(i);
-                i = i + 2;
-            }
+        if(listOfDistances.size() == 0){
+            listOfDistances.add("3 Feet");
+            listOfDistances.add("5 Feet");
+            listOfDistances.add("8 Feet");
+            listOfDistances.add("10 Feet");
+        }
         else{} //Do nothing
     }
 
@@ -25,26 +25,26 @@ public class DistanceList
 
     public DistanceList()
     {
-        listOfDistances = new ArrayList<Integer>();
+        listOfDistances = new ArrayList<String>();
     }
 
-    public void addDistance(int weight)
+    public void addDistance(String distance)
     {
-        listOfDistances.add(weight);
+        listOfDistances.add(distance);
     }
 
-    public int getTimeSize()
+    public int getSize()
     {
         return listOfDistances.size();
     }
 
-    public CharSequence[] geetDistanceList(){
-        CharSequence[] balls = new CharSequence[listOfDistances.size()];
+    public CharSequence[] getDistanceList(){
+        CharSequence[] distances = new CharSequence[listOfDistances.size()];
 
         for (int i = 0; i < listOfDistances.size(); i++){
-            balls[i] = listOfDistances.get(i).toString();
+            distances[i] = listOfDistances.get(i).toString();
         }
-        return balls;
+        return distances;
     }
 
 }

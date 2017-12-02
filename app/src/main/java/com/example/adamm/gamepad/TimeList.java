@@ -8,38 +8,39 @@ import java.util.ArrayList;
 
 public class TimeList
 {
-    public ArrayList<Integer>listOfTimes;
+    public ArrayList<String>listOfTimes;
 
     public void fillArray(){
-        int i = 6;
-        if(listOfTimes.size() == 0)
-            while(i<=10) {
-                listOfTimes .add(i);
-                i = i + 2;
-            }
+        if(listOfTimes.size() == 0){
+            listOfTimes.add("1 Minute");
+            listOfTimes.add("2 Minutes");
+            listOfTimes.add("5 Minutes");
+            listOfTimes.add("10 Minutes");
+            listOfTimes.add("5 Days");
+        }
         else{} //Do nothing
     }
 
 
     public TimeList()
     {
-        listOfTimes = new ArrayList<Integer>();
+        listOfTimes = new ArrayList<String>();
     }
 
-    public void addItem(int weight)
+    public void addItem(String time)
     {
-        listOfTimes.add(weight);
+        listOfTimes.add(time);
     }
 
     public int getSize() { return listOfTimes.size(); }
 
-    public CharSequence[] getBallWeightList(){
-        CharSequence[] balls = new CharSequence[listOfTimes.size()];
+    public CharSequence[] getTimeList(){
+        CharSequence[] times = new CharSequence[listOfTimes.size()];
 
         for (int i = 0; i < listOfTimes.size(); i++){
-            balls[i] = listOfTimes.get(i).toString();
+            times[i] = listOfTimes.get(i);
         }
-        return balls;
+        return times;
     }
 
     //return smaller price is one exists

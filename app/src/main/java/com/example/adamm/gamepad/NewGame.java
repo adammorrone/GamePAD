@@ -26,11 +26,15 @@ public class NewGame extends Activity {
     private BallWeightList currentList;
     //private TextView counterView;
     //private TextView runningTotal;
-    private BallWeightList masterList;
+    private BallWeightList ballList;
+    private DistanceList distanceList;
+    private TimeList timeList;
     private Button distance;
     private Button time;
     private Button start;
     private TextView disView;
+    private TextView balView;
+    private TextView timView;
 
     /** This application's preferences */
     private static SharedPreferences settings;
@@ -52,17 +56,39 @@ public class NewGame extends Activity {
         time = findViewById(R.id.timeButton);
         start = findViewById(R.id.beginButton);
         disView = findViewById(R.id.distance_textView);
+        balView = findViewById(R.id.weight_textView);
+        timView = findViewById(R.id.time_textView);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String json = sharedPref.getString("stored_master_list", "");
-        Gson gson = new Gson();
+        String bjson = sharedPref.getString("stored_ball_list", "");
+        Gson bgson = new Gson();
 
-        if(json.equals(""))
-            masterList = new BallWeightList();
+        String djson = sharedPref.getString("stored_distance_list", "");
+        Gson dgson = new Gson();
+
+        String tjson = sharedPref.getString("stored_time_list", "");
+        Gson tgson = new Gson();
+
+        if(bjson.equals(""))
+            ballList = new BallWeightList();
         else
-            masterList = gson.fromJson(json, BallWeightList.class);
+            ballList = bgson.fromJson(bjson, BallWeightList.class);
 
-        currentList = new BallWeightList();
+        //currentList = new BallWeightList();
+
+        if(djson.equals(""))
+            timeList = new TimeList();
+        else
+            ballList = dgson.fromJson(bjson, BallWeightList.class);
+
+        //currentList = new BallWeightList();
+
+        if(tjson.equals(""))
+            distanceList = new DistanceList();
+        else
+            ballList = tgson.fromJson(bjson, BallWeightList.class);
+
+        //currentList = new BallWeightList();
         //masterList = new shoppingList();
 
         Button next = findViewById(R.id.beginButton);
@@ -73,7 +99,9 @@ public class NewGame extends Activity {
             }
         });
 
-        masterList.fillArray();
+        ballList.fillArray();
+        timeList.fillArray();
+        distanceList.fillArray();
 
     }
 
@@ -82,13 +110,96 @@ public class NewGame extends Activity {
     {
         super.onPause();
         Gson gson = new Gson();
-        String json = gson.toJson(masterList);
+        String json = gson.toJson(ballList);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("stored_master_list", json);
         editor.commit();
     }
+
+    public void openDistanceList(View v)
+    {
+        final CharSequence[] distance = distanceList.getDistanceList();
+        AlertDialog.Builder dbuilder = new AlertDialog.Builder(this);
+        dbuilder.setTitle("Select Distance");
+        dbuilder.setItems(distance, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                disView.setText(distance[which]);
+            }
+        });
+        dbuilder.show();
+    }
+
+    public void openBallList(View v)
+    {
+        final CharSequence[] weights = ballList.getBallWeightList();
+        AlertDialog.Builder bbuilder = new AlertDialog.Builder(this);
+        bbuilder.setTitle("Select Ball Weight");
+        bbuilder.setItems(weights, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                balView.setText(weights[which]);
+            }
+        });
+        bbuilder.show();
+    }
+
+    public void openTimeList(View v)
+    {
+        final CharSequence[] time = timeList.getTimeList();
+        AlertDialog.Builder tbuilder = new AlertDialog.Builder(this);
+        tbuilder.setTitle("Select a Timer");
+        tbuilder.setItems(time, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which) {
+                timView.setText(time[which]);
+            }
+        });
+        tbuilder.show();
+    }
+/*
+    public void openShoppingList(View v)
+    {
+        final CharSequence[] names = currentList.getNamesList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Items in your Current Shopping List");
+        builder.setItems(names, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                nameText.setText(names[which]);
+            }
+        });
+        builder.show();
+    }
+
+    public void startNewList(View view)
+    {
+        currentList = new BallWeightList();
+
+        hideSoftKeyboard(this);
+        Snackbar.make(view, "You are now editting a new shopping list", Snackbar.LENGTH_LONG).show();
+        runningTotal.setText("0.00");
+    }
+*/
+
+    public void hideSoftKeyboard(Activity activity)
+    {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+
+
+}
+
 /*
     public void createItem(View v)
     {
@@ -187,85 +298,3 @@ public class NewGame extends Activity {
         toast.show();
     }
 */
-    public void openDistanceList(View v)
-    {
-        final CharSequence[] weights = masterList.getBallWeightList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select a weight");
-        builder.setItems(weights, new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                disView.setText(weights[which]);
-            }
-        });
-        builder.show();
-    }
-
-    public void openBallList(View v)
-    {
-        final CharSequence[] weights = masterList.getBallWeightList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select a weight");
-        builder.setItems(weights, new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                disView.setText(weights[which]);
-            }
-        });
-        builder.show();
-    }
-
-    public void openTimeList(View v)
-    {
-        final CharSequence[] weights = masterList.getBallWeightList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select a weight");
-        builder.setItems(weights, new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                disView.setText(weights[which]);
-            }
-        });
-        builder.show();
-    }
-/*
-    public void openShoppingList(View v)
-    {
-        final CharSequence[] names = currentList.getNamesList();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Items in your Current Shopping List");
-        builder.setItems(names, new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int which)
-            {
-                nameText.setText(names[which]);
-            }
-        });
-        builder.show();
-    }
-
-    public void startNewList(View view)
-    {
-        currentList = new BallWeightList();
-
-        hideSoftKeyboard(this);
-        Snackbar.make(view, "You are now editting a new shopping list", Snackbar.LENGTH_LONG).show();
-        runningTotal.setText("0.00");
-    }
-*/
-
-    public void hideSoftKeyboard(Activity activity)
-    {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-
-
-}

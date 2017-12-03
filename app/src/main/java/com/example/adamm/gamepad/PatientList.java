@@ -72,13 +72,22 @@ public class PatientList
         return listOfItems;
     }
 
-    public double getPrice(String name)
+    public String getDOB(String name)
     {
         int index = indexOf(name);
         if(index > -1)
-            return listOfItems.get(index).getAvgCost();
+            return listOfItems.get(index).getDOB();
 
-        return 0;
+        return null;
+    }
+
+    public String getGender(String name)
+    {
+        int index = indexOf(name);
+        if(index > -1)
+            return listOfItems.get(index).getGender();
+
+        return null;
     }
 
 

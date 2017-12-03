@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         //masterList = new PatientList();
     }
 
-    @Override
-    public void onPause()
-    {
+        @Override
+        public void onPause()
+        {
         super.onPause();
         Gson gson = new Gson();
         String json = gson.toJson(masterList);
@@ -72,22 +72,28 @@ public class MainActivity extends AppCompatActivity {
         if(masterList.indexOf(name) == -1)
         {
             masterList.addItem(name, dob, gender);
-            currentList.addItem(name, dob, gender);
+            goto_UserProfile(name);
+
+            Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
+            toast.show();
+            hideSoftKeyboard(this);
         }
         else
-            currentList.addItem(name, dob, gender);
+        {
+            Toast toast = Toast.makeText(this, name + " is already a patient, here is the existing profile.", Toast.LENGTH_SHORT);
+            toast.show();
+            hideSoftKeyboard(this);
+            goto_UserProfile(name);
+        }
 
-        nameText.setText("");
-        //Snackbar.make(v, name + " was added to your shopping list", Snackbar.LENGTH_LONG).show();
-        Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
-        toast.show();
-        hideSoftKeyboard(this);
     }
 
     public void goto_UserProfile(String name)
     {
         Intent intent = new Intent(MainActivity.this, PatientOverviewActivity.class);
         intent.putExtra("name", name);
+        intent.putExtra("dob", masterList.getDOB(name));
+        intent.putExtra("gender", masterList.getGender(name));
         startActivity(intent);
     }
 
@@ -100,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         {
             public void onClick(DialogInterface dialog, int which)
             {
-                nameText.setText(names[which]);
                 goto_UserProfile(names[which].toString());
             }
         });

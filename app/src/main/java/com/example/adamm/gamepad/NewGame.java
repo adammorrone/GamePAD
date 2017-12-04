@@ -99,6 +99,7 @@ public class NewGame extends Activity {
             public void onClick(View view){
                 Intent myIntent = new Intent (view.getContext(), PatientView.class);
                 startActivityForResult(myIntent, 0);
+                newGameInfo();
             }
         });
 
@@ -106,6 +107,14 @@ public class NewGame extends Activity {
         timeList.fillArray();
         distanceList.fillArray();
 
+    }
+
+    public void newGameInfo(){
+        Intent intent = new Intent(NewGame.this, PatientView.class);
+        intent.putExtra("distance", disView.getText());
+        intent.putExtra("ball", balView.getText());
+        intent.putExtra("time", timView.getText());
+        startActivity(intent);
     }
 
     @Override
@@ -202,6 +211,14 @@ public class NewGame extends Activity {
 */
 
 }
+
+
+
+
+
+
+
+
 
 /*
     public void createItem(View v)

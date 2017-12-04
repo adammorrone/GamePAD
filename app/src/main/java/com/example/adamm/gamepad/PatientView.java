@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class PatientView extends Activity {
     /** Called when the activity is first created. */
+    // checking to make sure push is sent
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

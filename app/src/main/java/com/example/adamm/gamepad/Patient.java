@@ -47,6 +47,15 @@ public class Patient
     {
         return name;
     }
+    public String getDOB()
+    {
+        return dob;
+    }
+    public String getGender()
+    {
+        return gender;
+    }
+
 
 
 
@@ -59,10 +68,4 @@ public class Patient
 
         return sum;
     }
-
-
-
-
-
-
 }

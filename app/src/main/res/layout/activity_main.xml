@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.adamm.gamepad.MainActivity">
+    tools:context="com.example.adamm.gamepad.MainActivity"
+    android:background="@drawable/background">
 
 
     <EditText
@@ -25,8 +26,10 @@
         android:id="@+id/add_patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:onClick="createItem"
         android:text="Add New Patient"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/select_patient"
         app:layout_constraintEnd_toEndOf="@+id/new_gender"
         app:layout_constraintStart_toStartOf="@+id/new_gender"
@@ -60,14 +63,16 @@
 
     <Button
         android:id="@+id/select_patient"
-        android:layout_width="149dp"
-        android:layout_height="80dp"
+        android:layout_width="180dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="casual"
         android:onClick="openMasterList"
         android:text="Select Existing Patient"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -75,19 +80,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.787" />
 
-    <Button
-        android:id="@+id/next_button"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="casual"
+        android:text="GamePAD"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="70sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/select_patient"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintTop_toBottomOf="@+id/add_patient" />
 
 
 </android.support.constraint.ConstraintLayout>

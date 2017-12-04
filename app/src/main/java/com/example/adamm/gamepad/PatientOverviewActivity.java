@@ -12,17 +12,15 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 public class PatientOverviewActivity extends AppCompatActivity  {
 
-    private EditText patientNameText;
-    private EditText nameText;
-    private EditText priceText;
-    private Button newItemButton;
-    private Button priceCheckButton;
+    private TextView patientNameText;
     private PatientList masterList;
-    private PatientList currentList;
-    private TextView counterView;
-    private TextView runningTotal;
+    private TextView patientInfoText;
+
+
 
     /** This application's preferences */
     private static SharedPreferences settings;
@@ -36,28 +34,31 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         patientNameText = findViewById(R.id.patientNameBox);
-        nameText = (EditText) findViewById(R.id.new_dob);
-        priceText = (EditText) findViewById(R.id.new_gender);
+        patientInfoText = findViewById(R.id.patientInfoBox);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
         Gson gson = new Gson();
 
-        if(json.equals(""))
+        if (json.equals(""))
             masterList = new PatientList();
         else
             masterList = gson.fromJson(json, PatientList.class);
 
-        currentList = new PatientList();
         //masterList = new PatientList();
 
-        Intent iin= getIntent();
+        Intent iin = getIntent();
         Bundle b = iin.getExtras();
 
-        if(b!=null)
-        {
-            String name =(String) b.get("name");
+        if (b != null) {
+            String name = (String) b.get("name");
+            patientNameText.setTextSize(25);
             patientNameText.setText(name);
+
+            String info = (String) b.get("dob") + "\t\t\t" + (String) b.get("gender");
+            patientInfoText.setTextSize(15);
+            patientInfoText.setText(info);
+
         }
     }
 

@@ -20,9 +20,9 @@ public class PatientList
         listOfItems = new ArrayList<Patient>();
     }
 
-    public void addItem(String name, String dob, String gender)
+    public void addItem(String name, String dob, String gender, String height)
     {
-        listOfItems.add(new Patient(name, dob, gender));
+        listOfItems.add(new Patient(name, dob, gender, height));
     }
 
     public int getSize()
@@ -81,9 +81,42 @@ public class PatientList
         return null;
     }
 
+    public String getName(String name)
+    {
+        int index = indexOf(name);
+        if(index > -1)
+            return listOfItems.get(index).getName();
+
+        return null;
+    }
+
     public String getGender(String name)
     {
         int index = indexOf(name);
+        if(index > -1)
+            return listOfItems.get(index).getGender();
+
+        return null;
+    }
+
+    public String getDOB(int index)
+    {
+        if(index > -1)
+            return listOfItems.get(index).getDOB();
+
+        return null;
+    }
+
+    public String getName(int index)
+    {
+        if(index > -1)
+            return listOfItems.get(index).getName();
+
+        return null;
+    }
+
+    public String getGender(int index)
+    {
         if(index > -1)
             return listOfItems.get(index).getGender();
 

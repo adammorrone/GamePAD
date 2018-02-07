@@ -19,6 +19,7 @@ package="com.example.adamm.gamepad">
     <activity android:name=".PatientOverviewActivity"> </activity>
     <activity android:name=".NewGame"></activity>
     <activity android:name=".PatientView"></activity>
+    <activity android:name=".EditPatientInfo"></activity>
 </application>
 
 </manifest>

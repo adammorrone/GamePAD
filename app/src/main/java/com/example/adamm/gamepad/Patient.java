@@ -12,15 +12,49 @@ public class Patient
     public String name;
     public String dob;
     public String gender;
+    public String height;
     public ArrayList<Double> scores;
 
-    public Patient(String inName, String inDOB, String inGender)
+    public Patient(String inName, String inDOB, String inGender, String inHeight)
     {
         scores = new ArrayList<>();
         name = inName;
         dob = inDOB;
         gender = inGender;
+        height = inHeight;
     }
+
+
+    public String getName()
+    {
+        return name;
+    }
+    public String getDOB()
+    {
+        return dob;
+    }
+    public String getGender()
+    {
+        return gender;
+    }
+    public String getHeight() { return height; }
+
+    public void setName(String newName)
+    {
+        name = newName;
+    }
+    public void setDOB(String newName)
+    {
+        name = newName;
+    }
+    public void setGender(String newName)
+    {
+        name = newName;
+    }
+    public void setHeight(String newHeight) { height = newHeight; }
+
+
+
 
 
     //if there exists a smaller value in the price history, return smallest value
@@ -42,20 +76,6 @@ public class Patient
     {
         scores.add(price);
     }
-
-    public String getName()
-    {
-        return name;
-    }
-    public String getDOB()
-    {
-        return dob;
-    }
-    public String getGender()
-    {
-        return gender;
-    }
-
 
 
 

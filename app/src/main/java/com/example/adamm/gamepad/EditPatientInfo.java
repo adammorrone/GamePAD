@@ -12,13 +12,16 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import org.w3c.dom.Text;
 
+/**
+ * Created by adamm on 2/2/2018.
+ */
 
-public class PatientOverviewActivity extends AppCompatActivity  {
+public class EditPatientInfo  extends AppCompatActivity  {
 
     private TextView patientNameText;
     private PatientList masterList = MainActivity.masterList;
-    private TextView patientInfoText;
-    private int index = -1;
+    private TextView patientDOBText;
+    private TextView patientGenderText;
 
 
 
@@ -32,33 +35,30 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
-        patientNameText = findViewById(R.id.patientNameBox);
-        patientInfoText = findViewById(R.id.patientInfoBox);
+        setContentView(R.layout.activity_edit_patient);
+        patientNameText = findViewById(R.id.name_editView);
+        patientDOBText = findViewById(R.id.dob_editView);
+        patientGenderText = findViewById(R.id.gender_editView);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String json = sharedPref.getString("stored_master_list", "");
-        Gson gson = new Gson();
-
-        //if (json.equals(""))
-        //    masterList = new PatientList();
-        //else
-        //    masterList = gson.fromJson(json, PatientList.class);
-
         //masterList = new PatientList();
 
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
-        index = (int)b.get("Patient");
+        int index = (int)b.get("Patient");
 
         if (b != null) {
             String name = masterList.getName(index);
-            patientNameText.setTextSize(25);
+            patientNameText.setTextSize(15);
             patientNameText.setText(name);
 
-            String info = masterList.getDOB(index) + "\t\t\t" + masterList.getGender(index);
-            patientInfoText.setTextSize(15);
-            patientInfoText.setText(info);
+            String dob = masterList.getDOB(index);
+            patientDOBText.setTextSize(15);
+            patientDOBText.setText(dob);
+
+            String gender = masterList.getGender(index);
+            patientDOBText.setTextSize(15);
+            patientDOBText.setText(gender);
 
         }
     }
@@ -77,16 +77,6 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     }
 
 
-    public void goto_newGame(View view)
-    {
-        Intent intent = new Intent(this, NewGame.class);
-        startActivity(intent);
-    }
 
-    public void goto_editPatient(View view)
-    {
-        Intent intent = new Intent(PatientOverviewActivity.this, EditPatientInfo.class);
-        intent.putExtra("Patient", index);
-        startActivity(intent);
-    }
 }
+

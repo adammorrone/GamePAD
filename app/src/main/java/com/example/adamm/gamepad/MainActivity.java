@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText dobText;
     private EditText nameText;
     private EditText genderText;
-    private PatientList masterList;
+    public static PatientList masterList;
     private PatientList currentList;
 
     /** This application's preferences */
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(masterList.indexOf(name) == -1)
         {
-            masterList.addItem(name, dob, gender);
+            masterList.addItem(name, dob, gender, "0");
             goto_UserProfile(name);
 
             Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
@@ -90,10 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goto_UserProfile(String name)
     {
+        int index = masterList.indexOf(name);
         Intent intent = new Intent(MainActivity.this, PatientOverviewActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("dob", masterList.getDOB(name));
-        intent.putExtra("gender", masterList.getGender(name));
+        intent.putExtra("Patient", index);
+        //intent.putExtra("dob", masterList.getDOB(name));
+        //intent.putExtra("gender", masterList.getGender(name));
         startActivity(intent);
     }
 

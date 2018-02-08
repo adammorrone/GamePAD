@@ -54,13 +54,7 @@ public class MainActivity extends AppCompatActivity {
         public void onPause()
         {
         super.onPause();
-        Gson gson = new Gson();
-        String json = gson.toJson(masterList);
-
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("stored_master_list", json);
-        editor.commit();
+        saveMasterList();
     }
 
     public void createItem(View v)
@@ -122,4 +116,13 @@ public class MainActivity extends AppCompatActivity {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
+    public void saveMasterList() {
+        Gson gson = new Gson();
+        String json = gson.toJson(masterList);
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("stored_master_list", json);
+        editor.commit();
+    }
 }

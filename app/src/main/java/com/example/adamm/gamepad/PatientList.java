@@ -123,6 +123,26 @@ public class PatientList
         return null;
     }
 
+    public void setDOB(int index, String dob)
+    {
+        if(index > -1)
+            listOfItems.get(index).setDOB(dob);
+    }
+
+    public void setName(int index, String name)
+    {
+        if(index > -1)
+            listOfItems.get(index).setName(name);
+
+    }
+
+    public void setGender(int index, String gender)
+    {
+        if(index > -1)
+            listOfItems.get(index).setGender(gender);
+
+    }
+
 
 
 

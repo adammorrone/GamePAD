@@ -29,23 +29,35 @@ public class PatientView extends Activity {
     // checking to make sure push is
 
 
-    private BluetoothAdapter myBluetooth = null;
-    //private Set pairedDevices;
-//    Set<BluetoothDevice> pairedDevices;
+    private BluetoothAdapter btAdapter = null;
+    private Set<BluetoothDevice> pairedDevices;
 
     private TextView timerView;
-/*
-    ArrayAdapter<String> listAdapter;
+    ArrayAdapter<String> deviceListArray;
     ArrayList<String> paired;
     Button btnPaired;
-    ListView devicelist;
+    ListView pairedDeviceList;
     IntentFilter filter;
     BroadcastReceiver receiver;
-*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patientview);
+
+        //Init
+        timerView = findViewById(R.id.textView2);
+        pairedDeviceList = findViewById(R.id.pairedList);
+        Button bt = findViewById(R.id.btList);
+
+        deviceListArray = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        pairedDeviceList.setAdapter(deviceListArray);
+        //pairedDeviceList.setOnItemClickListener(deviceListClickListener);
+
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+
+
 
         Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
@@ -58,19 +70,49 @@ public class PatientView extends Activity {
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
 
-        if(checkInfo == null){
+        if (checkInfo == null) {
             Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start", Toast.LENGTH_LONG);
             toast.show();
 
 
-        }
-        else{
+        } else {
             startTimer(checkInfo.get("time").toString());
         }
+    }
 
-        // initialize
-        //init();
-        timerView = findViewById(R.id.textView2); }
+    public void on(View v){
+        if (!btAdapter.isEnabled()){
+            Intent turnOn =  new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(turnOn, 0);
+            Toast.makeText(getApplicationContext(), "Turned On", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Already On", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void off(View v){
+        btAdapter.disable();
+        Toast.makeText(getApplicationContext(), "Turned off", Toast.LENGTH_LONG).show();
+    }
+
+    public void visible(View v){
+        Intent getVisible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        startActivityForResult(getVisible, 0);
+    }
+
+    public void list(View v){
+        pairedDevices = btAdapter.getBondedDevices();
+        ArrayList list = new ArrayList();
+
+        for(BluetoothDevice bt: pairedDevices)
+            list.add(bt.getName());
+        Toast.makeText(getApplicationContext(), "Paired Devices", Toast.LENGTH_LONG).show();
+
+        final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, list);
+
+        pairedDeviceList.setAdapter(adapter);
+    }
 
     public void startTimer (String time){
         Scanner in = new Scanner(time).useDelimiter("[^0-9]+");

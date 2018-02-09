@@ -115,7 +115,7 @@ public class PatientView extends Activity {
         ArrayList list = new ArrayList();
 
         for(BluetoothDevice bt: pairedDevices)
-            list.add(bt.getName());
+            paired.add(bt.getName());
         Toast.makeText(getApplicationContext(), "Paired Devices", Toast.LENGTH_LONG).show();
 
 
@@ -139,6 +139,8 @@ public class PatientView extends Activity {
         }.start();
 
     }
+
+    //paired = list;
 
     public void openDeviceList(View v){
         CharSequence[] times = new CharSequence[paired.size()];

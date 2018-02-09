@@ -173,5 +173,5 @@ public class NewGame extends Activity {
         });
         tbuilder.show();
     }
-}
 
+}

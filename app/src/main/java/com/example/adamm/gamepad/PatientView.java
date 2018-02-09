@@ -53,8 +53,8 @@ public class PatientView extends Activity {
         Button bt = findViewById(R.id.btList);
         paired = new ArrayList<>();
 
-        deviceListArray = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
-        pairedDeviceList.setAdapter(deviceListArray);
+        //deviceListArray = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
+        //pairedDeviceList.setAdapter(deviceListArray);
         //pairedDeviceList.setOnItemClickListener(deviceListClickListener);
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();

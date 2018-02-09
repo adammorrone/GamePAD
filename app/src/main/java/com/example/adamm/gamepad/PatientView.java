@@ -31,7 +31,7 @@ public class PatientView extends Activity {
     // checking to make sure push is
 
 
-    private BluetoothAdapter btAdapter = null;
+    private BluetoothAdapter btAdapter;
     private Set<BluetoothDevice> pairedDevices;
 
     private TextView timerView;
@@ -49,7 +49,7 @@ public class PatientView extends Activity {
 
         //Init
         timerView = findViewById(R.id.textView2);
-        //pairedDeviceList = findViewById(R.id.pairedList);
+        pairedDeviceList = findViewById(R.id.listView);
         Button bt = findViewById(R.id.btList);
         paired = new ArrayList<>();
 

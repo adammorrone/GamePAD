@@ -59,6 +59,8 @@ public class PatientView extends Activity {
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
+        int lovelybones = 7;
+
 
         // Dummy mac
         paired.add("F2-B0-F6-32-9A-40");

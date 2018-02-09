@@ -110,7 +110,8 @@ public class PatientView extends Activity {
         startActivityForResult(getVisible, 0);
     }
 
-    public void list(View v){
+    public void list(){
+        Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
         pairedDevices = btAdapter.getBondedDevices();
         ArrayList list = new ArrayList();
 
@@ -143,6 +144,7 @@ public class PatientView extends Activity {
     //paired = list;
 
     public void openDeviceList(View v){
+        list();
         CharSequence[] times = new CharSequence[paired.size()];
         for (int i = 0; i < paired.size(); i++){
             times[i] = paired.get(i);

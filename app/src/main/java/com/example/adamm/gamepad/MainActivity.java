@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.google.gson.Gson;
+import android.preference.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         dobText = findViewById(R.id.new_dob);
         genderText = findViewById(R.id.new_gender);
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         String json = sharedPref.getString("stored_master_list", "");
         Gson gson = new Gson();
 
@@ -48,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         currentList = new PatientList();
         //masterList = new PatientList();
+        //hideSoftKeyboard(this);
     }
 
         @Override
         public void onPause()
         {
         super.onPause();
-        saveMasterList();
+        saveMasterList(this.getApplicationContext(), masterList);
     }
 
     public void createItem(View v)
@@ -116,11 +118,12 @@ public class MainActivity extends AppCompatActivity {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
-    public void saveMasterList() {
+    public static void saveMasterList(Context context, PatientList master_list) {
         Gson gson = new Gson();
-        String json = gson.toJson(masterList);
+        String json = gson.toJson(master_list);
 
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("stored_master_list", json);
         editor.commit();

@@ -43,13 +43,13 @@ public class Patient
     {
         name = newName;
     }
-    public void setDOB(String newName)
+    public void setDOB(String newDOB)
     {
-        name = newName;
+        dob = newDOB;
     }
-    public void setGender(String newName)
+    public void setGender(String newGender)
     {
-        name = newName;
+        gender = newGender;
     }
     public void setHeight(String newHeight) { height = newHeight; }
 

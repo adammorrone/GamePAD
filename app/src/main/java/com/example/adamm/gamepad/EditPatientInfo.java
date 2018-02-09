@@ -55,7 +55,6 @@ public class EditPatientInfo  extends AppCompatActivity  {
     public void onPause()
     {
         super.onPause();
-        saveMasterList();
     }
 
     public void editName(View view)
@@ -97,17 +96,13 @@ public class EditPatientInfo  extends AppCompatActivity  {
             currentGenderText.setTextSize(15);
             currentGenderText.setText(gender);
         }
-        saveMasterList();
+
     }
 
-    public void saveMasterList() {
-        Gson gson = new Gson();
-        String json = gson.toJson(masterList);
-
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("stored_master_list", json);
-        editor.commit();
+    public void saveChanges(View view)
+    {
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
+        Intent intent = new Intent(EditPatientInfo.this, MainActivity.class);
+        startActivity(intent);
     }
-
 }

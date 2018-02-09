@@ -144,6 +144,8 @@ public class PatientView extends Activity {
     //paired = list;
 
     public void openDeviceList(View v){
+        on(v);
+        visible(v);
         list();
         CharSequence[] times = new CharSequence[paired.size()];
         for (int i = 0; i < paired.size(); i++){

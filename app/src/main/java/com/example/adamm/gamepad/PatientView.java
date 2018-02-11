@@ -111,18 +111,19 @@ public class PatientView extends Activity {
     }
 
     public void list(View v){
-        Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
         pairedDevices = btAdapter.getBondedDevices();
         ArrayList list = new ArrayList();
 
         for(BluetoothDevice bt: pairedDevices)
-            list.add(bt.getName());
+            list.add(bt.getName() + "\n" + bt.getAddress()); // Get the device's name and address
         Toast.makeText(getApplicationContext(), "Paired Devices", Toast.LENGTH_LONG).show();
 
 
         final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, list);
 
         pairedDeviceList.setAdapter(adapter);
+        pairedDeviceList.setOnItemClickListener(myListClickListener); //called when an item from the list is clicked
     }
 
     public void startTimer (String time){
@@ -168,4 +169,21 @@ public class PatientView extends Activity {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    private AdapterView.OnItemClickListener myListClickListener = new AdapterView.OnItemClickListener()
+    {
+        public void onItemClick (AdapterView av, View v, int arg2, long arg3)
+        {
+            // Get the device MAC address, the last 17 chars in the View
+            String info = ((TextView) v).getText().toString();
+            Toast.makeText(getApplicationContext(),info, Toast.LENGTH_LONG).show();;
+            String address = info.substring(info.length() - 17);
+            // Make an intent to start next activity.
+            Intent i = new Intent(PatientView.this, bluetoothReceiver.class);
+            //Change the activity.
+            //i.putExtra(EX)//this will be received at bluetoothReceiver (class) Activity
+            i.putExtra("address", address);
+            startActivity(i);
+        }
+    };
 }

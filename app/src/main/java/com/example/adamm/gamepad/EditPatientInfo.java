@@ -102,7 +102,8 @@ public class EditPatientInfo  extends AppCompatActivity  {
     public void saveChanges(View view)
     {
         MainActivity.saveMasterList(this.getApplicationContext(), masterList);
-        Intent intent = new Intent(EditPatientInfo.this, MainActivity.class);
+        Intent intent = new Intent(EditPatientInfo.this, PatientOverviewActivity.class);
+        intent.putExtra("Patient", index);
         startActivity(intent);
     }
 }

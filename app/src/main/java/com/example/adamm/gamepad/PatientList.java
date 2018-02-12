@@ -143,6 +143,14 @@ public class PatientList
 
     }
 
+    public ArrayList<Double> getScore(int index)
+    {
+        if(index > -1)
+            return listOfItems.get(index).getScores();
+
+        return null;
+    }
+
 
 
 

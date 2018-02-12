@@ -10,7 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.google.gson.Gson;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
 public class PatientOverviewActivity extends AppCompatActivity  {
@@ -40,16 +46,28 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         String json = sharedPref.getString("stored_master_list", "");
         Gson gson = new Gson();
 
-        //if (json.equals(""))
-        //    masterList = new PatientList();
-        //else
-        //    masterList = gson.fromJson(json, PatientList.class);
-
-        //masterList = new PatientList();
-
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
+
+        GraphView graph = findViewById(R.id.graph);
+        ArrayList<Double> scores = masterList.getScore(index);
+        DataPoint[] data = new DataPoint[scores.size()];
+        for(int i = 0; i < scores.size(); i++)
+        {
+            data[i] = new DataPoint(i, scores.get(i));
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
+        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series2);
+        graph.addSeries(series);
 
         if (b != null) {
             String name = masterList.getName(index);

@@ -22,8 +22,15 @@ public class Patient
         dob = inDOB;
         gender = inGender;
         height = inHeight;
+        scores.add(1.0);
+        scores.add(2.0);
+        scores.add(3.0);
+        scores.add(4.0);
+        scores.add(5.0);
+        scores.add(6.0);
+        scores.add(7.0);
+        scores.add(8.0);
     }
-
 
     public String getName()
     {
@@ -38,6 +45,7 @@ public class Patient
         return gender;
     }
     public String getHeight() { return height; }
+    public ArrayList<Double> getScores() { return scores; }
 
     public void setName(String newName)
     {

@@ -25,6 +25,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.*;
+
 
 public class PatientView extends Activity {
     /** Called when the activity is first created. */
@@ -66,6 +69,8 @@ public class PatientView extends Activity {
         paired.add("F2-B0-F6-32-9A-40");
         paired.add("B7-2E-E3-82-D9-4A");
         paired.add("34-A7-B8-3C-C9-E0");
+
+
 
 
         Button next = findViewById(R.id.button_next2);

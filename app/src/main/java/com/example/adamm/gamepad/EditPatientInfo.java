@@ -60,21 +60,21 @@ public class EditPatientInfo  extends AppCompatActivity  {
     public void editName(View view)
     {
         String name = newNameText.getText().toString();
-        masterList.setName(index, name);
+        masterList.getPatient(index).setName(name);
         resetCurrentValues();
     }
 
     public void editDOB(View view)
     {
         String dob = newDOBText.getText().toString();
-        masterList.setDOB(index, dob);
+        masterList.getPatient(index).setDOB(dob);
         resetCurrentValues();
     }
 
     public void progressivelyEditGender(View view)
     {
         String gender = newGenderText.getText().toString();
-        masterList.setGender(index, gender);
+        masterList.getPatient(index).setGender(gender);
         resetCurrentValues();
     }
 
@@ -84,15 +84,15 @@ public class EditPatientInfo  extends AppCompatActivity  {
         index = (int) b.get("Patient");
 
         if (b != null) {
-            String name = masterList.getName(index);
+            String name = masterList.getPatient(index).getName();
             currentNameText.setTextSize(15);
             currentNameText.setText(name);
 
-            String dob = masterList.getDOB(index);
+            String dob = masterList.getPatient(index).getDOB();
             currentDOBText.setTextSize(15);
             currentDOBText.setText(dob);
 
-            String gender = masterList.getGender(index);
+            String gender = masterList.getPatient(index).getGender();
             currentGenderText.setTextSize(15);
             currentGenderText.setText(gender);
         }

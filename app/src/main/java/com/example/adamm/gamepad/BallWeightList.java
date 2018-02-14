@@ -54,22 +54,22 @@ public class BallWeightList
     /*
     public double priceCheck(int index, double price)
     {
-        return listOfItems.get(index).priceCheck(price);
+        return listOfPatients.get(index).priceCheck(price);
     }
 
     public void addPrice(int index, double price)
     {
-        listOfItems.get(index).addPrice(price);
+        listOfPatients.get(index).addPrice(price);
     }
 
 
     public CharSequence[] getNamesList()
     {
-        CharSequence[] names = new CharSequence[listOfItems.size()];
+        CharSequence[] names = new CharSequence[listOfPatients.size()];
 
-        for(int i = 0; i < listOfItems.size(); i++)
+        for(int i = 0; i < listOfPatients.size(); i++)
         {
-            names[i] = listOfItems.get(i).getName();
+            names[i] = listOfPatients.get(i).getName();
         }
 
         return names;
@@ -77,24 +77,24 @@ public class BallWeightList
 
     public int indexOf(String name)
     {
-        for(int i = 0; i < listOfItems.size(); i++)
+        for(int i = 0; i < listOfPatients.size(); i++)
         {
-            if(listOfItems.get(i).getName().equals(name))
+            if(listOfPatients.get(i).getName().equals(name))
                 return i;
         }
         return -1;
     }
 
-    public ArrayList<patient> getListOfItems()
+    public ArrayList<patient> getListOfPatients()
     {
-        return listOfItems;
+        return listOfPatients;
     }
 
     public double getPrice(String name)
     {
         int index = indexOf(name);
         if(index > -1)
-            return listOfItems.get(index).getAvgCost();
+            return listOfPatients.get(index).getAvgCost();
 
         return 0;
     }

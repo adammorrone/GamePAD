@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(masterList.indexOf(name) == -1)
         {
-            masterList.addItem(name, dob, gender, "0");
+            masterList.addPatient(name, dob, gender, "0");
             goto_UserProfile(name);
 
             Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);

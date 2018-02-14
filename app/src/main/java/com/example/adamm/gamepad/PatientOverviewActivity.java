@@ -6,16 +6,11 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 
@@ -51,11 +46,11 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         index = (int)b.get("Patient");
 
         GraphView graph = findViewById(R.id.graph);
-        ArrayList<Double> scores = masterList.getScore(index);
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
         for(int i = 0; i < scores.size(); i++)
         {
-            data[i] = new DataPoint(i, scores.get(i));
+            data[i] = new DataPoint(i, scores.get(i).getScore());
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
@@ -70,11 +65,11 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         graph.addSeries(series);
 
         if (b != null) {
-            String name = masterList.getName(index);
+            String name = masterList.getPatient(index).getName();
             patientNameText.setTextSize(25);
             patientNameText.setText(name);
 
-            String info = masterList.getDOB(index) + "\t\t\t" + masterList.getGender(index);
+            String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getGender();
             patientInfoText.setTextSize(15);
             patientInfoText.setText(info);
 

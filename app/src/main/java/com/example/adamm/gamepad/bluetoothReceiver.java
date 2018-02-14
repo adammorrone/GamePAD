@@ -35,6 +35,7 @@ public class bluetoothReceiver extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bluetoothreceiver);
         // receive the address of the bluetooth device
         Intent newint = getIntent();
         Bundle checkinfo = newint.getExtras();

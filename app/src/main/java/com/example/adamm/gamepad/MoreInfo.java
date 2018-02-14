@@ -3,18 +3,24 @@ package com.example.adamm.gamepad;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
 
+/**
+ * Created by adamm on 2/12/2018.
+ */
 
-public class PatientOverviewActivity extends AppCompatActivity  {
+public class MoreInfo extends AppCompatActivity {
+
 
     private TextView patientNameText;
     private PatientList masterList = MainActivity.masterList;
@@ -98,16 +104,8 @@ public class PatientOverviewActivity extends AppCompatActivity  {
 
     public void goto_editPatient(View view)
     {
-        Intent intent = new Intent(PatientOverviewActivity.this, EditPatientInfo.class);
+        Intent intent = new Intent(this, EditPatientInfo.class);
         intent.putExtra("Patient", index);
         startActivity(intent);
     }
-
-    public void goto_moreInfo(View view)
-    {
-        Intent intent = new Intent(PatientOverviewActivity.this, MoreInfo.class);
-        intent.putExtra("Patient", index);
-        startActivity(intent);
-    }
-
 }

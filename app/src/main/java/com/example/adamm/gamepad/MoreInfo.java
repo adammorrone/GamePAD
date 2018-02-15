@@ -1,6 +1,8 @@
 package com.example.adamm.gamepad;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,12 +24,10 @@ import java.util.ArrayList;
 public class MoreInfo extends AppCompatActivity {
 
 
-    private TextView patientNameText;
+    private TextView patientNameText2;
     private PatientList masterList = MainActivity.masterList;
-    private TextView patientInfoText;
+    private TextView patientInfoText2;
     private int index = -1;
-
-
 
     /** This application's preferences */
     private static SharedPreferences settings;
@@ -39,9 +39,9 @@ public class MoreInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
-        patientNameText = findViewById(R.id.patientNameBox);
-        patientInfoText = findViewById(R.id.patientInfoBox);
+        setContentView(R.layout.activity_more_info);
+        patientNameText2 = findViewById(R.id.patientNameBox2);
+        patientInfoText2 = findViewById(R.id.patientInfoBox2);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
@@ -51,7 +51,7 @@ public class MoreInfo extends AppCompatActivity {
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
 
-        GraphView graph = findViewById(R.id.graph);
+        GraphView graph = findViewById(R.id.graph2);
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
         for(int i = 0; i < scores.size(); i++)
@@ -72,40 +72,35 @@ public class MoreInfo extends AppCompatActivity {
 
         if (b != null) {
             String name = masterList.getPatient(index).getName();
-            patientNameText.setTextSize(25);
-            patientNameText.setText(name);
+            patientNameText2.setTextSize(25);
+            patientNameText2.setText(name);
 
             String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getGender();
-            patientInfoText.setTextSize(15);
-            patientInfoText.setText(info);
+            patientInfoText2.setTextSize(15);
+            patientInfoText2.setText(info);
 
         }
     }
 
-    @Override
-    public void onPause()
+    public void openRecords(View view)
     {
-        super.onPause();
-        Gson gson = new Gson();
-        String json = gson.toJson(masterList);
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        final CharSequence[] names = new CharSequence[scores.size()];
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("stored_master_list", json);
-        editor.commit();
+        for(int i = 0; i < scores.size(); i++)
+        {
+            names[i] = scores.get(i).toString();
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Score Records for " + masterList.getPatient(index).getName());
+        builder.setItems(names, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //goto_UserProfile(names[which].toString());
+            }
+        });
+        builder.show();
     }
 
-
-    public void goto_newGame(View view)
-    {
-        Intent intent = new Intent(this, NewGame.class);
-        startActivity(intent);
-    }
-
-    public void goto_editPatient(View view)
-    {
-        Intent intent = new Intent(this, EditPatientInfo.class);
-        intent.putExtra("Patient", index);
-        startActivity(intent);
-    }
 }

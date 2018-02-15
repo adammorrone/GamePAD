@@ -44,10 +44,7 @@ public class ScoreRecord {
 
     @Override
     public String toString() {
-        return "ScoreRecord{" +
-                "score=" + score +
-                ", gameType='" + gameType + '\'' +
-                ", date=" + date +
-                '}';
+        return  date + "\tScore = " + score +
+                "\t\tGame = " + gameType;
     }
 }

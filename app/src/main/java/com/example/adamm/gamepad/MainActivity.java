@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
         int index = masterList.indexOf(name);
         Intent intent = new Intent(MainActivity.this, PatientOverviewActivity.class);
         intent.putExtra("Patient", index);
-        //intent.putExtra("dob", masterList.getDOB(name));
-        //intent.putExtra("gender", masterList.getGender(name));
         startActivity(intent);
     }
 

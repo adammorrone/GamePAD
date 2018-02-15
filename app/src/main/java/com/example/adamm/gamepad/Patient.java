@@ -23,6 +23,14 @@ public class Patient
         dob = inDOB;
         gender = inGender;
         height = inHeight;
+
+        newScore(12, "TestScore");
+        newScore(1, "TestScore");
+        newScore(8, "TestScore");
+        newScore(11, "TestScore");
+        newScore(8, "TestScore");
+
+
     }
 
     public String getName()

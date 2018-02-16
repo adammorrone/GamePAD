@@ -103,4 +103,9 @@ public class MoreInfo extends AppCompatActivity {
         builder.show();
     }
 
+    public void goBack(View view)
+    {
+        finish();
+    }
+
 }

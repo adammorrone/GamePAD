@@ -166,7 +166,7 @@ public class PatientView extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
+        int lovelyBones = 0;
         //Get MAC address from DeviceListActivity via intent
         //Intent intent = getIntent();
 

@@ -25,7 +25,7 @@
         android:id="@+id/textView"
         android:layout_width="308dp"
         android:layout_height="174dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="casual"
         android:text="27"
         android:textAlignment="center"
@@ -33,7 +33,7 @@
         android:textSize="120sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText1"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -83,9 +83,10 @@
         app:layout_constraintEnd_toStartOf="@+id/editText12"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.502" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText2"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -97,7 +98,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText3"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -109,7 +110,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText4"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -121,7 +122,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText5"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -133,7 +134,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText16" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText6"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -147,7 +148,7 @@
         app:layout_constraintStart_toEndOf="@+id/editText12"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText7"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -159,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText15" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText8"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -171,7 +172,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText10" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText9"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -185,7 +186,7 @@
         app:layout_constraintStart_toEndOf="@+id/editText6"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText10"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -197,7 +198,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText2" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText11"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -209,7 +210,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText8" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText12"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -223,7 +224,7 @@
         app:layout_constraintStart_toEndOf="@+id/editText1"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText13"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -235,7 +236,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText3" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText14"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -247,7 +248,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText7" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText15"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -259,7 +260,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText4" />
 
-    <EditText
+    <TextView
         android:id="@+id/editText16"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -270,6 +271,56 @@
         app:layout_constraintEnd_toStartOf="@+id/editText5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText13" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="335dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@android:color/holo_orange_light" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="335dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:srcCompat="?attr/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="335dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="?android:attr/textColorLinkInverse" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="335dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@android:color/holo_green_dark" />
 
 
 </android.support.constraint.ConstraintLayout>

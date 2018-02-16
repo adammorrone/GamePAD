@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class PatientView extends Activity {
             sensorView5, sensorView6, sensorView7, sensorView8,
             sensorView9, sensorView10, sensorView11, sensorView12,
             sensorView13, sensorView14, sensorView15, sensorView16;
+    ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
     //private Set<BluetoothDevice> pairedDevices;
@@ -97,6 +99,11 @@ public class PatientView extends Activity {
         sensorView12 = findViewById(R.id.editText5);
         sensorView15 = findViewById(R.id.editText14);
 
+        imageSensor1 = findViewById(R.id.imageView1);
+        imageSensor2 = findViewById(R.id.imageView2);
+        imageSensor3 = findViewById(R.id.imageView3);
+        imageSensor4 = findViewById(R.id.imageView4);
+
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										//if message is what we want
@@ -145,6 +152,33 @@ public class PatientView extends Activity {
                             sensorView14.setText(sensor14);
                             sensorView15.setText(sensor15);
                             sensorView16.setText(sensor16);
+
+                            if(sensor1 == "0"){
+                                imageSensor1.setVisibility(View.GONE);
+                            }
+                            else {
+                                imageSensor1.setVisibility(View.VISIBLE);
+                            }
+                            if(sensor2 == "0"){
+                                imageSensor2.setVisibility(View.GONE);
+
+                            }
+                            else{
+                                imageSensor2.setVisibility(View.VISIBLE);
+                            }
+                            if(sensor3 == "0"){
+                                imageSensor3.setVisibility(View.GONE);
+                            }
+                            else {
+                                imageSensor3.setVisibility(View.VISIBLE);
+                            }
+                            if(sensor4 == "0"){
+                                imageSensor4.setVisibility(View.GONE);
+
+                            }
+                            else{
+                                imageSensor4.setVisibility(View.VISIBLE);
+                            }
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
                         // strIncom =" ";

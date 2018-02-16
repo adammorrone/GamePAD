@@ -2,6 +2,7 @@ package com.example.adamm.gamepad;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Adam on 3/31/2017.
@@ -13,7 +14,7 @@ public class Patient
     public String dob;
     public String gender;
     public String height;
-    public ArrayList<Double> scores;
+    public ArrayList<ScoreRecord> scores;
 
     public Patient(String inName, String inDOB, String inGender, String inHeight)
     {
@@ -22,14 +23,14 @@ public class Patient
         dob = inDOB;
         gender = inGender;
         height = inHeight;
-        scores.add(1.0);
-        scores.add(2.0);
-        scores.add(3.0);
-        scores.add(4.0);
-        scores.add(5.0);
-        scores.add(6.0);
-        scores.add(7.0);
-        scores.add(8.0);
+
+        newScore(12, "TestScore");
+        newScore(1, "TestScore");
+        newScore(8, "TestScore");
+        newScore(11, "TestScore");
+        newScore(8, "TestScore");
+
+
     }
 
     public String getName()
@@ -45,8 +46,7 @@ public class Patient
         return gender;
     }
     public String getHeight() { return height; }
-    public ArrayList<Double> getScores() { return scores; }
-
+    public ArrayList<ScoreRecord> getScores() { return scores; }
     public void setName(String newName)
     {
         name = newName;
@@ -60,40 +60,27 @@ public class Patient
         gender = newGender;
     }
     public void setHeight(String newHeight) { height = newHeight; }
-
-
-
-
-
-    //if there exists a smaller value in the price history, return smallest value
-    //else returns -1
-    public double priceCheck(double price)
+    public void newScore(double score, String gameType)
     {
-        double smallest = -1;
-        for(int i = 0; i < scores.size() - 1; i++)
-        {
-            double tempPrice = scores.get(i);
-            if(tempPrice < price && (tempPrice < smallest || smallest == -1))
-                smallest = tempPrice;
-        }
-
-        return smallest;
+        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance().getTime());
+        scores.add(sr);
     }
-
-    public void addPrice(double price)
-    {
-        scores.add(price);
-    }
-
-
-
-    public double getAvgCost()
+    public double getAllTimeScores()
     {
         double sum = 0;
 
         for(int i = 0; i < scores.size(); i++)
-            sum += scores.get(i);
+            sum += scores.get(i).getScore();
 
         return sum;
+    }
+    public double getAvgScores()
+    {
+        double sum = 0;
+
+        for(int i = 0; i < scores.size(); i++)
+            sum += scores.get(i).getScore();
+
+        return sum/scores.size();
     }
 }

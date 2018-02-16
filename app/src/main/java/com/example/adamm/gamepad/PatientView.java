@@ -89,12 +89,12 @@ public class PatientView extends Activity {
         sensorView6 = findViewById(R.id.editText13);
         sensorView1 = findViewById(R.id.editText15);
         sensorView9 = findViewById(R.id.editText6);
-        sensorView10 = findViewById(R.id.editText16);
-        sensorView11 = findViewById(R.id.editText2);
+        sensorView10 = findViewById(R.id.editText8);
+        sensorView11 = findViewById(R.id.editText16);
         sensorView16 = findViewById(R.id.editText7);
         sensorView14 = findViewById(R.id.editText9);
         sensorView13 = findViewById(R.id.editText11);
-        sensorView5 = findViewById(R.id.editText14);
+        sensorView12 = findViewById(R.id.editText5);
         sensorView15 = findViewById(R.id.editText14);
 
         bluetoothIn = new Handler() {
@@ -111,28 +111,28 @@ public class PatientView extends Activity {
 
                         if (recDataString.charAt(0) == '#')								//if it starts with # we know it is what we are looking for
                         {
-                            String sensor1 = recDataString.substring(1,3);             //get sensor value from string between indices 1-5
-                            String sensor2 = recDataString.substring(4,6);            //same again...
-                            String sensor3 = recDataString.substring(7,9);
-                            /*String sensor4 = recDataString.substring(4,4);
-                            String sensor5 = recDataString.substring(5,5);
-                            String sensor6 = recDataString.substring(6,6);
-                            String sensor7 = recDataString.substring(7,7);             //get sensor value from string between indices 1-5
-                            String sensor8 = recDataString.substring(8,8);            //same again...
-                            String sensor9 = recDataString.substring(9,9);
-                            String sensor10 = recDataString.substring(10,10);
-                            String sensor11 = recDataString.substring(11,11);
-                            String sensor12= recDataString.substring(12,12);
-                            String sensor13 = recDataString.substring(13,13);
-                            String sensor14 = recDataString.substring(14,14);
-                            String sensor15 = recDataString.substring(15,15);
-                            String sensor16 = recDataString.substring(16,16);*/
+                            String sensor1 = recDataString.substring(1,2);             //get sensor value from string between indices 1-5
+                            String sensor2 = recDataString.substring(2,3);            //same again...
+                            String sensor3 = recDataString.substring(3,4);
+                            String sensor4 = recDataString.substring(4,5);
+                            String sensor5 = recDataString.substring(5,6);
+                            String sensor6 = recDataString.substring(6,7);
+                            String sensor7 = recDataString.substring(7,8);             //get sensor value from string between indices 1-5
+                            String sensor8 = recDataString.substring(8,9);            //same again...
+                            String sensor9 = recDataString.substring(9,10);
+                            String sensor10 = recDataString.substring(10,11);
+                            String sensor11 = recDataString.substring(11,12);
+                            String sensor12 = recDataString.substring(12,13);
+                            String sensor13 = recDataString.substring(13,14);
+                            String sensor14 = recDataString.substring(14,15);
+                            String sensor15 = recDataString.substring(15,16);
+                            String sensor16 = recDataString.substring(16,17);
 
                             //sensorView0.setText(" Sensor 0 Voltage = " + sensor0 + "V");	//update the textviews with sensor values
                             sensorView1.setText(sensor1);
                             sensorView2.setText(sensor2);
                             sensorView3.setText(sensor3);
-                            /*sensorView4.setText(sensor4);
+                            sensorView4.setText(sensor4);
                             sensorView5.setText(sensor5);
                             sensorView6.setText(sensor6);
                             sensorView7.setText(sensor7);
@@ -144,7 +144,7 @@ public class PatientView extends Activity {
                             sensorView13.setText(sensor13);
                             sensorView14.setText(sensor14);
                             sensorView15.setText(sensor15);
-                            sensorView16.setText(sensor16);*/
+                            sensorView16.setText(sensor16);
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
                         // strIncom =" ";

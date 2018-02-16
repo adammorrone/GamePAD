@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GamePAD.iml" filepath="$PROJECT_DIR$/GamePAD.iml" />
-      <module fileurl="file://C:\Users\Kofi-Laptop\AndroidStudioProjects\GamePAD\GamePAD.iml" filepath="C:\Users\Kofi-Laptop\AndroidStudioProjects\GamePAD\GamePAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Kofi-Laptop\AndroidStudioProjects\GamePAD\app\app.iml" filepath="C:\Users\Kofi-Laptop\AndroidStudioProjects\GamePAD\app\app.iml" />
     </modules>
   </component>
 </project>

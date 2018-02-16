@@ -40,7 +40,7 @@ public class PatientView extends Activity {
             sensorView13, sensorView14, sensorView15, sensorView16;
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
-    private Set<BluetoothDevice> pairedDevices;
+    //private Set<BluetoothDevice> pairedDevices;
     private BluetoothSocket btSocket;
     private StringBuilder recDataString = new StringBuilder();
 
@@ -105,9 +105,9 @@ public class PatientView extends Activity {
                     int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
                         String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
-                        txtString.setText("Data Received = " + dataInPrint);
+                        //txtString.setText("Data Received = " + dataInPrint);
                         int dataLength = dataInPrint.length();							//get length of data received
-                        txtStringLength.setText("String Length = " + String.valueOf(dataLength));
+                        //txtStringLength.setText("String Length = " + String.valueOf(dataLength));
 
                         if (recDataString.charAt(0) == '#')								//if it starts with # we know it is what we are looking for
                         {

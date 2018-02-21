@@ -153,32 +153,10 @@ public class PatientView extends Activity {
                             sensorView15.setText(sensor15);
                             sensorView16.setText(sensor16);
 
-                            if(sensor1.equals("0")){
-                                imageSensor1.setVisibility(View.GONE);
-                            }
-                            else {
-                                imageSensor1.setVisibility(View.VISIBLE);
-                            }
-                            if(sensor2.equals("0")){
-                                imageSensor2.setVisibility(View.GONE);
-
-                            }
-                            else{
-                                imageSensor2.setVisibility(View.VISIBLE);
-                            }
-                            if(sensor3.equals("0")){
-                                imageSensor3.setVisibility(View.GONE);
-                            }
-                            else {
-                                imageSensor3.setVisibility(View.VISIBLE);
-                            }
-                            if(sensor4.equals("0")){
-                                imageSensor4.setVisibility(View.GONE);
-
-                            }
-                            else{
-                                imageSensor4.setVisibility(View.VISIBLE);
-                            }
+                            imageSensor1.setVisibility(View.GONE);
+                            imageSensor2.setVisibility(View.VISIBLE);
+                            imageSensor2.setVisibility(View.GONE);
+                            imageSensor4.setVisibility(View.VISIBLE);
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
                         // strIncom =" ";

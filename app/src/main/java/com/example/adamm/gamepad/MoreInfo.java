@@ -16,6 +16,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by adamm on 2/12/2018.
@@ -27,6 +28,7 @@ public class MoreInfo extends AppCompatActivity {
     private TextView patientNameText2;
     private PatientList masterList = MainActivity.masterList;
     private TextView patientInfoText2;
+    private GraphView graph;
     private int index = -1;
 
     /** This application's preferences */
@@ -42,6 +44,7 @@ public class MoreInfo extends AppCompatActivity {
         setContentView(R.layout.activity_more_info);
         patientNameText2 = findViewById(R.id.patientNameBox2);
         patientInfoText2 = findViewById(R.id.patientInfoBox2);
+        graph = findViewById(R.id.graph2);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
@@ -51,7 +54,6 @@ public class MoreInfo extends AppCompatActivity {
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
 
-        GraphView graph = findViewById(R.id.graph2);
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
         for(int i = 0; i < scores.size(); i++)
@@ -60,14 +62,7 @@ public class MoreInfo extends AppCompatActivity {
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
-        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series2);
+
         graph.addSeries(series);
 
         if (b != null) {
@@ -106,6 +101,60 @@ public class MoreInfo extends AppCompatActivity {
     public void goBack(View view)
     {
         finish();
+    }
+
+    public void graph_std_by_day(View view)
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        ArrayList<DataPoint> data = new ArrayList<>();
+        double temp_score = scores.get(0).getScore();
+        for(int i = 1; i < scores.size(); i++)
+        {
+            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+                temp_score += scores.get(i).getScore();
+            else
+            {
+                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                temp_score = scores.get(i).getScore();
+            }
+        }
+        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+        data.add(new DataPoint(day, temp_score));
+
+        DataPoint[] data_arr = new DataPoint[data.size()];
+        for(int i = 0; i < data.size(); i++)
+            data_arr[i] = data.get(i);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+        graph.removeAllSeries();
+        graph.addSeries(series);
+    }
+
+    public void graph_std_by_game(View view)
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        DataPoint[] data = new DataPoint[scores.size()];
+        for(int i = 0; i < scores.size(); i++)
+        {
+            data[i] = new DataPoint(i, scores.get(i).getScore());
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
+
+        graph.addSeries(series);
+    }
+
+    public void goto_tictactoe(View view)
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        DataPoint[] data = new DataPoint[scores.size()];
+        for(int i = 0; i < scores.size(); i++)
+        {
+            data[i] = new DataPoint(i, scores.get(i).getScore());
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
+
+        graph.addSeries(series);
     }
 
 }

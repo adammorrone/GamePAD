@@ -1,5 +1,6 @@
 package com.example.adamm.gamepad;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -9,9 +10,9 @@ import java.util.Date;
 public class ScoreRecord {
     public double score;
     public String gameType;
-    public Date date;
+    public Calendar date;
 
-    public ScoreRecord(double inScore, String inGameType, Date inDate)
+    public ScoreRecord(double inScore, String inGameType, Calendar inDate)
     {
         score = inScore;
         date = inDate;
@@ -22,7 +23,7 @@ public class ScoreRecord {
         return score;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
@@ -34,7 +35,7 @@ public class ScoreRecord {
         this.score = score;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 

@@ -17,9 +17,9 @@ public class PatientList
         listOfPatients = new ArrayList<Patient>();
     }
 
-    public void addPatient(String name, String dob, String gender, String height)
+    public void addPatient(String name, String dob, String gender, double height, double weight)
     {
-        listOfPatients.add(new Patient(name, dob, gender, height));
+        listOfPatients.add(new Patient(name, dob, gender, height, weight));
     }
 
     public int getSize()

@@ -13,24 +13,25 @@ public class Patient
     public String name;
     public String dob;
     public String gender;
-    public String height;
+    public double height_inches;
+    public double weight_pounds;
+
     public ArrayList<ScoreRecord> scores;
 
-    public Patient(String inName, String inDOB, String inGender, String inHeight)
+    public Patient(String inName, String inDOB, String inGender, double inHeight_inches, double inWeight_pounds)
     {
         scores = new ArrayList<>();
         name = inName;
         dob = inDOB;
         gender = inGender;
-        height = inHeight;
+        height_inches = inHeight_inches;
+        weight_pounds = inWeight_pounds;
 
-        newScore(12, "TestScore");
-        newScore(1, "TestScore");
-        newScore(8, "TestScore");
-        newScore(11, "TestScore");
-        newScore(8, "TestScore");
-
-
+        newScore(12, "Standard");
+        newScore(1, "Standard");
+        newScore(8, "Standard");
+        newScore(11, "Standard");
+        newScore(8, "Standard");
     }
 
     public String getName()
@@ -45,7 +46,7 @@ public class Patient
     {
         return gender;
     }
-    public String getHeight() { return height; }
+    public double getHeight() { return height_inches; }
     public ArrayList<ScoreRecord> getScores() { return scores; }
     public void setName(String newName)
     {
@@ -59,10 +60,27 @@ public class Patient
     {
         gender = newGender;
     }
-    public void setHeight(String newHeight) { height = newHeight; }
+    public void setHeight(int newHeight) { height_inches = newHeight; }
+
+    public double getHeight_inches() {
+        return height_inches;
+    }
+
+    public void setHeight_inches(double height_inches) {
+        this.height_inches = height_inches;
+    }
+
+    public double getWeight_pounds() {
+        return weight_pounds;
+    }
+
+    public void setWeight_pounds(double weight_pounds) {
+        this.weight_pounds = weight_pounds;
+    }
+
     public void newScore(double score, String gameType)
     {
-        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance().getTime());
+        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance());
         scores.add(sr);
     }
     public double getAllTimeScores()

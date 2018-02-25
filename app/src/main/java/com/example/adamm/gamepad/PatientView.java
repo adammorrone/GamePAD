@@ -53,6 +53,9 @@ public class PatientView extends Activity {
 
     private static String address;
     private static String time;
+    private static String distance;
+    private static String weight;
+
 
     private TextView timerView;
     ArrayList<String> paired;
@@ -155,31 +158,31 @@ public class PatientView extends Activity {
                             sensorView15.setText(sensor15);
                             sensorView16.setText(sensor16);
 
-                            if(sensor1.equals("0")){
-                                imageSensor1.setVisibility(View.GONE);
-                            }
-                            else {
+                            if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1") || sensor15.equals("1")){        // if 2 1 16 15 == 1
                                 imageSensor1.setVisibility(View.VISIBLE);
                             }
-                            if(sensor2.equals("0")){
-                                imageSensor2.setVisibility(View.GONE);
+                            else {
+                                imageSensor1.setVisibility(View.GONE);
+                            }
+                            if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1") || sensor12.equals("1")){
+                                imageSensor2.setVisibility(View.VISIBLE);
 
                             }
                             else{
-                                imageSensor2.setVisibility(View.VISIBLE);
+                                imageSensor2.setVisibility(View.GONE);
                             }
-                            if(sensor3 == "0"){
-                                imageSensor3.setVisibility(View.GONE);
-                            }
-                            else {
+                            if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1") || sensor13.equals("1")){
                                 imageSensor3.setVisibility(View.VISIBLE);
                             }
-                            if(sensor4 == "0"){
-                                imageSensor4.setVisibility(View.GONE);
+                            else{
+                                imageSensor3.setVisibility(View.GONE);
+                            }
+                            if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1") || sensor14.equals("1")){
+                                imageSensor4.setVisibility(View.VISIBLE);
 
                             }
                             else{
-                                imageSensor4.setVisibility(View.VISIBLE);
+                                imageSensor4.setVisibility(View.GONE);
                             }
 
                         }
@@ -333,13 +336,6 @@ public class PatientView extends Activity {
                 finish();
 
             }
-        }
-
-        public void hideOne(View v){
-            imageSensor1.setVisibility(View.GONE);
-        }
-        public void showOne(View v){
-            imageSensor1.setVisibility(View.VISIBLE);
         }
     }
 }

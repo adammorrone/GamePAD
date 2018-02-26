@@ -80,7 +80,7 @@ public class Patient
 
     public void newScore(double score, String gameType)
     {
-        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance());
+        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance(), 0, 0);
         scores.add(sr);
     }
     public double getAllTimeScores()

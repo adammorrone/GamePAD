@@ -139,7 +139,7 @@ public class MoreInfo extends AppCompatActivity {
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
-
+        graph.removeAllSeries();
         graph.addSeries(series);
     }
 
@@ -154,6 +154,7 @@ public class MoreInfo extends AppCompatActivity {
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
 
+        graph.removeAllSeries();
         graph.addSeries(series);
     }
 

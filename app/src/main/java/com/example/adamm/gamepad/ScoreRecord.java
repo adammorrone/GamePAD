@@ -1,7 +1,7 @@
 package com.example.adamm.gamepad;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by adamm on 2/14/2018.
@@ -44,8 +44,11 @@ public class ScoreRecord {
     }
 
     @Override
-    public String toString() {
-        return  date + "\tScore = " + score +
-                "\t\tGame = " + gameType;
+    public String toString()
+    {
+        SimpleDateFormat format = new SimpleDateFormat("EEEE, MMMM d, yyyy 'at' h:mm a");
+
+        return  format.format(date.getTime()) + "\nScore = " + score +
+                "\nGame = " + gameType + "\n";
     }
 }

@@ -54,14 +54,6 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
-        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series2);
         graph.addSeries(series);
 
         if (b != null) {
@@ -72,7 +64,6 @@ public class PatientOverviewActivity extends AppCompatActivity  {
             String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getGender();
             patientInfoText.setTextSize(15);
             patientInfoText.setText(info);
-
         }
     }
 

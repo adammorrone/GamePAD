@@ -11,12 +11,16 @@ public class ScoreRecord {
     public double score;
     public String gameType;
     public Calendar date;
+    public double totalDistance;
+    public int numThrows;
 
-    public ScoreRecord(double inScore, String inGameType, Calendar inDate)
+    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows)
     {
         score = inScore;
         date = inDate;
         gameType = inGameType;
+        totalDistance = inDistance;
+        numThrows = inThrows;
     }
 
     public double getScore() {

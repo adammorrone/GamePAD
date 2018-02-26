@@ -218,13 +218,13 @@ public class PatientView extends Activity {
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
 
-        Button next = findViewById(R.id.button_next2);
+        /*Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), MainActivity.class);
                 startActivityForResult(myIntent, 0);
             }
-        });
+        }); */
 
 
     }
@@ -283,7 +283,7 @@ public class PatientView extends Activity {
 
     }
 
-    public void endGame(){
+    public void endGame(View v){
         Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -317,7 +317,7 @@ public class PatientView extends Activity {
 
             public void onFinish() {
                 timerView.setText("done!");
-                endGame();
+                //endGame();
             }
         }.start();
 

@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.UUID;
@@ -39,6 +41,7 @@ public class PatientView extends Activity {
             sensorView5, sensorView6, sensorView7, sensorView8,
             sensorView9, sensorView10, sensorView11, sensorView12,
             sensorView13, sensorView14, sensorView15, sensorView16;
+    TextView scoreView;
     ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
@@ -55,6 +58,12 @@ public class PatientView extends Activity {
     private static String time;
     private static String distance;
     private static String weight;
+    private static int scoreKeeper;
+
+    // Initialize score class
+    int distanceInt = Integer.parseInt(distance);
+    int ballThrows = 0;
+    Calendar rightNow = Calendar.getInstance();
 
 
     private TextView timerView;
@@ -77,6 +86,7 @@ public class PatientView extends Activity {
         else {
             time = checkInfo.get("time").toString();
             address = checkInfo.get("address").toString();
+            distance = checkInfo.get("distance").toString();
 
         } // Do something
         Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: " + time, Toast.LENGTH_LONG);
@@ -86,6 +96,9 @@ public class PatientView extends Activity {
         pairedDeviceList = findViewById(R.id.listView);
         //Button bt = findViewById(R.id.btList);
         paired = new ArrayList<>();
+
+        scoreView = findViewById(R.id.textView);
+        scoreKeeper = 0; // init scoreKeeper
 
         sensorView3 = findViewById(R.id.editText1);
         sensorView4 = findViewById(R.id.editText2);
@@ -118,9 +131,9 @@ public class PatientView extends Activity {
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
                         String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
                         //txtString.setText("Data Received = " + dataInPrint);
-                        int dataLength = dataInPrint.length();							//get length of data received
+                        //int dataLength = dataInPrint.length();							//get length of data received
                         //txtStringLength.setText("String Length = " + String.valueOf(dataLength));
-
+                        ballThrows++;
                         if (recDataString.charAt(0) == '#')								//if it starts with # we know it is what we are looking for
                         {
                             String sensor1 = recDataString.substring(1,2);             //get sensor value from string between indices 1-5
@@ -160,12 +173,14 @@ public class PatientView extends Activity {
 
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1") || sensor15.equals("1")){        // if 2 1 16 15 == 1
                                 imageSensor1.setVisibility(View.VISIBLE);
+                                scoreKeeper = scoreKeeper + 1;
                             }
                             else {
                                 imageSensor1.setVisibility(View.GONE);
                             }
                             if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1") || sensor12.equals("1")){
                                 imageSensor2.setVisibility(View.VISIBLE);
+                                scoreKeeper = scoreKeeper + 2;
 
                             }
                             else{
@@ -173,17 +188,21 @@ public class PatientView extends Activity {
                             }
                             if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1") || sensor13.equals("1")){
                                 imageSensor3.setVisibility(View.VISIBLE);
+                                scoreKeeper = scoreKeeper + 3;
                             }
                             else{
                                 imageSensor3.setVisibility(View.GONE);
                             }
                             if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1") || sensor14.equals("1")){
                                 imageSensor4.setVisibility(View.VISIBLE);
+                                scoreKeeper = scoreKeeper + 4;
 
                             }
                             else{
                                 imageSensor4.setVisibility(View.GONE);
                             }
+
+                            scoreView.setText(scoreKeeper);
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
@@ -192,10 +211,12 @@ public class PatientView extends Activity {
                     }
                 }
             }
+            ScoreRecord record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows);
         };
 
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();
+
 
         Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
@@ -256,7 +277,20 @@ public class PatientView extends Activity {
     }
 
     public void startGame(View v){
+        scoreView.clearComposingText();
+        ballThrows = 0;
         startTimer(time);
+
+    }
+
+    public void endGame(){
+        Button next = findViewById(R.id.button_next2);
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
     }
 
     @Override
@@ -283,6 +317,7 @@ public class PatientView extends Activity {
 
             public void onFinish() {
                 timerView.setText("done!");
+                endGame();
             }
         }.start();
 
@@ -339,33 +374,3 @@ public class PatientView extends Activity {
         }
     }
 }
-
-
-/*
-            if(sensor1 == "0"){
-                imageSensor1.setVisibility(View.GONE);
-            }
-            else {
-                imageSensor1.setVisibility(View.VISIBLE);
-            }
-            if(sensor2 == "0"){
-                imageSensor2.setVisibility(View.GONE);
-
-            }
-            else{
-                imageSensor2.setVisibility(View.VISIBLE);
-            }
-            if(sensor3 == "0"){
-                imageSensor3.setVisibility(View.GONE);
-            }
-            else {
-                imageSensor3.setVisibility(View.VISIBLE);
-            }
-            if(sensor4 == "0"){
-                imageSensor4.setVisibility(View.GONE);
-
-            }
-            else{
-                imageSensor4.setVisibility(View.VISIBLE);
-            }
- */

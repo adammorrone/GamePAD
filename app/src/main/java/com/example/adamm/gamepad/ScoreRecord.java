@@ -26,6 +26,17 @@ public class ScoreRecord {
         time = time_seconds;
     }
 
+    public  ScoreRecord()
+    {
+        score = 0;
+        date = null;
+        gameType = "null";
+        totalDistance = 0;
+        numThrows = 0;
+        time = 0;
+    }
+
+
     public double getScore() {
         return score;
     }

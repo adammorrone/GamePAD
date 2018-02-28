@@ -63,9 +63,9 @@ public class PatientView extends Activity {
     private static int scoreKeeper;
 
     // Initialize score class
-    private int distanceInt = 0;
-    private int weightInt = 0;
-    private int ballThrows = 0;
+    private static int distanceInt = 0;
+    private static int weightInt = 0;
+    private static int ballThrows = 0;
     Calendar rightNow = Calendar.getInstance();
 
     ScoreRecord record;
@@ -141,7 +141,7 @@ public class PatientView extends Activity {
                         //txtString.setText("Data Received = " + dataInPrint);
                         //int dataLength = dataInPrint.length();							//get length of data received
                         //txtStringLength.setText("String Length = " + String.valueOf(dataLength));
-                        ballThrows++;
+                        //ballThrows++;
                         if (recDataString.charAt(0) == '#')								//if it starts with # we know it is what we are looking for
                         {
                             String sensor1 = recDataString.substring(1,2);             //get sensor value from string between indices 1-5
@@ -180,37 +180,38 @@ public class PatientView extends Activity {
                             sensorView16.setText(sensor16);
 
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1") || sensor15.equals("1")){        // if 2 1 16 15 == 1
-                                imageSensor1.setVisibility(View.VISIBLE);
+                                imageSensor1.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 1;
                             }
                             else {
-                                imageSensor1.setVisibility(View.GONE);
+                                imageSensor1.setVisibility(View.VISIBLE);
                             }
                             if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1") || sensor12.equals("1")){
-                                imageSensor2.setVisibility(View.VISIBLE);
+                                imageSensor2.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 2;
 
                             }
                             else{
-                                imageSensor2.setVisibility(View.GONE);
+                                imageSensor2.setVisibility(View.VISIBLE);
                             }
                             if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1") || sensor13.equals("1")){
-                                imageSensor3.setVisibility(View.VISIBLE);
+                                imageSensor3.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 3;
                             }
                             else{
-                                imageSensor3.setVisibility(View.GONE);
+                                imageSensor3.setVisibility(View.VISIBLE);
                             }
                             if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1") || sensor14.equals("1")){
-                                imageSensor4.setVisibility(View.VISIBLE);
+                                imageSensor4.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 4;
 
                             }
                             else{
-                                imageSensor4.setVisibility(View.GONE);
+                                imageSensor4.setVisibility(View.VISIBLE);
                             }
 
-                            //scoreView.setText(scoreKeeper);
+                            ballThrows++;
+                            scoreView.setText(Integer.toString(ballThrows));
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
@@ -313,7 +314,7 @@ public class PatientView extends Activity {
         Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                Intent myIntent = new Intent(view.getContext(), ResultsActivity.class);
                 myIntent.putExtra("Patient", index);
                 startActivityForResult(myIntent, 0);
             }

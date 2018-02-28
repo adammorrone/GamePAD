@@ -2,19 +2,14 @@ package com.example.adamm.gamepad;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,9 +21,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.UUID;
 
 
@@ -97,7 +90,7 @@ public class PatientView extends Activity {
         //Button bt = findViewById(R.id.btList);
         paired = new ArrayList<>();
 
-        scoreView = findViewById(R.id.textView);
+        scoreView = findViewById(R.id.scoreView);
         scoreKeeper = 0; // init scoreKeeper
 
         sensorView3 = findViewById(R.id.editText1);
@@ -211,7 +204,9 @@ public class PatientView extends Activity {
                     }
                 }
             }
-            ScoreRecord record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows);
+            Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
+            int timer = in.nextInt();
+            ScoreRecord record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer);
         };
 
 

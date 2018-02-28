@@ -13,14 +13,17 @@ public class ScoreRecord {
     public Calendar date;
     public double totalDistance;
     public int numThrows;
+    public int time;
+    public int work;
 
-    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows)
+    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows, int time_seconds)
     {
         score = inScore;
         date = inDate;
         gameType = inGameType;
         totalDistance = inDistance;
         numThrows = inThrows;
+        time = time_seconds;
     }
 
     public double getScore() {
@@ -54,5 +57,37 @@ public class ScoreRecord {
 
         return  format.format(date.getTime()) + "\nScore = " + score +
                 "\nGame = " + gameType + "\n";
+    }
+
+    public double getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void setTotalDistance(double totalDistance) {
+        this.totalDistance = totalDistance;
+    }
+
+    public int getNumThrows() {
+        return numThrows;
+    }
+
+    public void setNumThrows(int numThrows) {
+        this.numThrows = numThrows;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getWork() {
+        return work;
+    }
+
+    public void setWork(int work) {
+        this.work = work;
     }
 }

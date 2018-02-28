@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/scoreView"
         android:layout_width="308dp"
         android:layout_height="174dp"
         android:layout_marginBottom="8dp"
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView"
         app:layout_constraintVertical_bias="0.788" />
 
     <Button
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editText12"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView"
         app:layout_constraintVertical_bias="0.502" />
 
     <TextView
@@ -150,7 +150,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editText9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText12"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
 
     <TextView
         android:id="@+id/editText7"
@@ -188,7 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText6"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
 
     <TextView
         android:id="@+id/editText10"
@@ -226,7 +226,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editText6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText1"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
 
     <TextView
         android:id="@+id/editText13"

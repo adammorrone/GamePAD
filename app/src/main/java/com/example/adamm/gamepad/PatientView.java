@@ -36,6 +36,8 @@ public class PatientView extends Activity {
             sensorView13, sensorView14, sensorView15, sensorView16;
     TextView scoreView;
     ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
+
+
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
     //private Set<BluetoothDevice> pairedDevices;
@@ -55,8 +57,12 @@ public class PatientView extends Activity {
 
     // Initialize score class
     int distanceInt = Integer.parseInt(distance);
+    int weightInt = Integer.parseInt(weight);
     int ballThrows = 0;
     Calendar rightNow = Calendar.getInstance();
+
+    ScoreRecord record;
+
 
 
     private TextView timerView;
@@ -204,10 +210,15 @@ public class PatientView extends Activity {
                     }
                 }
             }
-            Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
-            int timer = in.nextInt();
-            ScoreRecord record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer);
+
         };
+        Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
+        int timer = in.nextInt();
+        timer = (timer * 60000)/1000;   // convert to seconds
+
+        record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer, weightInt);
+
+
 
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();

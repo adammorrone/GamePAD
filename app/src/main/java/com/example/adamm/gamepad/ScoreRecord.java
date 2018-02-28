@@ -15,8 +15,9 @@ public class ScoreRecord {
     public int numThrows;
     public int time;
     public int work;
+    public int weight;
 
-    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows, int time_seconds)
+    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows, int time_seconds, int inWeight)
     {
         score = inScore;
         date = inDate;
@@ -24,6 +25,7 @@ public class ScoreRecord {
         totalDistance = inDistance;
         numThrows = inThrows;
         time = time_seconds;
+        weight = inWeight;
     }
 
     public ScoreRecord()
@@ -34,6 +36,7 @@ public class ScoreRecord {
         totalDistance = 0;
         numThrows = 0;
         time = 0;
+        weight = 0;
     }
 
 

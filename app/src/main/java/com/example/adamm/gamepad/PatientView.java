@@ -278,7 +278,11 @@ public class PatientView extends Activity {
 
     }
 
-    public void endGame(View v){
+    public void endGameOnClick(View v){
+        endGame();
+    }
+
+    public void endGame(){
         Button next = findViewById(R.id.button_next2);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -312,7 +316,7 @@ public class PatientView extends Activity {
 
             public void onFinish() {
                 timerView.setText("done!");
-                //endGame();
+                endGame();
             }
         }.start();
 

@@ -32,6 +32,8 @@ public class NewGame extends Activity {
     private TextView balView;
     private TextView timView;
     private String address;
+    public int index = -1;
+    public PatientList masterList = MainActivity.masterList;
 
     //Bluetooth
     private BluetoothAdapter btAdapter;
@@ -72,6 +74,10 @@ public class NewGame extends Activity {
         String tjson = sharedPref.getString("stored_time_list", "");
         Gson tgson = new Gson();
 
+        Intent info = getIntent();
+        Bundle checkInfo = info.getExtras();
+        index = (int)checkInfo.get("Patient");
+
         if(bjson.equals(""))
             ballList = new BallWeightList();
         else
@@ -109,6 +115,8 @@ public class NewGame extends Activity {
         intent.putExtra("ball", balView.getText());
         intent.putExtra("time", timView.getText());
         intent.putExtra("address", address);
+        intent.putExtra("Patient", index);
+
         startActivity(intent);
     }
 

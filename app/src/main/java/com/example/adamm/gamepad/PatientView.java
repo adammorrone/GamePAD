@@ -26,6 +26,8 @@ import java.util.Scanner;
 import java.util.UUID;
 
 
+
+
 public class PatientView extends Activity {
     /** Called when the activity is first created. */
     // checking to make sure push is
@@ -39,11 +41,15 @@ public class PatientView extends Activity {
     ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
 
 
+
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
     //private Set<BluetoothDevice> pairedDevices;
     private BluetoothSocket btSocket;
     private StringBuilder recDataString = new StringBuilder();
+    public int index = -1;
+    public PatientList masterList = MainActivity.masterList;
+
 
     private ConnectedThread mConnectedThread;   //Private thread for bluetooth connection
 
@@ -78,6 +84,7 @@ public class PatientView extends Activity {
 
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
+        index = (int)checkInfo.get("Patient");
 
         if (checkInfo == null) {
             Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start", Toast.LENGTH_LONG);
@@ -218,7 +225,8 @@ public class PatientView extends Activity {
         timer = (timer * 60000)/1000;   // convert to seconds
 
         record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer, weightInt);
-
+        masterList.getPatient(index).addScore(record);
+        saveChanges();
 
 
 
@@ -299,7 +307,7 @@ public class PatientView extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), MainActivity.class);
-                myIntent.putExtra("Score", (Serializable) record);
+                myIntent.putExtra("Patient", index);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -384,5 +392,11 @@ public class PatientView extends Activity {
 
             }
         }
+
+
+    }
+    public void saveChanges()
+    {
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
     }
 }

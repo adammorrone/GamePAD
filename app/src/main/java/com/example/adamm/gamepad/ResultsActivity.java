@@ -52,10 +52,8 @@ public class ResultsActivity extends AppCompatActivity {
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
-        ScoreRecord scoreRecord = (ScoreRecord)b.get("Score");
-        masterList.getPatient(index).addScore(scoreRecord);
+        ScoreRecord scoreRecord = masterList.getPatient(index).getScores().get( masterList.getPatient(index).getScores().size() - 1);
 
-        saveChanges();
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
         workText.setText(Double.toString(scoreRecord.getWork()));

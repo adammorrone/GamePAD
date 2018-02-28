@@ -23,6 +23,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
 
 
 
+
     /** This application's preferences */
     private static SharedPreferences settings;
 
@@ -100,6 +101,11 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         Intent intent = new Intent(PatientOverviewActivity.this, MoreInfo.class);
         intent.putExtra("Patient", index);
         startActivity(intent);
+    }
+
+    public void saveChanges()
+    {
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
     }
 
 }

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -298,6 +299,7 @@ public class PatientView extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                myIntent.putExtra("Score", (Serializable) record);
                 startActivityForResult(myIntent, 0);
             }
         });

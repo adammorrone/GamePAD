@@ -63,9 +63,9 @@ public class PatientView extends Activity {
     private static int scoreKeeper;
 
     // Initialize score class
-    int distanceInt = Integer.parseInt(distance);
-    int weightInt = Integer.parseInt(weight);
-    int ballThrows = 0;
+    private int distanceInt = 0;
+    private int weightInt = 0;
+    private int ballThrows = 0;
     Calendar rightNow = Calendar.getInstance();
 
     ScoreRecord record;
@@ -94,6 +94,7 @@ public class PatientView extends Activity {
             time = checkInfo.get("time").toString();
             address = checkInfo.get("address").toString();
             distance = checkInfo.get("distance").toString();
+            weight = checkInfo.get("ball").toString();
 
         } // Do something
         Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: " + time, Toast.LENGTH_LONG);
@@ -209,7 +210,7 @@ public class PatientView extends Activity {
                                 imageSensor4.setVisibility(View.GONE);
                             }
 
-                            scoreView.setText(scoreKeeper);
+                            //scoreView.setText(scoreKeeper);
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
@@ -223,6 +224,12 @@ public class PatientView extends Activity {
         Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
         int timer = in.nextInt();
         timer = (timer * 60000)/1000;   // convert to seconds
+
+        in = new Scanner(distance).useDelimiter("[^0-9]+");
+        distanceInt = in.nextInt();
+
+        in = new Scanner(weight).useDelimiter("[^0-9]+");
+        weightInt = in.nextInt();
 
         record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer, weightInt);
         masterList.getPatient(index).addScore(record);

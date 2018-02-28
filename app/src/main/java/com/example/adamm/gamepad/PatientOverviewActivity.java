@@ -84,6 +84,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     public void goto_newGame(View view)
     {
         Intent intent = new Intent(this, NewGame.class);
+        intent.putExtra("Patient", index);
         startActivity(intent);
     }
 

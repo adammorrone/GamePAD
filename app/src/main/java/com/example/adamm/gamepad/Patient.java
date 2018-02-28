@@ -78,6 +78,11 @@ public class Patient
         this.weight_pounds = weight_pounds;
     }
 
+    public void addScore(ScoreRecord sr)
+    {
+        scores.add(sr);
+    }
+
     public void newScore(double score, String gameType)
     {
         ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance(), 0, 0, 0);

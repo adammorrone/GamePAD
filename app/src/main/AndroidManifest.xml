@@ -22,6 +22,7 @@ package="com.example.adamm.gamepad">
     <activity android:name=".EditPatientInfo"></activity>
     <activity android:name=".MoreInfo"></activity>
     <activity android:name=".bluetoothReceiver"></activity>
+    <activity android:name=".ResultsActivity"></activity>
 </application>
 
     <uses-permission android:name="android.permission.BLUETOOTH" />

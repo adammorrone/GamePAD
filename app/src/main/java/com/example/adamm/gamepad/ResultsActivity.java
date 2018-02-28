@@ -53,15 +53,14 @@ public class ResultsActivity extends AppCompatActivity {
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
         ScoreRecord scoreRecord = (ScoreRecord)b.get("Score");
+        masterList.getPatient(index).addScore(scoreRecord);
+
+        saveChanges();
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
         workText.setText(Double.toString(scoreRecord.getWork()));
         throwsText.setText(Double.toString(scoreRecord.getNumThrows()));
         timeText.setText(Double.toString(scoreRecord.getTime()));
-
-
-
-
 
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
@@ -80,6 +79,14 @@ public class ResultsActivity extends AppCompatActivity {
     public void goto_newGame(View view)
     {
         Intent intent = new Intent(ResultsActivity.this, NewGame.class);
+        intent.putExtra("Patient", index);
+        startActivity(intent);
+    }
+
+    public void saveChanges()
+    {
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
+        Intent intent = new Intent(ResultsActivity.this, PatientOverviewActivity.class);
         intent.putExtra("Patient", index);
         startActivity(intent);
     }

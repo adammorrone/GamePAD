@@ -26,7 +26,7 @@ public class ScoreRecord {
         time = time_seconds;
     }
 
-    public  ScoreRecord()
+    public ScoreRecord()
     {
         score = 0;
         date = null;

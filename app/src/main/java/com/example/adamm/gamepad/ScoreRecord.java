@@ -2,7 +2,6 @@ package com.example.adamm.gamepad;
 
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
-
 /**
  * Created by adamm on 2/14/2018.
  */
@@ -11,21 +10,25 @@ public class ScoreRecord {
     public double score;
     public String gameType;
     public Calendar date;
-    public double totalDistance;
+    public double throwingDistance;
     public int numThrows;
     public int time;
-    public int work;
-    public int weight;
+    public double work_kcal;
+    public int massOfBall;
+    public double power_watts;
+    public double height;
 
-    public ScoreRecord(double inScore, String inGameType, Calendar inDate, double inDistance, int inThrows, int time_seconds, int inWeight)
+    public ScoreRecord(double score_points, String gameType_string, Calendar date_cal, double distance_ft, int throws_number, int time_seconds, int weight_lbs, double height_inches)
     {
-        score = inScore;
-        date = inDate;
-        gameType = inGameType;
-        totalDistance = inDistance;
-        numThrows = inThrows;
+        score = score_points;
+        date = date_cal;
+        gameType = gameType_string;
+        throwingDistance = distance_ft;
+        numThrows = throws_number;
         time = time_seconds;
-        weight = inWeight;
+        massOfBall = weight_lbs;
+        height = height_inches;
+        calculateWork();
     }
 
     public ScoreRecord()
@@ -33,12 +36,25 @@ public class ScoreRecord {
         score = 0;
         date = null;
         gameType = "null";
-        totalDistance = 0;
+        throwingDistance = 0;
         numThrows = 0;
         time = 0;
-        weight = 0;
+        massOfBall = 0;
+        calculateWork();
     }
 
+
+    public void calculateWork()
+    {
+        double g = 9.81;
+        double d = throwingDistance * 0.305 * numThrows + 0.25 * score;
+        double h = height * 0.025;
+        double m = massOfBall * 0.454;
+
+        work_kcal = m*g*h * numThrows + (m*d*d)/h;
+        power_watts = work_kcal / (numThrows * Math.sqrt((2*h)/g));
+        work_kcal = work_kcal * 0.00024;
+    }
 
     public double getScore() {
         return score;
@@ -69,16 +85,28 @@ public class ScoreRecord {
     {
         SimpleDateFormat format = new SimpleDateFormat("EEEE, MMMM d, yyyy 'at' h:mm a");
 
-        return  format.format(date.getTime()) + "\nScore = " + score +
-                "\nGame = " + gameType + "\n";
+
+        return  format.format(date.getTime()) +
+                "\nGame = " + gameType +
+                "\nScore = " + score + " points" +
+                "\nWork = " + Double.toString(work_kcal).substring(0, 6) + " kcal" +
+                "\n          ≈ " + Math.ceil(work_kcal / 0.35) + " push ups" +
+                "\nAverage Power = " + Double.toString(power_watts).substring(0, 6) + " Watts" +
+                "\nBall Weight = " + massOfBall + " lbs" +
+                "\nThrows = " + numThrows + " throws" +
+                "\nThrowing Height = " + height + " inches" +
+                "\nThrowing Distance = " + throwingDistance + " feet" +
+                "\nTime = " + time + " seconds" +
+                "\n";
+
     }
 
-    public double getTotalDistance() {
-        return totalDistance;
+    public double getThrowingDistance() {
+        return throwingDistance;
     }
 
-    public void setTotalDistance(double totalDistance) {
-        this.totalDistance = totalDistance;
+    public void setThrowingDistance(double throwingDistance) {
+        this.throwingDistance = throwingDistance;
     }
 
     public int getNumThrows() {
@@ -97,11 +125,13 @@ public class ScoreRecord {
         this.time = time;
     }
 
-    public int getWork() {
-        return work;
+    public double getWork_kcal() {
+        return work_kcal;
     }
 
-    public void setWork(int work) {
-        this.work = work;
+    public void setWork_kcal(double work_kcal) {
+        this.work_kcal = work_kcal;
     }
+
+
 }

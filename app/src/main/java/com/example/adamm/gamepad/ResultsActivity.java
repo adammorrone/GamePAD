@@ -1,8 +1,6 @@
 package com.example.adamm.gamepad;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,14 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-
-import javax.xml.transform.Result;
 
 /**
  * Created by adamm on 2/28/2018.
@@ -56,7 +49,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
-        workText.setText(Double.toString(scoreRecord.getWork()));
+        workText.setText(Double.toString(scoreRecord.getWork_kcal()));
         throwsText.setText(Double.toString(scoreRecord.getNumThrows()));
         timeText.setText(Double.toString(scoreRecord.getTime()));
 

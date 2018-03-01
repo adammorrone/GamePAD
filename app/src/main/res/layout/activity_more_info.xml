@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/view_records"
-        android:layout_width="341dp"
+        android:layout_width="237dp"
         android:layout_height="67dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -120,5 +120,32 @@
         app:layout_constraintEnd_toEndOf="@+id/button9"
         app:layout_constraintStart_toStartOf="@+id/button9"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="copyRecords"
+        android:text="Copy as Text"
+        app:layout_constraintBottom_toBottomOf="@+id/view_records"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toEndOf="@+id/view_records"
+        app:layout_constraintTop_toTopOf="@+id/view_records" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="122dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="copyRecordsAsCSV"
+        android:text="Copy as TSV"
+        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintEnd_toEndOf="@+id/button12"
+        app:layout_constraintStart_toStartOf="@+id/button12" />
 
 </android.support.constraint.ConstraintLayout>

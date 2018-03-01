@@ -43,7 +43,6 @@ public class ScoreRecord {
         calculateWork();
     }
 
-
     public void calculateWork()
     {
         double g = 9.81;
@@ -90,13 +89,33 @@ public class ScoreRecord {
                 "\nGame = " + gameType +
                 "\nScore = " + score + " points" +
                 "\nWork = " + Double.toString(work_kcal).substring(0, 6) + " kcal" +
-                "\n          ≈ " + Math.ceil(work_kcal / 0.35) + " push ups" +
+                "\n          ≈ " + Double.toString(Math.ceil(work_kcal / 0.35)).substring(0, 1) + " push ups" + //based on 0.35kcal per pushup
                 "\nAverage Power = " + Double.toString(power_watts).substring(0, 6) + " Watts" +
                 "\nBall Weight = " + massOfBall + " lbs" +
                 "\nThrows = " + numThrows + " throws" +
                 "\nThrowing Height = " + height + " inches" +
                 "\nThrowing Distance = " + throwingDistance + " feet" +
                 "\nTime = " + time + " seconds" +
+                "\n";
+
+    }
+
+    public String toCSV()
+    {
+        SimpleDateFormat format = new SimpleDateFormat("EEEE, MMMM d, yyyy 'at' h:mm a");
+
+
+        return  format.format(date.getTime()) +
+                "\t" + gameType +
+                "\t" + score +
+                "\t" + Double.toString(work_kcal).substring(0, 6) +
+                "\t" + Double.toString(Math.ceil(work_kcal / 0.35)).substring(0, 1) +
+                "\t" + Double.toString(power_watts).substring(0, 6) +
+                "\t" + massOfBall +
+                "\t" + numThrows +
+                "\t" + height +
+                "\t" + throwingDistance +
+                "\t" + time +
                 "\n";
 
     }

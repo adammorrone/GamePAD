@@ -1,6 +1,7 @@
 package com.example.adamm.gamepad;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +18,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import android.content.ClipboardManager;
+import android.widget.Toast;
 
 /**
  * Created by adamm on 2/12/2018.
@@ -157,5 +160,62 @@ public class MoreInfo extends AppCompatActivity {
         graph.removeAllSeries();
         graph.addSeries(series);
     }
+
+    public void copyRecords(View view)
+    {
+        ArrayList<ScoreRecord> records = masterList.getPatient(index).getScores();
+        String recordsTest = "GamePAD records for " + masterList.getPatient(index).getName() + ":\n\n";
+
+        for(int i = 0; i < records.size(); i++)
+        {
+            recordsTest += records.get(i).toString() + "\n";
+        }
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Patient Records", recordsTest);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(getApplicationContext(), "Patient records have been coped to the clipboard", Toast.LENGTH_LONG).show();
+    }
+
+    public void copyRecordsAsCSV(View view)
+    {
+        ArrayList<ScoreRecord> records = masterList.getPatient(index).getScores();
+
+        String recordsTest = "Date\t\t" +
+                "\tGame" +
+                "\tScore" +
+                "\tWork" +
+                "\tPush Ups" +
+                "\tAverage Power" +
+                "\tBall Weight" +
+                "\tThrows" +
+                "\tThrowing Height" +
+                "\tThrowing Distance" +
+                "\tTime" +
+                "\n" +
+                "Date\t\t" +
+                "\tGameType" +
+                "\tPoints" +
+                "\tkcal" +
+                "\tPush Ups" +
+                "\tWatts" +
+                "\tlbs" +
+                "\tThrows" +
+                "\tinches" +
+                "\tfeet" +
+                "\tseconds" +
+                "\n";
+
+        for(int i = 0; i < records.size(); i++)
+        {
+            recordsTest += records.get(i).toCSV();
+        }
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Patient Records", recordsTest);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(getApplicationContext(), "Patient records have been coped to the clipboard", Toast.LENGTH_LONG).show();
+    }
+
 
 }

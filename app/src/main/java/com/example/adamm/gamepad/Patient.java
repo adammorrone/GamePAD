@@ -18,7 +18,8 @@ public class Patient
 
     public ArrayList<ScoreRecord> scores;
 
-    public Patient(String inName, String inDOB, String inGender, double inHeight_inches, double inWeight_pounds)
+    public Patient(String inName, String inDOB, String inGender,
+                   double inHeight_inches, double inWeight_pounds)
     {
         scores = new ArrayList<>();
         name = inName;
@@ -85,7 +86,8 @@ public class Patient
 
     public void newScore(double score, String gameType)
     {
-        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance(), 10, 10, 60, 5, 50);
+        ScoreRecord sr = new ScoreRecord(score, gameType, Calendar.getInstance(),
+                10, 10, 60, 5, 50);
         scores.add(sr);
     }
     public double getAllTimeScores()

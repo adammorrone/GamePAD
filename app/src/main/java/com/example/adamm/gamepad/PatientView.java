@@ -29,10 +29,7 @@ import java.util.UUID;
 
 
 public class PatientView extends Activity {
-    /** Called when the activity is first created. */
-    // checking to make sure push is
     Handler bluetoothIn;
-    //TextView txtString, txtStringLength, txtArduino;
     TextView sensorView1, sensorView2, sensorView3, sensorView4,
             sensorView5, sensorView6, sensorView7, sensorView8,
             sensorView9, sensorView10, sensorView11, sensorView12,
@@ -44,7 +41,6 @@ public class PatientView extends Activity {
 
     final int handlerState = 0;             //used to identify handler message
     private BluetoothAdapter btAdapter;
-    //private Set<BluetoothDevice> pairedDevices;
     private BluetoothSocket btSocket;
     private StringBuilder recDataString = new StringBuilder();
     public int index = -1;
@@ -87,7 +83,8 @@ public class PatientView extends Activity {
         index = (int)checkInfo.get("Patient");
 
         if (checkInfo == null) {
-            Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start",
+                    Toast.LENGTH_LONG);
             toast.show();
         }
         else {
@@ -97,7 +94,8 @@ public class PatientView extends Activity {
             weight = checkInfo.get("ball").toString();
 
         } // Do something
-        Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: " + time, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
+                + time, Toast.LENGTH_LONG);
         toast.show();
         //Init
         timerView = findViewById(R.id.textView2);
@@ -132,26 +130,21 @@ public class PatientView extends Activity {
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
-                if (msg.what == handlerState) {										//if message is what we want
-                    String readMessage = (String) msg.obj;                                                                // msg.arg1 = bytes from connect thread
-                    recDataString.append(readMessage);      								//keep appending to string until ~
+                if (msg.what == handlerState) {										    //if message is what we want
+                    String readMessage = (String) msg.obj;                              // msg.arg1 = bytes from connect thread
+                    recDataString.append(readMessage);      							//keep appending to string until ~
                     int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
-                        String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
-                        //txtString.setText("Data Received = " + dataInPrint);
-                        //int dataLength = dataInPrint.length();							//get length of data received
-                        //txtStringLength.setText("String Length = " + String.valueOf(dataLength));
-                        //ballThrows++;
                         if (recDataString.charAt(0) == '#')								//if it starts with # we know it is what we are looking for
                         {
-                            String sensor1 = recDataString.substring(1,2);             //get sensor value from string between indices 1-5
-                            String sensor2 = recDataString.substring(2,3);            //same again...
+                            String sensor1 = recDataString.substring(1,2);              //get sensor value from string between indices 1-5
+                            String sensor2 = recDataString.substring(2,3);              //same again...
                             String sensor3 = recDataString.substring(3,4);
                             String sensor4 = recDataString.substring(4,5);
                             String sensor5 = recDataString.substring(5,6);
                             String sensor6 = recDataString.substring(6,7);
-                            String sensor7 = recDataString.substring(7,8);             //get sensor value from string between indices 1-5
-                            String sensor8 = recDataString.substring(8,9);            //same again...
+                            String sensor7 = recDataString.substring(7,8);              //get sensor value from string between indices 1-5
+                            String sensor8 = recDataString.substring(8,9);              //same again...
                             String sensor9 = recDataString.substring(9,10);
                             String sensor10 = recDataString.substring(10,11);
                             String sensor11 = recDataString.substring(11,12);
@@ -161,7 +154,6 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
-                            //sensorView0.setText(" Sensor 0 Voltage = " + sensor0 + "V");	//update the textviews with sensor values
                             sensorView1.setText(sensor1);
                             sensorView2.setText(sensor2);
                             sensorView3.setText(sensor3);
@@ -179,14 +171,16 @@ public class PatientView extends Activity {
                             sensorView15.setText(sensor15);
                             sensorView16.setText(sensor16);
 
-                            if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1") || sensor15.equals("1")){        // if 2 1 16 15 == 1
+                            if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
+                                    || sensor15.equals("1")){        // if 2 1 16 15 == 1
                                 imageSensor1.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 1;
                             }
                             else {
                                 imageSensor1.setVisibility(View.VISIBLE);
                             }
-                            if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1") || sensor12.equals("1")){
+                            if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
+                                    || sensor12.equals("1")){
                                 imageSensor2.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 2;
 
@@ -194,29 +188,27 @@ public class PatientView extends Activity {
                             else{
                                 imageSensor2.setVisibility(View.VISIBLE);
                             }
-                            if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1") || sensor13.equals("1")){
+                            if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
+                                    || sensor13.equals("1")){
                                 imageSensor3.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 3;
                             }
                             else{
                                 imageSensor3.setVisibility(View.VISIBLE);
                             }
-                            if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1") || sensor14.equals("1")){
+                            if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
+                                    || sensor14.equals("1")){
                                 imageSensor4.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 4;
-
                             }
                             else{
                                 imageSensor4.setVisibility(View.VISIBLE);
                             }
-
                             ballThrows++;
-                            scoreView.setText(Integer.toString(ballThrows));
+                            scoreView.setText(Integer.toString(scoreKeeper));
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
-                        // strIncom =" ";
-                        dataInPrint = " ";
                     }
                 }
             }
@@ -232,22 +224,12 @@ public class PatientView extends Activity {
         in = new Scanner(weight).useDelimiter("[^0-9]+");
         weightInt = in.nextInt();
 
-        record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt, ballThrows, timer, weightInt, masterList.getPatient(index).getHeight());
+        record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt,
+                ballThrows, timer, weightInt, masterList.getPatient(index).getHeight());
         masterList.getPatient(index).addScore(record);
         saveChanges();
 
-
-
         btAdapter = BluetoothAdapter.getDefaultAdapter();
-
-
-        /*Button next = findViewById(R.id.button_next2);
-        next.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
-                startActivityForResult(myIntent, 0);
-            }
-        }); */
     }
 
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
@@ -259,16 +241,6 @@ public class PatientView extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        //Get MAC address from DeviceListActivity via intent
-        //Intent intent = getIntent();
-
-        //Get the MAC address from the DeviceListActivty via EXTRA
-        //Bundle checkInfo;
-        //checkInfo = intent.getExtras();
-        //address = checkInfo.get("address").toString();
-        // Old way => address = intent.getStringExtra(NewGame.EXTRA_DEVICE_ADDRESS);
-
-        //create device and set the MAC address
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
         try {

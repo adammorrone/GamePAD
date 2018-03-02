@@ -18,7 +18,9 @@ public class ScoreRecord {
     public double power_watts;
     public double height;
 
-    public ScoreRecord(double score_points, String gameType_string, Calendar date_cal, double distance_ft, int throws_number, int time_seconds, int weight_lbs, double height_inches)
+    public ScoreRecord(double score_points, String gameType_string, Calendar date_cal,
+                       double distance_ft, int throws_number, int time_seconds, int weight_lbs,
+                       double height_inches)
     {
         score = score_points;
         date = date_cal;
@@ -89,7 +91,8 @@ public class ScoreRecord {
                 "\nGame = " + gameType +
                 "\nScore = " + score + " points" +
                 "\nWork = " + Double.toString(work_kcal).substring(0, 6) + " kcal" +
-                "\n          ≈ " + Double.toString(Math.ceil(work_kcal / 0.35)).substring(0, 1) + " push ups" + //based on 0.35kcal per pushup
+                "\n          ≈ " + Double.toString(Math.ceil(work_kcal / 0.35)).substring(0, 1)
+                + " push ups" + //based on 0.35kcal per pushup
                 "\nAverage Power = " + Double.toString(power_watts).substring(0, 6) + " Watts" +
                 "\nBall Weight = " + massOfBall + " lbs" +
                 "\nThrows = " + numThrows + " throws" +

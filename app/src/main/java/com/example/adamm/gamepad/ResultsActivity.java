@@ -45,7 +45,8 @@ public class ResultsActivity extends AppCompatActivity {
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
-        ScoreRecord scoreRecord = masterList.getPatient(index).getScores().get( masterList.getPatient(index).getScores().size() - 1);
+        ScoreRecord scoreRecord = masterList.getPatient(index).getScores().get(
+                masterList.getPatient(index).getScores().size() - 1);
 
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
@@ -77,7 +78,8 @@ public class ResultsActivity extends AppCompatActivity {
     public void saveChanges()
     {
         MainActivity.saveMasterList(this.getApplicationContext(), masterList);
-        Intent intent = new Intent(ResultsActivity.this, PatientOverviewActivity.class);
+        Intent intent = new Intent(ResultsActivity.this,
+                PatientOverviewActivity.class);
         intent.putExtra("Patient", index);
         startActivity(intent);
     }

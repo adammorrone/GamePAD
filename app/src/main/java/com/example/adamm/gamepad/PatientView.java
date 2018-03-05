@@ -176,36 +176,36 @@ public class PatientView extends Activity {
 
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
-                                imageSensor1.setVisibility(View.GONE);
+                                imageSensor4.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 1;
                             }
                             else {
-                                imageSensor1.setVisibility(View.VISIBLE);
+                                imageSensor4.setVisibility(View.VISIBLE);
                             }
                             if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
                                     || sensor12.equals("1")){
-                                imageSensor2.setVisibility(View.GONE);
+                                imageSensor3.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 2;
 
                             }
                             else{
-                                imageSensor2.setVisibility(View.VISIBLE);
+                                imageSensor3.setVisibility(View.VISIBLE);
                             }
                             if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
                                     || sensor13.equals("1")){
-                                imageSensor3.setVisibility(View.GONE);
+                                imageSensor2.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 3;
                             }
                             else{
-                                imageSensor3.setVisibility(View.VISIBLE);
+                                imageSensor2.setVisibility(View.VISIBLE);
                             }
                             if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
                                     || sensor14.equals("1")){
-                                imageSensor4.setVisibility(View.GONE);
+                                imageSensor1.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 4;
                             }
                             else{
-                                imageSensor4.setVisibility(View.VISIBLE);
+                                imageSensor1.setVisibility(View.VISIBLE);
                             }
                             ballThrows++;
                             scoreView.setText(Integer.toString(scoreKeeper));

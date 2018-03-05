@@ -79,7 +79,7 @@ public class PatientView extends Activity {
 
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
-        index = (int)checkInfo.get("Patient");
+
 
         if (checkInfo == null) {
             Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start",
@@ -91,6 +91,7 @@ public class PatientView extends Activity {
             address = checkInfo.get("address").toString();
             distance = checkInfo.get("distance").toString();
             weight = checkInfo.get("ball").toString();
+            index = (int)checkInfo.get("Patient");
 
         } // Do something
         Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
@@ -153,6 +154,8 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
+                            /*
+                            // Use to make sure each sensor data is received
                             sensorView1.setText(sensor1);
                             sensorView2.setText(sensor2);
                             sensorView3.setText(sensor3);
@@ -169,6 +172,7 @@ public class PatientView extends Activity {
                             sensorView14.setText(sensor14);
                             sensorView15.setText(sensor15);
                             sensorView16.setText(sensor16);
+                            */
 
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
@@ -285,6 +289,8 @@ public class PatientView extends Activity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), ResultsActivity.class);
                 myIntent.putExtra("Patient", index);
+                myIntent.putExtra("Score", scoreKeeper);
+                myIntent.putExtra("Throws", ballThrows);
                 startActivityForResult(myIntent, 0);
             }
         });

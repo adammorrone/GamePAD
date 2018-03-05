@@ -229,8 +229,8 @@ public class PatientView extends Activity {
 
         record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt,
                 ballThrows, timer, weightInt, masterList.getPatient(index).getHeight());
-        masterList.getPatient(index).addScore(record);
-        saveChanges();
+        //masterList.getPatient(index).addScore(record);
+        //saveChanges();
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();
     }

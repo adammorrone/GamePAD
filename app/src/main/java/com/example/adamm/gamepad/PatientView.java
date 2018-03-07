@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.UUID;
+import android.media.*;
 
 
 
@@ -194,6 +195,9 @@ public class PatientView extends Activity {
                                 padImage3.setVisibility(View.GONE);
                                 padImage4.setVisibility(View.VISIBLE);
 
+                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level1);
+                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
+
                             }
                             if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
                                     || sensor12.equals("1")){
@@ -206,7 +210,8 @@ public class PatientView extends Activity {
                                 padImage3.setVisibility(View.VISIBLE);
                                 padImage4.setVisibility(View.GONE);
 
-
+                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
+                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
                             }
                             if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
                                     || sensor13.equals("1")){
@@ -218,6 +223,9 @@ public class PatientView extends Activity {
                                 padImage2.setVisibility(View.VISIBLE);
                                 padImage3.setVisibility(View.GONE);
                                 padImage4.setVisibility(View.GONE);
+
+                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
+                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
                             }
                             if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
                                     || sensor14.equals("1")){
@@ -229,6 +237,9 @@ public class PatientView extends Activity {
                                 padImage2.setVisibility(View.GONE);
                                 padImage3.setVisibility(View.GONE);
                                 padImage4.setVisibility(View.GONE);
+
+                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
+                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
                             }
                             ballThrows++;
                             scoreView.setText(Integer.toString(scoreKeeper));
@@ -299,7 +310,6 @@ public class PatientView extends Activity {
         scoreView.clearComposingText();
         ballThrows = 0;
         startTimer(time);
-
     }
 
     public void endGameOnClick(View v){
@@ -316,7 +326,7 @@ public class PatientView extends Activity {
                 myIntent.putExtra("Throws", ballThrows);
                 myIntent.putExtra("Weight", weight);
                 myIntent.putExtra("Distance", distance);
-                myIntent.putExtra("TIme", time);
+                myIntent.putExtra("Time", time);
                 startActivityForResult(myIntent, 0);
             }
         });

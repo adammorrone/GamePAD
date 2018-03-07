@@ -12,6 +12,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
+import android.media.*;
 
 
 public class PatientOverviewActivity extends AppCompatActivity  {
@@ -33,6 +34,8 @@ public class PatientOverviewActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.high_score_cheer);
+        mediaPlayer.start(); // no need to call prepare(); create() does that for you
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         patientNameText = findViewById(R.id.patientNameBox);

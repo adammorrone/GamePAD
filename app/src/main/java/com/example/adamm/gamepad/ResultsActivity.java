@@ -61,13 +61,13 @@ public class ResultsActivity extends AppCompatActivity {
         }
     }
 
+
     public void goto_main(View view)
     {
         Intent intent = new Intent(ResultsActivity.this, MainActivity.class);
         intent.putExtra("Patient", index);
         startActivity(intent);
     }
-
     public void goto_newGame(View view)
     {
         Intent intent = new Intent(ResultsActivity.this, NewGame.class);

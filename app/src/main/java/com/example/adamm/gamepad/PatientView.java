@@ -291,6 +291,9 @@ public class PatientView extends Activity {
                 myIntent.putExtra("Patient", index);
                 myIntent.putExtra("Score", scoreKeeper);
                 myIntent.putExtra("Throws", ballThrows);
+                myIntent.putExtra("Weight", weight);
+                myIntent.putExtra("Distance", distance);
+                myIntent.putExtra("TIme", time);
                 startActivityForResult(myIntent, 0);
             }
         });

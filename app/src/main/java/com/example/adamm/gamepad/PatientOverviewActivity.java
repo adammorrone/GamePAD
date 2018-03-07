@@ -62,9 +62,9 @@ public class PatientOverviewActivity extends AppCompatActivity  {
             patientNameText.setTextSize(25);
             patientNameText.setText(name);
 
-            String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getGender();
+            String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getHeight();
             patientInfoText.setTextSize(15);
-            patientInfoText.setText(info);
+            patientInfoText.setText(info + " ins tall");
         }
     }
 

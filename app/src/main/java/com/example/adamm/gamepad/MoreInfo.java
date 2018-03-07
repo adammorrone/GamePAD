@@ -73,7 +73,7 @@ public class MoreInfo extends AppCompatActivity {
             patientNameText2.setTextSize(25);
             patientNameText2.setText(name);
 
-            String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getGender();
+            String info = masterList.getPatient(index).getDOB() + "\t\t\t" + masterList.getPatient(index).getHeight();
             patientInfoText2.setTextSize(15);
             patientInfoText2.setText(info);
 
@@ -181,7 +181,7 @@ public class MoreInfo extends AppCompatActivity {
     {
         ArrayList<ScoreRecord> records = masterList.getPatient(index).getScores();
 
-        String recordsTest = "Date\t\t" +
+        String recordsTest = "Date" +
                 "\tGame" +
                 "\tScore" +
                 "\tWork" +

@@ -6,54 +6,43 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context="com.example.adamm.gamepad.EditPatientInfo"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="89dp">
 
 
     <Button
-        android:id="@+id/progressiveGenderButton"
+        android:id="@+id/editHeightButton"
         android:layout_width="64dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="144dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="progressivelyEditGender"
+        android:onClick="editHeight"
         android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editWeightButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/edited_gender" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edited_height"
+        app:layout_constraintTop_toBottomOf="@+id/editDOBButton" />
 
     <Button
         android:id="@+id/editDOBButton"
         android:layout_width="64dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="editDOB"
         android:text="Edit"
-        app:layout_constraintBottom_toTopOf="@+id/progressiveGenderButton"
-        app:layout_constraintEnd_toEndOf="@+id/progressiveGenderButton"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintBottom_toTopOf="@+id/editHeightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edited_dob"
-        app:layout_constraintStart_toStartOf="@+id/progressiveGenderButton"
-        app:layout_constraintTop_toBottomOf="@+id/editNameButton"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintTop_toBottomOf="@+id/editNameButton" />
 
     <Button
         android:id="@+id/editNameButton"
         android:layout_width="64dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
         android:onClick="editName"
         android:text="Edit"
-        app:layout_constraintEnd_toEndOf="@+id/editDOBButton"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintBottom_toTopOf="@+id/editDOBButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edited_name"
-        app:layout_constraintStart_toStartOf="@+id/editDOBButton"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -61,84 +50,123 @@
         android:id="@+id/name_editView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/edited_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/edited_name"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edited_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dob_editView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="DOB"
         app:layout_constraintBottom_toTopOf="@+id/edited_dob"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/edited_dob"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edited_dob"
+        app:layout_constraintTop_toBottomOf="@+id/edited_name" />
 
     <TextView
-        android:id="@+id/gender_editView"
+        android:id="@+id/height_editView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Gender"
-        app:layout_constraintBottom_toTopOf="@+id/edited_gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="17dp"
+        android:text="Height"
+        app:layout_constraintBottom_toTopOf="@+id/edited_height"
+        app:layout_constraintEnd_toEndOf="@+id/edited_height"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edited_height"
+        app:layout_constraintTop_toBottomOf="@+id/edited_dob" />
 
     <EditText
         android:id="@+id/edited_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="New Patient Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/dob_editView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/editNameButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_editView" />
 
     <EditText
         android:id="@+id/edited_dob"
         android:layout_width="215dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="40dp"
+        android:layout_height="47dp"
         android:ems="10"
         android:hint="New Patient DOB"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/gender_editView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/height_editView"
+        app:layout_constraintEnd_toStartOf="@+id/editDOBButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dob_editView" />
 
     <EditText
-        android:id="@+id/edited_gender"
+        android:id="@+id/edited_height"
         android:layout_width="214dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="88dp"
         android:ems="10"
-        android:hint="New Patient Gender"
+        android:hint="New Patient Height"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/save_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/weight_editView"
+        app:layout_constraintEnd_toStartOf="@+id/editHeightButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height_editView" />
 
     <Button
         android:id="@+id/save_button"
         android:layout_width="148dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:onClick="saveChanges"
         android:text="Save Changes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/weight_editView"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="Weight"
+        app:layout_constraintBottom_toTopOf="@+id/edited_weight"
+        app:layout_constraintEnd_toEndOf="@+id/edited_weight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edited_weight"
+        app:layout_constraintTop_toBottomOf="@+id/edited_height" />
+
+    <EditText
+        android:id="@+id/edited_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="New Patient Weight"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
+        app:layout_constraintEnd_toStartOf="@+id/editWeightButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight_editView" />
+
+    <Button
+        android:id="@+id/editWeightButton"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:onClick="editWeight"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="@+id/edited_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edited_weight"
+        app:layout_constraintTop_toTopOf="@+id/edited_weight"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

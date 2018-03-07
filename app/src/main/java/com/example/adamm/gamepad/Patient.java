@@ -12,20 +12,17 @@ public class Patient
 {
     public String name;
     public String dob;
-    public String gender;
-    public double height_inches;
+    public int height_inches;
     public double weight_pounds;
 
     public ArrayList<ScoreRecord> scores;
 
-    public Patient(String inName, String inDOB, String inGender,
-                   double inHeight_inches, double inWeight_pounds)
+    public Patient(String inName, String inDOB, int inHeight, double inWeight_pounds)
     {
         scores = new ArrayList<>();
         name = inName;
         dob = inDOB;
-        gender = inGender;
-        height_inches = inHeight_inches;
+        height_inches = inHeight;
         weight_pounds = inWeight_pounds;
 
         newScore(12, "Standard");
@@ -43,11 +40,7 @@ public class Patient
     {
         return dob;
     }
-    public String getGender()
-    {
-        return gender;
-    }
-    public double getHeight() { return height_inches; }
+    public int getHeight() { return height_inches; }
     public ArrayList<ScoreRecord> getScores() { return scores; }
     public void setName(String newName)
     {
@@ -57,17 +50,17 @@ public class Patient
     {
         dob = newDOB;
     }
-    public void setGender(String newGender)
-    {
-        gender = newGender;
-    }
     public void setHeight(int newHeight) { height_inches = newHeight; }
+
+    public void setWeight(double newWeight) { weight_pounds = newWeight; }
+
+
 
     public double getHeight_inches() {
         return height_inches;
     }
 
-    public void setHeight_inches(double height_inches) {
+    public void setHeight_inches(int height_inches) {
         this.height_inches = height_inches;
     }
 

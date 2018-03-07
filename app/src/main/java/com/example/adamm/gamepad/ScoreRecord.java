@@ -47,14 +47,15 @@ public class ScoreRecord {
 
     public void calculateWork()
     {
+        //all initial calcs in metric
         double g = 9.81;
-        double d = throwingDistance * 0.305 * numThrows + 0.25 * score;
+        double d = throwingDistance * 0.305 * numThrows + 0.25 * score;     //calculates total distance
         double h = height * 0.025;
         double m = massOfBall * 0.454;
 
-        work_kcal = m*g*h * numThrows + (m*d*d)/h;
-        power_watts = work_kcal / (numThrows * Math.sqrt((2*h)/g));
-        work_kcal = work_kcal * 0.00024;
+        work_kcal = m*g*h * numThrows + (m*d*d)/h;                          //calculates work in J
+        power_watts = work_kcal / (numThrows * Math.sqrt((2*h)/g));         //avg power from work
+        work_kcal = work_kcal * 0.00024;                                    //convert from J to kcal
     }
 
     public double getScore() {
@@ -92,7 +93,7 @@ public class ScoreRecord {
                 "\nScore = " + score + " points" +
                 "\nWork = " + Double.toString(work_kcal).substring(0, 6) + " kcal" +
                 "\n          ≈ " + Double.toString(Math.ceil(work_kcal / 0.35)).substring(0, 1)
-                + " push ups" + //based on 0.35kcal per pushup
+                + " push ups" + //based on 0.35kcal per pushup, scaled for patient weight
                 "\nAverage Power = " + Double.toString(power_watts).substring(0, 6) + " Watts" +
                 "\nBall Weight = " + massOfBall + " lbs" +
                 "\nThrows = " + numThrows + " throws" +

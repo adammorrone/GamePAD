@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText dobText;
     private EditText nameText;
-    private EditText genderText;
+    private EditText heightText;
+    private EditText weightText;
     public static PatientList masterList;
     private PatientList currentList;
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         nameText = findViewById(R.id.new_name);
         dobText = findViewById(R.id.new_dob);
-        genderText = findViewById(R.id.new_gender);
+        heightText = findViewById(R.id.new_height);
+        weightText = findViewById(R.id.new_weight);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         String json = sharedPref.getString("stored_master_list", "");
@@ -59,15 +61,16 @@ public class MainActivity extends AppCompatActivity {
         saveMasterList(this.getApplicationContext(), masterList);
     }
 
-    public void createItem(View v)
+    public void createNewPatient(View v)
     {
         String name = nameText.getText().toString();
         String dob = dobText.getText().toString();
-        String gender = genderText.getText().toString();
+        String height = heightText.getText().toString();
+        String weight = weightText.getText().toString();
 
         if(masterList.indexOf(name) == -1)
         {
-            masterList.addPatient(name, dob, gender, 0, 0);
+            masterList.addPatient(name, dob, Integer.parseInt(height), Double.parseDouble(weight));
             goto_UserProfile(name);
 
             Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
@@ -81,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             hideSoftKeyboard(this);
             goto_UserProfile(name);
         }
-
     }
 
     public void goto_UserProfile(String name)

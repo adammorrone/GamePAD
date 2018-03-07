@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.google.gson.Gson;
 
 /**
  * Created by adamm on 2/2/2018.
@@ -19,10 +18,12 @@ public class EditPatientInfo  extends AppCompatActivity  {
     private TextView currentNameText;
     private PatientList masterList = MainActivity.masterList;
     private TextView currentDOBText;
-    private TextView currentGenderText;
+    private TextView currentWeightText;
+    private TextView currentHeightText;
     private EditText newDOBText;
     private EditText newNameText;
-    private EditText newGenderText;
+    private EditText newHeightText;
+    private EditText newWeightText;
     private int index = -1;
 
 
@@ -40,10 +41,12 @@ public class EditPatientInfo  extends AppCompatActivity  {
         setContentView(R.layout.activity_edit_patient);
         currentNameText = findViewById(R.id.name_editView);
         currentDOBText = findViewById(R.id.dob_editView);
-        currentGenderText = findViewById(R.id.gender_editView);
+        currentHeightText = findViewById(R.id.height_editView);
+        currentWeightText = findViewById(R.id.weight_editView);
         newNameText = findViewById(R.id.edited_name);
         newDOBText = findViewById(R.id.edited_dob);
-        newGenderText = findViewById(R.id.edited_gender);
+        newHeightText = findViewById(R.id.edited_height);
+        newWeightText = findViewById(R.id.edited_weight);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         //masterList = new PatientList();
@@ -71,10 +74,17 @@ public class EditPatientInfo  extends AppCompatActivity  {
         resetCurrentValues();
     }
 
-    public void progressivelyEditGender(View view)
+    public void editHeight(View view)
     {
-        String gender = newGenderText.getText().toString();
-        masterList.getPatient(index).setGender(gender);
+        int height = Integer.parseInt(newHeightText.getText().toString());
+        masterList.getPatient(index).setHeight(height);
+        resetCurrentValues();
+    }
+
+    public void editWeight(View view)
+    {
+        double weight = Double.parseDouble(newWeightText.getText().toString());
+        masterList.getPatient(index).setWeight(weight);
         resetCurrentValues();
     }
 
@@ -92,11 +102,15 @@ public class EditPatientInfo  extends AppCompatActivity  {
             currentDOBText.setTextSize(15);
             currentDOBText.setText(dob);
 
-            String gender = masterList.getPatient(index).getGender();
-            currentGenderText.setTextSize(15);
-            currentGenderText.setText(gender);
-        }
+            int height = masterList.getPatient(index).getHeight();
+            currentHeightText.setTextSize(15);
+            currentHeightText.setText("" + height);
 
+            double weight = masterList.getPatient(index).getWeight_pounds();
+            currentWeightText.setTextSize(15);
+            currentWeightText.setText("" + weight);
+
+        }
     }
 
     public void saveChanges(View view)

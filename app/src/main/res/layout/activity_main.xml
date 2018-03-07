@@ -25,15 +25,16 @@
     <Button
         android:id="@+id/add_patient"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="casual"
-        android:onClick="createItem"
+        android:onClick="createNewPatient"
         android:text="Add New Patient"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/select_patient"
-        app:layout_constraintEnd_toEndOf="@+id/new_gender"
-        app:layout_constraintStart_toStartOf="@+id/new_gender"
-        app:layout_constraintTop_toBottomOf="@+id/new_gender" />
+        app:layout_constraintEnd_toEndOf="@+id/new_height"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/new_height"
+        app:layout_constraintTop_toBottomOf="@+id/new_height" />
 
     <EditText
         android:id="@+id/new_dob"
@@ -42,18 +43,18 @@
         android:ems="10"
         android:hint="New Patient DOB"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/new_gender"
+        app:layout_constraintBottom_toTopOf="@+id/new_height"
         app:layout_constraintEnd_toEndOf="@+id/new_name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/new_name"
         app:layout_constraintTop_toBottomOf="@+id/new_name" />
 
     <EditText
-        android:id="@+id/new_gender"
+        android:id="@+id/new_height"
         android:layout_width="214dp"
         android:layout_height="43dp"
         android:ems="10"
-        android:hint="New Patient Gender"
+        android:hint="New Patient Height (in)"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/add_patient"
         app:layout_constraintEnd_toEndOf="@+id/new_dob"
@@ -97,6 +98,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_patient" />
+
+    <EditText
+        android:id="@+id/new_weight"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="Weight (lbs) [optional]"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/add_patient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_height" />
 
 
 </android.support.constraint.ConstraintLayout>

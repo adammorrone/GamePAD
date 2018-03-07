@@ -35,6 +35,7 @@ public class PatientView extends Activity {
             sensorView13, sensorView14, sensorView15, sensorView16;
     TextView scoreView;
     ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
+    ImageView padImage, padImage1, padImage2, padImage3, padImage4;
 
 
 
@@ -123,10 +124,16 @@ public class PatientView extends Activity {
         sensorView12 = findViewById(R.id.editText5);
         sensorView15 = findViewById(R.id.editText14);
 
-        imageSensor1 = findViewById(R.id.imageView1);
-        imageSensor2 = findViewById(R.id.imageView2);
-        imageSensor3 = findViewById(R.id.imageView3);
-        imageSensor4 = findViewById(R.id.imageView4);
+        //imageSensor1 = findViewById(R.id.imageView1);
+        //imageSensor2 = findViewById(R.id.imageView2);
+        //imageSensor3 = findViewById(R.id.imageView3);
+        //imageSensor4 = findViewById(R.id.imageView4);
+
+        padImage = findViewById(R.id.padImage);
+        padImage1 = findViewById(R.id.padImage1);
+        padImage2 = findViewById(R.id.padImage2);
+        padImage3 = findViewById(R.id.padImage3);
+        padImage4 = findViewById(R.id.padImage4);
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -174,38 +181,54 @@ public class PatientView extends Activity {
                             sensorView16.setText(sensor16);
                             */
 
+                            padImage.setVisibility(View.VISIBLE);
+
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
-                                imageSensor4.setVisibility(View.GONE);
+                                //imageSensor4.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 1;
-                            }
-                            else {
-                                imageSensor4.setVisibility(View.VISIBLE);
+
+                                padImage.setVisibility(View.GONE);
+                                padImage1.setVisibility(View.GONE);
+                                padImage2.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.GONE);
+                                padImage4.setVisibility(View.VISIBLE);
+
                             }
                             if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
                                     || sensor12.equals("1")){
-                                imageSensor3.setVisibility(View.GONE);
+                                //imageSensor3.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 2;
 
-                            }
-                            else{
-                                imageSensor3.setVisibility(View.VISIBLE);
+                                padImage.setVisibility(View.GONE);
+                                padImage1.setVisibility(View.GONE);
+                                padImage2.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.VISIBLE);
+                                padImage4.setVisibility(View.GONE);
+
+
                             }
                             if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
                                     || sensor13.equals("1")){
-                                imageSensor2.setVisibility(View.GONE);
+                                //imageSensor2.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 3;
-                            }
-                            else{
-                                imageSensor2.setVisibility(View.VISIBLE);
+
+                                padImage.setVisibility(View.GONE);
+                                padImage1.setVisibility(View.GONE);
+                                padImage2.setVisibility(View.VISIBLE);
+                                padImage3.setVisibility(View.GONE);
+                                padImage4.setVisibility(View.GONE);
                             }
                             if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
                                     || sensor14.equals("1")){
-                                imageSensor1.setVisibility(View.GONE);
+                                //imageSensor1.setVisibility(View.GONE);
                                 scoreKeeper = scoreKeeper + 4;
-                            }
-                            else{
-                                imageSensor1.setVisibility(View.VISIBLE);
+
+                                padImage.setVisibility(View.GONE);
+                                padImage1.setVisibility(View.VISIBLE);
+                                padImage2.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.GONE);
+                                padImage4.setVisibility(View.GONE);
                             }
                             ballThrows++;
                             scoreView.setText(Integer.toString(scoreKeeper));
@@ -291,6 +314,9 @@ public class PatientView extends Activity {
                 myIntent.putExtra("Patient", index);
                 myIntent.putExtra("Score", scoreKeeper);
                 myIntent.putExtra("Throws", ballThrows);
+                myIntent.putExtra("Weight", weight);
+                myIntent.putExtra("Distance", distance);
+                myIntent.putExtra("TIme", time);
                 startActivityForResult(myIntent, 0);
             }
         });

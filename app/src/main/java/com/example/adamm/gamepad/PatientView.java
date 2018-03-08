@@ -182,6 +182,10 @@ public class PatientView extends Activity {
                             */
 
                             padImage.setVisibility(View.VISIBLE);
+                            padImage1.setVisibility(View.GONE);
+                            padImage2.setVisibility(View.GONE);
+                            padImage3.setVisibility(View.GONE);
+                            padImage4.setVisibility(View.GONE);
 
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
@@ -235,6 +239,12 @@ public class PatientView extends Activity {
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
+                        padImage.setVisibility(View.VISIBLE);
+                        padImage1.setVisibility(View.GONE);
+                        padImage2.setVisibility(View.GONE);
+                        padImage3.setVisibility(View.GONE);
+                        padImage4.setVisibility(View.GONE);
+
                     }
                 }
             }

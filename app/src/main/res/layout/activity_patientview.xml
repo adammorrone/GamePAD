@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
@@ -15,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="finish"
         android:onClick="endGameOnClick"
+        android:text="finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -287,7 +286,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.585"
-        app:srcCompat="@drawable/blankimage" />
+        android:src = "@drawable/blankimage" />
 
     <ImageView
         android:id="@+id/padImage1"
@@ -303,7 +302,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.585"
-        app:srcCompat="@drawable/padimage1" />
+        android:src = "@drawable/padimage1" />
 
     <ImageView
         android:id="@+id/padImage2"
@@ -319,7 +318,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.478"
-        app:srcCompat="@drawable/padimage2" />
+        android:src = "@drawable/padimage2" />
 
     <ImageView
         android:id="@+id/padImage3"
@@ -335,7 +334,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.59"
-        app:srcCompat="@drawable/padimage3" />
+        android:src = "@drawable/padimage3"/>
 
     <ImageView
         android:id="@+id/padImage4"
@@ -351,7 +350,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.585"
-        app:srcCompat="@drawable/padimage4" />
+        android:src = "@drawable/padimage4" />
 
 
 </android.support.constraint.ConstraintLayout>

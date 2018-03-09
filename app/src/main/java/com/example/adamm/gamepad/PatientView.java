@@ -142,7 +142,7 @@ public class PatientView extends Activity {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										    //if message is what we want
                     String readMessage = (String) msg.obj;                              // msg.arg1 = bytes from connect thread
-                    if (timerView.getText() == "done!"){ endGame(); endGame();}
+                    //if (timerView.getText() == "done!"){ endGame(); endGame();}
                     recDataString.append(readMessage);      							//keep appending to string until ~
                     int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
@@ -254,11 +254,9 @@ public class PatientView extends Activity {
 
                         }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
-
                     }
                 }
             }
-
         };
         Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
         int timer = in.nextInt();
@@ -323,19 +321,14 @@ public class PatientView extends Activity {
     }
 
     public void endGame(){
-        Button next = findViewById(R.id.button_next2);
-        next.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), ResultsActivity.class);
-                myIntent.putExtra("Patient", index);
-                myIntent.putExtra("Score", scoreKeeper);
-                myIntent.putExtra("Throws", ballThrows);
-                myIntent.putExtra("Weight", weight);
-                myIntent.putExtra("Distance", distance);
-                myIntent.putExtra("Time", time);
-                startActivityForResult(myIntent, 0);
-            }
-        });
+        Intent myIntent = new Intent(PatientView.this, ResultsActivity.class);
+        myIntent.putExtra("Patient", index);
+        myIntent.putExtra("Score", scoreKeeper);
+        myIntent.putExtra("Throws", ballThrows);
+        myIntent.putExtra("Weight", weight);
+        myIntent.putExtra("Distance", distance);
+        myIntent.putExtra("Time", time);
+        startActivityForResult(myIntent, 0);
     }
 
     @Override
@@ -363,6 +356,7 @@ public class PatientView extends Activity {
             public void onFinish() {
                 timerView.setText("done!");
                 Toast.makeText(getApplicationContext(), "Game is over", Toast.LENGTH_SHORT).show();
+                endGame();
             }
         }.start();
 

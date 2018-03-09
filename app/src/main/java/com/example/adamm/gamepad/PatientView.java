@@ -163,7 +163,7 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
-                            //if (timerView.getText() == "done!"){ endGame();}
+                            if (timerView.getText() == "done!"){ endGame();}
                             /*
                             // Use to make sure each sensor data is received
                             sensorView1.setText(sensor1);
@@ -196,10 +196,10 @@ public class PatientView extends Activity {
                                 scoreKeeper = scoreKeeper + 1;
 
                                 padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.GONE);
+                                padImage1.setVisibility(View.VISIBLE);
                                 padImage2.setVisibility(View.GONE);
                                 padImage3.setVisibility(View.GONE);
-                                padImage4.setVisibility(View.VISIBLE);
+                                padImage4.setVisibility(View.GONE);
 
                                 MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level1);
                                 mediaPlayer.start(); // no need to call prepare(); create() does that for you
@@ -212,8 +212,8 @@ public class PatientView extends Activity {
 
                                 padImage.setVisibility(View.GONE);
                                 padImage1.setVisibility(View.GONE);
-                                padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.VISIBLE);
+                                padImage2.setVisibility(View.VISIBLE);
+                                padImage3.setVisibility(View.GONE);
                                 padImage4.setVisibility(View.GONE);
 
                                 MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
@@ -226,8 +226,8 @@ public class PatientView extends Activity {
 
                                 padImage.setVisibility(View.GONE);
                                 padImage1.setVisibility(View.GONE);
-                                padImage2.setVisibility(View.VISIBLE);
-                                padImage3.setVisibility(View.GONE);
+                                padImage2.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.VISIBLE);
                                 padImage4.setVisibility(View.GONE);
 
                                 MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
@@ -239,9 +239,9 @@ public class PatientView extends Activity {
                                 scoreKeeper = scoreKeeper + 4;
 
                                 padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.VISIBLE);
+                                padImage1.setVisibility(View.GONE);
                                 padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.VISIBLE);
                                 padImage4.setVisibility(View.GONE);
 
                                 MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);

@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toStartOf="@+id/timeButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintVertical_bias="0.24" />
 
     <Button
         android:id="@+id/distanceButton"
@@ -57,10 +58,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/distance_textView"
+        android:id="@+id/weight_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distance"
+        android:text="Weight"
         app:layout_constraintBottom_toTopOf="@+id/distanceButton"
         app:layout_constraintEnd_toStartOf="@+id/time_textView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,10 +69,10 @@
         app:layout_constraintTop_toBottomOf="@+id/ballWeightButton" />
 
     <TextView
-        android:id="@+id/weight_textView"
+        android:id="@+id/distance_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weight"
+        android:text="Distance"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

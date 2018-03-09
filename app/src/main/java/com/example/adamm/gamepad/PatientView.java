@@ -141,6 +141,7 @@ public class PatientView extends Activity {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										    //if message is what we want
                     String readMessage = (String) msg.obj;                              // msg.arg1 = bytes from connect thread
+                    if (timerView.getText() == "done!"){ endGame();}
                     recDataString.append(readMessage);      							//keep appending to string until ~
                     int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
@@ -163,7 +164,7 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
-                            if (timerView.getText() == "done!"){ endGame();}
+
                             /*
                             // Use to make sure each sensor data is received
                             sensorView1.setText(sensor1);

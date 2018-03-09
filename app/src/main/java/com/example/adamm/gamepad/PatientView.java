@@ -141,7 +141,7 @@ public class PatientView extends Activity {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										    //if message is what we want
                     String readMessage = (String) msg.obj;                              // msg.arg1 = bytes from connect thread
-                    if (timerView.getText() == "done!"){ endGame();}
+                    if (timerView.getText() == "done!"){ endGame(); endGame();}
                     recDataString.append(readMessage);      							//keep appending to string until ~
                     int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
                     if (endOfLineIndex > 0) {                                           // make sure there data before ~
@@ -361,8 +361,6 @@ public class PatientView extends Activity {
 
             public void onFinish() {
                 timerView.setText("done!");
-                endGame();
-                endGame();
                 Toast.makeText(getApplicationContext(), "Game is over", Toast.LENGTH_SHORT).show();
             }
         }.start();

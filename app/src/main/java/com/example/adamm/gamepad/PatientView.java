@@ -360,7 +360,7 @@ public class PatientView extends Activity {
 
             public void onFinish() {
                 timerView.setText("done!");
-                endGame();
+                //endGame();
                 Toast.makeText(getApplicationContext(), "Game is over", Toast.LENGTH_SHORT).show();
             }
         }.start();

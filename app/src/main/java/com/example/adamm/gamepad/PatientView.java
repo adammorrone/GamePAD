@@ -267,9 +267,6 @@ public class PatientView extends Activity {
 
         in = new Scanner(weight).useDelimiter("[^0-9]+");
         weightInt = in.nextInt();
-
-        record = new ScoreRecord(scoreKeeper, "Standard Game", rightNow, distanceInt,
-                ballThrows, timer, weightInt, masterList.getPatient(index).getHeight());
         //masterList.getPatient(index).addScore(record);
         //saveChanges();
 

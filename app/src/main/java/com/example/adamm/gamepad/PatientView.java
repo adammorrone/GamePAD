@@ -163,6 +163,7 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
+                            //if (timerView.getText() == "done!"){ endGame();}
                             /*
                             // Use to make sure each sensor data is received
                             sensorView1.setText(sensor1);

@@ -241,8 +241,8 @@ public class PatientView extends Activity {
                                 padImage.setVisibility(View.GONE);
                                 padImage1.setVisibility(View.GONE);
                                 padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.VISIBLE);
-                                padImage4.setVisibility(View.GONE);
+                                padImage3.setVisibility(View.GONE);
+                                padImage4.setVisibility(View.VISIBLE);
 
                                 MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
                                 mediaPlayer.start(); // no need to call prepare(); create() does that for you
@@ -361,6 +361,7 @@ public class PatientView extends Activity {
             public void onFinish() {
                 timerView.setText("done!");
                 endGame();
+                Toast.makeText(getApplicationContext(), "Game is over", Toast.LENGTH_SHORT).show();
             }
         }.start();
 

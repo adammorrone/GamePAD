@@ -136,6 +136,7 @@ public class PatientView extends Activity {
         padImage3 = findViewById(R.id.padImage3);
         padImage4 = findViewById(R.id.padImage4);
 
+
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										    //if message is what we want

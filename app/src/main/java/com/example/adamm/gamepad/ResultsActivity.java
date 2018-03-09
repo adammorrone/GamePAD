@@ -54,8 +54,8 @@ public class ResultsActivity extends AppCompatActivity {
         int _score_ = (int)b.get("Score");
         int _throws_ = (int)b.get("Throws");
         int _weight_ = Integer.parseInt((String)b.get("Weight"));
-        double _distance_ = Double.parseDouble((String)b.get("Distance"));
-        int _time_ = (int)b.get("Time");
+        double _distance_ = Double.parseDouble(((String)b.get("Distance")).substring(0, 2));
+        int _time_ = Integer.parseInt(((String)b.get("Time")).substring(0, 1));
         int _height_ = masterList.getPatient(index).getHeight();
 
 

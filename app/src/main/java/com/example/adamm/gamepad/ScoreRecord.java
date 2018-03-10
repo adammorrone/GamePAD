@@ -156,5 +156,7 @@ public class ScoreRecord {
         this.work_kcal = work_kcal;
     }
 
-
+    public double getPower_watts() {
+        return power_watts;
+    }
 }

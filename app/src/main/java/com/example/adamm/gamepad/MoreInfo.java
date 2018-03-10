@@ -7,8 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -32,6 +35,10 @@ public class MoreInfo extends AppCompatActivity {
     private PatientList masterList = MainActivity.masterList;
     private TextView patientInfoText2;
     private GraphView graph;
+    private Switch switch1;
+    private RadioButton rb_score;
+    private RadioButton rb_work;
+    private RadioButton rb_power;
     private int index = -1;
 
     /** This application's preferences */
@@ -48,6 +55,12 @@ public class MoreInfo extends AppCompatActivity {
         patientNameText2 = findViewById(R.id.patientNameBox2);
         patientInfoText2 = findViewById(R.id.patientInfoBox2);
         graph = findViewById(R.id.graph2);
+        switch1 = findViewById(R.id.switch1);
+        rb_score = findViewById(R.id.radioButton);
+        rb_work = findViewById(R.id.radioButton2);
+        rb_power = findViewById(R.id.radioButton3);
+        rb_score.setChecked(true);
+
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String json = sharedPref.getString("stored_master_list", "");
@@ -106,7 +119,29 @@ public class MoreInfo extends AppCompatActivity {
         finish();
     }
 
-    public void graph_std_by_day(View view)
+    public void toggleSorting(View view)
+    {
+        if(switch1.isChecked())
+        {
+            if(rb_score.isChecked())
+                graph_scores_by_day();
+            else if(rb_work.isChecked())
+                graph_work_by_day();
+            else
+                graph_power_by_day();
+        }
+        else
+        {
+            if(rb_score.isChecked())
+                graph_score_by_game();
+            else if(rb_work.isChecked())
+                graph_work_by_game();
+            else
+                graph_power_by_game();
+        }
+    }
+
+    public void graph_scores_by_day()
     {
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         ArrayList<DataPoint> data = new ArrayList<>();
@@ -131,8 +166,65 @@ public class MoreInfo extends AppCompatActivity {
         graph.removeAllSeries();
         graph.addSeries(series);
     }
+    public void graph_work_by_day()
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        ArrayList<DataPoint> data = new ArrayList<>();
+        double temp_score = scores.get(0).getScore();
+        for(int i = 1; i < scores.size(); i++)
+        {
+            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+                temp_score += scores.get(i).getWork_kcal();
+            else
+            {
+                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                temp_score = scores.get(i).getWork_kcal();
+            }
+        }
+        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+        data.add(new DataPoint(day, temp_score));
 
-    public void graph_std_by_game(View view)
+        DataPoint[] data_arr = new DataPoint[data.size()];
+        for(int i = 0; i < data.size(); i++)
+            data_arr[i] = data.get(i);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+        graph.removeAllSeries();
+        graph.addSeries(series);
+    }
+
+    public void graph_power_by_day()
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        ArrayList<DataPoint> data = new ArrayList<>();
+        double temp_score = scores.get(0).getScore();
+        int count = 0;
+        for(int i = 1; i < scores.size(); i++)
+        {
+            count++;
+
+            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+                temp_score += scores.get(i).getPower_watts();
+
+            else
+            {
+                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score/count));
+                temp_score = scores.get(i).getScore();
+                count = 0;
+            }
+        }
+        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+        data.add(new DataPoint(day, temp_score));
+
+        DataPoint[] data_arr = new DataPoint[data.size()];
+        for(int i = 0; i < data.size(); i++)
+            data_arr[i] = data.get(i);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+        graph.removeAllSeries();
+        graph.addSeries(series);
+    }
+
+
+    public void graph_score_by_game()
     {
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
@@ -146,20 +238,34 @@ public class MoreInfo extends AppCompatActivity {
         graph.addSeries(series);
     }
 
-    public void goto_tictactoe(View view)
+    public void graph_work_by_game()
     {
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];
         for(int i = 0; i < scores.size(); i++)
         {
-            data[i] = new DataPoint(i, scores.get(i).getScore());
+            data[i] = new DataPoint(i, scores.get(i).getWork_kcal());
         }
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
-
         graph.removeAllSeries();
         graph.addSeries(series);
     }
+
+    public void graph_power_by_game()
+    {
+        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+        DataPoint[] data = new DataPoint[scores.size()];
+        for(int i = 0; i < scores.size(); i++)
+        {
+            data[i] = new DataPoint(i, scores.get(i).getPower_watts());
+        }
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
+        graph.removeAllSeries();
+        graph.addSeries(series);
+    }
+
 
     public void copyRecords(View view)
     {

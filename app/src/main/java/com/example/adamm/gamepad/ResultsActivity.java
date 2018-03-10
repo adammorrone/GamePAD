@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -25,9 +26,8 @@ public class ResultsActivity extends AppCompatActivity {
     public int index = -1;
     private PatientList masterList = MainActivity.masterList;
     public  TextView scoreText;
-    public  TextView workText;
-    public  TextView throwsText;
-    public  TextView timeText;
+    public  TextView highscoreLabel;
+    public EditText infoText;
 
 
     @Override
@@ -39,9 +39,8 @@ public class ResultsActivity extends AppCompatActivity {
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
         scoreText = findViewById(R.id.scoreView);
-        workText = findViewById(R.id.workView);
-        throwsText = findViewById(R.id.throwsView);
-        timeText = findViewById(R.id.timeView);
+        infoText = findViewById(R.id.infoText);
+        highscoreLabel = findViewById(R.id.highscoreView);
 
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -64,9 +63,14 @@ public class ResultsActivity extends AppCompatActivity {
         masterList.getPatient(index).addScore(scoreRecord);
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
-        workText.setText(Double.toString(scoreRecord.getWork_kcal()));
-        throwsText.setText(Double.toString(scoreRecord.getNumThrows()));
-        timeText.setText(Double.toString(scoreRecord.getTime()));
+        infoText.setText(scoreRecord.toString());
+
+        if(_score_ > masterList.getPatient(index).getHighScore())
+            highscoreLabel.setText("NEW HIGH SCORE!!!");
+
+        if(_score_ == masterList.getPatient(index).getHighScore())
+            highscoreLabel.setText("You tied your high score!");
+
 
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];

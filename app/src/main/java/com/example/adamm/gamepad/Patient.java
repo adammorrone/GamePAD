@@ -83,15 +83,20 @@ public class Patient
                 10, 10, 60, 5, 50);
         scores.add(sr);
     }
-    public double getAllTimeScores()
+    public double getHighScore()
     {
-        double sum = 0;
+        double high = 0;
+        double temp = 0;
 
         for(int i = 0; i < scores.size(); i++)
-            sum += scores.get(i).getScore();
-
-        return sum;
+        {
+            temp = scores.get(i).getScore();
+            if(temp > high)
+                high = temp;
+        }
+        return high;
     }
+
     public double getAvgScores()
     {
         double sum = 0;

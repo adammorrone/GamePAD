@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GamePAD.iml" filepath="$PROJECT_DIR$/GamePAD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GamePAD.iml" filepath="$PROJECT_DIR$/.idea/GamePAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

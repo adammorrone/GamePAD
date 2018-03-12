@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -20,6 +20,7 @@
         android:fontFamily="casual"
         android:text="Adjustments"
         android:textAlignment="center"
+        android:autoSizeTextType="uniform"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -31,13 +32,14 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:fontFamily="casual"
         android:text="Select Game"
         android:textAlignment="center"
+        android:autoSizeTextType="uniform"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -81,12 +83,13 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -155,7 +158,6 @@
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:text="Weight"
-                android:textSize="20dp"
                 tools:layout_editor_absoluteX="216dp"
                 tools:layout_editor_absoluteY="121dp" />
 

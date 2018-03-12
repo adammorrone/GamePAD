@@ -59,17 +59,19 @@ public class ResultsActivity extends AppCompatActivity {
 
         ScoreRecord scoreRecord = new ScoreRecord(_score_, "Standard", Calendar.getInstance(), _distance_, _throws_, _time_, _weight_, _height_);
 
+        if(_score_ > masterList.getPatient(index).getHighScore())
+            highscoreLabel.setText("NEW HIGH SCORE!!!");
+
+        if(_score_ == masterList.getPatient(index).getHighScore())
+            highscoreLabel.setText("You tied your high score!");
+
+
         masterList.getPatient(index).addScore(scoreRecord);
         saveChanges();
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
         infoText.setText(scoreRecord.toString());
 
-        if(_score_ > masterList.getPatient(index).getHighScore())
-            highscoreLabel.setText("NEW HIGH SCORE!!!");
-
-        if(_score_ == masterList.getPatient(index).getHighScore())
-            highscoreLabel.setText("You tied your high score!");
 
 
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();

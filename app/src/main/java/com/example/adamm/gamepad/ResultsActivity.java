@@ -57,19 +57,21 @@ public class ResultsActivity extends AppCompatActivity {
         int _time_ = Integer.parseInt(((String)b.get("Time")).substring(0, 1));
         int _height_ = masterList.getPatient(index).getHeight();
 
-
         ScoreRecord scoreRecord = new ScoreRecord(_score_, "Standard", Calendar.getInstance(), _distance_, _throws_, _time_, _weight_, _height_);
-
-        masterList.getPatient(index).addScore(scoreRecord);
-
-        scoreText.setText(Double.toString(scoreRecord.getScore()));
-        infoText.setText(scoreRecord.toString());
 
         if(_score_ > masterList.getPatient(index).getHighScore())
             highscoreLabel.setText("NEW HIGH SCORE!!!");
 
         if(_score_ == masterList.getPatient(index).getHighScore())
             highscoreLabel.setText("You tied your high score!");
+
+
+        masterList.getPatient(index).addScore(scoreRecord);
+        saveChanges();
+
+        scoreText.setText(Double.toString(scoreRecord.getScore()));
+        infoText.setText(scoreRecord.toString());
+
 
 
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
@@ -96,9 +98,5 @@ public class ResultsActivity extends AppCompatActivity {
     public void saveChanges()
     {
         MainActivity.saveMasterList(this.getApplicationContext(), masterList);
-        Intent intent = new Intent(ResultsActivity.this,
-                PatientOverviewActivity.class);
-        intent.putExtra("Patient", index);
-        startActivity(intent);
     }
 }

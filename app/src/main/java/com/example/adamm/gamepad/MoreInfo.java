@@ -148,11 +148,11 @@ public class MoreInfo extends AppCompatActivity {
         double temp_score = scores.get(0).getScore();
         for(int i = 1; i < scores.size(); i++)
         {
-            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
                 temp_score += scores.get(i).getScore();
             else
             {
-                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
                 temp_score = scores.get(i).getScore();
             }
         }
@@ -170,14 +170,14 @@ public class MoreInfo extends AppCompatActivity {
     {
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         ArrayList<DataPoint> data = new ArrayList<>();
-        double temp_score = scores.get(0).getScore();
+        double temp_score = scores.get(0).getWork_kcal();
         for(int i = 1; i < scores.size(); i++)
         {
-            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
                 temp_score += scores.get(i).getWork_kcal();
             else
             {
-                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
                 temp_score = scores.get(i).getWork_kcal();
             }
         }
@@ -196,18 +196,18 @@ public class MoreInfo extends AppCompatActivity {
     {
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         ArrayList<DataPoint> data = new ArrayList<>();
-        double temp_score = scores.get(0).getScore();
+        double temp_score = scores.get(0).getPower_watts();
         int count = 0;
         for(int i = 1; i < scores.size(); i++)
         {
             count++;
 
-            if(scores.get(i).getDate().compareTo(scores.get(i - 1).getDate()) == 0)
+            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
                 temp_score += scores.get(i).getPower_watts();
 
             else
             {
-                data.add(new DataPoint(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR), temp_score/count));
+                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score/count));
                 temp_score = scores.get(i).getScore();
                 count = 0;
             }

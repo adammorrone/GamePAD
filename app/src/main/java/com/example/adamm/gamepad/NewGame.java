@@ -56,7 +56,12 @@ public class NewGame extends Activity {
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
+
+        // Set Default Values
         address = "NULL";
+        timView.setText("time");
+        disView.setText("distance");
+        balView.setText("weight");
 
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
@@ -98,13 +103,14 @@ public class NewGame extends Activity {
         Button next = findViewById(R.id.beginButton);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                Intent myIntent = new Intent (view.getContext(), PatientView.class);
-                startActivityForResult(myIntent, 0);
-                if(address == "NULL")
-                    Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device",
+                if(address == "NULL" || timView.getText() == "time" || disView.getText() == "distance" || balView.getText() == "weight")
+                    Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
                             Toast.LENGTH_LONG).show();
-                else
+                else{
+                    Intent myIntent = new Intent (view.getContext(), PatientView.class);
+                    startActivityForResult(myIntent, 0);
                     newGameInfo();
+                }
             }
         });
 

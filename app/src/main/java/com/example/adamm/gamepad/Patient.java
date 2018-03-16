@@ -24,12 +24,6 @@ public class Patient
         dob = inDOB;
         height_inches = inHeight;
         weight_pounds = inWeight_pounds;
-
-        newScore(12, "Standard");
-        newScore(1, "Standard");
-        newScore(8, "Standard");
-        newScore(11, "Standard");
-        newScore(8, "Standard");
     }
 
     public String getName()

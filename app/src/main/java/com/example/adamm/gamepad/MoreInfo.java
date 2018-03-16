@@ -143,84 +143,96 @@ public class MoreInfo extends AppCompatActivity {
 
     public void graph_scores_by_day()
     {
-        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
-        ArrayList<DataPoint> data = new ArrayList<>();
-        double temp_score = scores.get(0).getScore();
-        for(int i = 1; i < scores.size(); i++)
-        {
-            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
-                temp_score += scores.get(i).getScore();
-            else
-            {
-                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
-                temp_score = scores.get(i).getScore();
+        try {
+            ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+            ArrayList<DataPoint> data = new ArrayList<>();
+            double temp_score = scores.get(0).getScore();
+            for (int i = 1; i < scores.size(); i++) {
+                if (scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
+                    temp_score += scores.get(i).getScore();
+                else {
+                    data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                    temp_score = scores.get(i).getScore();
+                }
             }
-        }
-        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
-        data.add(new DataPoint(day, temp_score));
+            int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+            data.add(new DataPoint(day, temp_score));
 
-        DataPoint[] data_arr = new DataPoint[data.size()];
-        for(int i = 0; i < data.size(); i++)
-            data_arr[i] = data.get(i);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
-        graph.removeAllSeries();
-        graph.addSeries(series);
+            DataPoint[] data_arr = new DataPoint[data.size()];
+            for (int i = 0; i < data.size(); i++)
+                data_arr[i] = data.get(i);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+            graph.removeAllSeries();
+            graph.addSeries(series);
+        }catch(Exception ex) {
+
+        Toast.makeText(getApplicationContext(), "Something went wrong. There may not be any scores to aggregate.",
+                Toast.LENGTH_LONG).show();
+    }
     }
     public void graph_work_by_day()
     {
-        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
-        ArrayList<DataPoint> data = new ArrayList<>();
-        double temp_score = scores.get(0).getWork_kcal();
-        for(int i = 1; i < scores.size(); i++)
-        {
-            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
-                temp_score += scores.get(i).getWork_kcal();
-            else
-            {
-                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
-                temp_score = scores.get(i).getWork_kcal();
+        try {
+            ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+            ArrayList<DataPoint> data = new ArrayList<>();
+            double temp_score = scores.get(0).getWork_kcal();
+            for (int i = 1; i < scores.size(); i++) {
+                if (scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
+                    temp_score += scores.get(i).getWork_kcal();
+                else {
+                    data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score));
+                    temp_score = scores.get(i).getWork_kcal();
+                }
             }
-        }
-        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
-        data.add(new DataPoint(day, temp_score));
+            int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+            data.add(new DataPoint(day, temp_score));
 
-        DataPoint[] data_arr = new DataPoint[data.size()];
-        for(int i = 0; i < data.size(); i++)
-            data_arr[i] = data.get(i);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
-        graph.removeAllSeries();
-        graph.addSeries(series);
+            DataPoint[] data_arr = new DataPoint[data.size()];
+            for (int i = 0; i < data.size(); i++)
+                data_arr[i] = data.get(i);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+            graph.removeAllSeries();
+            graph.addSeries(series);
+        }catch(Exception ex) {
+
+            Toast.makeText(getApplicationContext(), "Something went wrong. There may not be any scores to aggregate.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void graph_power_by_day()
     {
-        ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
-        ArrayList<DataPoint> data = new ArrayList<>();
-        double temp_score = scores.get(0).getPower_watts();
-        int count = 0;
-        for(int i = 1; i < scores.size(); i++)
-        {
-            count++;
+        try {
+            ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
+            ArrayList<DataPoint> data = new ArrayList<>();
+            double temp_score = scores.get(0).getPower_watts();
+            int count = 0;
+            for (int i = 1; i < scores.size(); i++) {
+                count++;
 
-            if(scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
-                temp_score += scores.get(i).getPower_watts();
+                if (scores.get(i).getDate().get(Calendar.DAY_OF_YEAR) == scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR))
+                    temp_score += scores.get(i).getPower_watts();
 
-            else
-            {
-                data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score/count));
-                temp_score = scores.get(i).getScore();
-                count = 0;
+                else {
+                    data.add(new DataPoint(scores.get(i - 1).getDate().get(Calendar.DAY_OF_YEAR), temp_score / count));
+                    temp_score = scores.get(i).getScore();
+                    count = 0;
+                }
             }
-        }
-        int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
-        data.add(new DataPoint(day, temp_score));
+            int day = scores.get(scores.size() - 1).getDate().get(Calendar.DAY_OF_YEAR);
+            data.add(new DataPoint(day, temp_score));
 
-        DataPoint[] data_arr = new DataPoint[data.size()];
-        for(int i = 0; i < data.size(); i++)
-            data_arr[i] = data.get(i);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
-        graph.removeAllSeries();
-        graph.addSeries(series);
+            DataPoint[] data_arr = new DataPoint[data.size()];
+            for (int i = 0; i < data.size(); i++)
+                data_arr[i] = data.get(i);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data_arr);
+            graph.removeAllSeries();
+            graph.addSeries(series);
+        }catch(Exception ex) {
+
+            Toast.makeText(getApplicationContext(), "Something went wrong. There may not be any scores to aggregate.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
 

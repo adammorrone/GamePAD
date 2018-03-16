@@ -63,26 +63,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void createNewPatient(View v)
     {
-        String name = nameText.getText().toString();
-        String dob = dobText.getText().toString();
-        String height = heightText.getText().toString();
-        String weight = weightText.getText().toString();
 
-        if(masterList.indexOf(name) == -1)
-        {
-            masterList.addPatient(name, dob, Integer.parseInt(height), Double.parseDouble(weight));
-            goto_UserProfile(name);
+        try {
+            String name = nameText.getText().toString();
+            String dob = dobText.getText().toString();
+            String height = heightText.getText().toString();
+            String weight = weightText.getText().toString();
 
-            Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
-            toast.show();
-            hideSoftKeyboard(this);
-        }
-        else
-        {
-            Toast toast = Toast.makeText(this, name + " is already a patient, here is the existing profile.", Toast.LENGTH_SHORT);
-            toast.show();
-            hideSoftKeyboard(this);
-            goto_UserProfile(name);
+
+            if (masterList.indexOf(name) == -1) {
+                masterList.addPatient(name, dob, Integer.parseInt(height), Double.parseDouble(weight));
+                goto_UserProfile(name);
+
+                Toast toast = Toast.makeText(this, name + " was added as a new Patient", Toast.LENGTH_SHORT);
+                toast.show();
+                hideSoftKeyboard(this);
+            } else {
+                Toast toast = Toast.makeText(this, name + " is already a patient, here is the existing profile.", Toast.LENGTH_SHORT);
+                toast.show();
+                hideSoftKeyboard(this);
+                goto_UserProfile(name);
+            }
+        }catch(Exception ex) {
+
+        Toast.makeText(getApplicationContext(), "Something went wrong. Ensure that all fields are filled out and that Hieght and Weight are only whole numbers",
+                Toast.LENGTH_LONG).show();
         }
     }
 

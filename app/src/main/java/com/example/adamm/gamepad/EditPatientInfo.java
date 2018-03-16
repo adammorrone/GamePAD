@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by adamm on 2/2/2018.
@@ -76,16 +77,28 @@ public class EditPatientInfo  extends AppCompatActivity  {
 
     public void editHeight(View view)
     {
-        int height = Integer.parseInt(newHeightText.getText().toString());
-        masterList.getPatient(index).setHeight(height);
-        resetCurrentValues();
+        try {
+            int height = Integer.parseInt(newHeightText.getText().toString());
+            masterList.getPatient(index).setHeight(height);
+            resetCurrentValues();
+        }catch(Exception ex) {
+
+            Toast.makeText(getApplicationContext(), "Something went wrong. Ensure that all fields are filled out and that Hieght and Weight are only whole numbers",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void editWeight(View view)
     {
-        double weight = Double.parseDouble(newWeightText.getText().toString());
-        masterList.getPatient(index).setWeight(weight);
-        resetCurrentValues();
+        try {
+            double weight = Double.parseDouble(newWeightText.getText().toString());
+            masterList.getPatient(index).setWeight(weight);
+            resetCurrentValues();
+        }catch(Exception ex) {
+
+            Toast.makeText(getApplicationContext(), "Something went wrong. Ensure that all fields are filled out and that Hieght and Weight are only whole numbers",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void resetCurrentValues() {

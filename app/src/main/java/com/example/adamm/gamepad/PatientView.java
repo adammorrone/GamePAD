@@ -35,7 +35,8 @@ public class PatientView extends Activity {
             sensorView9, sensorView10, sensorView11, sensorView12,
             sensorView13, sensorView14, sensorView15, sensorView16;
     TextView scoreView;
-    ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
+    // Pad Sensor
+    //ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
     ImageView padImage, padImage1, padImage2, padImage3, padImage4;
 
 
@@ -46,7 +47,6 @@ public class PatientView extends Activity {
     private StringBuilder recDataString = new StringBuilder();
     public int index = -1;
     public PatientList masterList = MainActivity.masterList;
-
 
     private ConnectedThread mConnectedThread;   //Private thread for bluetooth connection
 

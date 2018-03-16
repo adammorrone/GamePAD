@@ -57,6 +57,7 @@ public class NewGame extends Activity {
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
 
+
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
         Button bt = findViewById(R.id.btList);

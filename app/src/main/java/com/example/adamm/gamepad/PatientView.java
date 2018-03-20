@@ -194,65 +194,65 @@ public class PatientView extends Activity {
 */
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
-                                //imageSensor4.setVisibility(View.GONE);
-                                scoreKeeper = scoreKeeper + 1;
+                            //imageSensor4.setVisibility(View.GONE);
+                            scoreKeeper = scoreKeeper + 1;
 
-                                padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.VISIBLE);
-                                padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.GONE);
-                                padImage4.setVisibility(View.GONE);
+                            padImage.setVisibility(View.GONE);
+                            padImage1.setVisibility(View.VISIBLE);
+                            padImage2.setVisibility(View.GONE);
+                            padImage3.setVisibility(View.GONE);
+                            padImage4.setVisibility(View.GONE);
 
-                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level1);
-                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
-
-                            }
-                            if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
-                                    || sensor12.equals("1")){
-                                //imageSensor3.setVisibility(View.GONE);
-                                scoreKeeper = scoreKeeper + 2;
-
-                                padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.GONE);
-                                padImage2.setVisibility(View.VISIBLE);
-                                padImage3.setVisibility(View.GONE);
-                                padImage4.setVisibility(View.GONE);
-
-                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
-                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
-                            }
-                            if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
-                                    || sensor13.equals("1")){
-                                //imageSensor2.setVisibility(View.GONE);
-                                scoreKeeper = scoreKeeper + 3;
-
-                                padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.GONE);
-                                padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.VISIBLE);
-                                padImage4.setVisibility(View.GONE);
-
-                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
-                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
-                            }
-                            if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
-                                    || sensor14.equals("1")){
-                                //imageSensor1.setVisibility(View.GONE);
-                                scoreKeeper = scoreKeeper + 4;
-
-                                padImage.setVisibility(View.GONE);
-                                padImage1.setVisibility(View.GONE);
-                                padImage2.setVisibility(View.GONE);
-                                padImage3.setVisibility(View.GONE);
-                                padImage4.setVisibility(View.VISIBLE);
-
-                                MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
-                                mediaPlayer.start(); // no need to call prepare(); create() does that for you
-                            }
-                            ballThrows++;
-                            scoreView.setText(Integer.toString(scoreKeeper));
+                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level1);
+                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
                         }
+                        if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
+                                || sensor12.equals("1")){
+                            //imageSensor3.setVisibility(View.GONE);
+                            scoreKeeper = scoreKeeper + 2;
+
+                            padImage.setVisibility(View.GONE);
+                            padImage1.setVisibility(View.GONE);
+                            padImage2.setVisibility(View.VISIBLE);
+                            padImage3.setVisibility(View.GONE);
+                            padImage4.setVisibility(View.GONE);
+
+                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
+                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                        }
+                        if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
+                                || sensor13.equals("1")){
+                            //imageSensor2.setVisibility(View.GONE);
+                            scoreKeeper = scoreKeeper + 3;
+
+                            padImage.setVisibility(View.GONE);
+                            padImage1.setVisibility(View.GONE);
+                            padImage2.setVisibility(View.GONE);
+                            padImage3.setVisibility(View.VISIBLE);
+                            padImage4.setVisibility(View.GONE);
+
+                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
+                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                        }
+                        if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
+                                || sensor14.equals("1")){
+                            //imageSensor1.setVisibility(View.GONE);
+                            scoreKeeper = scoreKeeper + 4;
+
+                            padImage.setVisibility(View.GONE);
+                            padImage1.setVisibility(View.GONE);
+                            padImage2.setVisibility(View.GONE);
+                            padImage3.setVisibility(View.GONE);
+                            padImage4.setVisibility(View.VISIBLE);
+
+                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
+                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                        }
+                        ballThrows++;
+                        scoreView.setText(Integer.toString(scoreKeeper));
+
+                    }
                         recDataString.delete(0, recDataString.length()); 	//clear all string data
                     }
                 }

@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by adamm on 2/2/2018.
- */
 
 public class EditPatientInfo  extends AppCompatActivity  {
 

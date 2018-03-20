@@ -135,7 +135,7 @@ public class PatientView extends Activity {
         padImage2 = findViewById(R.id.padImage2);
         padImage3 = findViewById(R.id.padImage3);
         padImage4 = findViewById(R.id.padImage4);
-        startTimer(time);
+        //startTimer(time);
 
 
         bluetoothIn = new Handler() {

@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class BallWeightList
 {
 
-    public ArrayList<Integer>listOfBalls;
+    public ArrayList<String>listOfBalls;
 
     public void fillArray(){
         int i = 6;
         if(listOfBalls.size() == 0)
             while(i<=10) {
-                listOfBalls.add(i);
+                listOfBalls.add(i + " Ibs");
                 i = i + 2;
             }
         else{} //Do nothing
@@ -25,12 +25,12 @@ public class BallWeightList
 
     public BallWeightList()
     {
-        listOfBalls = new ArrayList<Integer>();
+        listOfBalls = new ArrayList<String>();
     }
 
     public void addBall(int weight)
     {
-        listOfBalls.add(weight);
+        listOfBalls.add(weight + " Ibs");
     }
 
     public int getBallSize()

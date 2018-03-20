@@ -40,7 +40,7 @@ public class ResultsActivity extends AppCompatActivity {
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
         scoreText = findViewById(R.id.scoreView);
-        infoText = findViewById(R.id.infoText);
+        //infoText = findViewById(R.id.infoText);
         highscoreLabel = findViewById(R.id.highscoreView);
 
 
@@ -53,11 +53,11 @@ public class ResultsActivity extends AppCompatActivity {
         index = (int)b.get("Patient");
         int _score_ = (int)b.get("Score");
         int _throws_ = (int)b.get("Throws");
-        //int _weight_ = Integer.parseInt((String)b.get("Weight"));
+        int _weight_ = Integer.parseInt((String)b.get("Weight"));
 
-        String weight = b.get("Weight").toString();
-        Scanner in = new Scanner(weight).useDelimiter("[^0-9]+");
-        int _weight_ = in.nextInt();
+        //String weight = b.get("Weight").toString();
+        //Scanner in = new Scanner(weight).useDelimiter("[^0-9]+");
+        //int _weight_ = in.nextInt();
         double _distance_ = Double.parseDouble(((String)b.get("Distance")).substring(0, 2));
         int _time_ = Integer.parseInt(((String)b.get("Time")).substring(0, 1));
         int _height_ = masterList.getPatient(index).getHeight();
@@ -72,10 +72,13 @@ public class ResultsActivity extends AppCompatActivity {
 
 
         masterList.getPatient(index).addScore(scoreRecord);
+        //issue here with saving changes
         saveChanges();
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
-        infoText.setText(scoreRecord.toString());
+        //infoText.setText(scoreRecord.toString());
+        //temp
+        infoText.setText("NULL");
 
 
 
@@ -102,6 +105,6 @@ public class ResultsActivity extends AppCompatActivity {
 
     public void saveChanges()
     {
-        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
+        //MainActivity.saveMasterList(this.getApplicationContext(), masterList);
     }
 }

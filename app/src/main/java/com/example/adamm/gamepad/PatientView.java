@@ -96,9 +96,9 @@ public class PatientView extends Activity {
             index = (int)checkInfo.get("Patient");
 
         } // Do something
-        //Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
-        //        + time, Toast.LENGTH_LONG);
-        //toast.show();
+        toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
+                + time, Toast.LENGTH_LONG);
+        toast.show();
         //Init
         timerView = findViewById(R.id.textView2);
         pairedDeviceList = findViewById(R.id.listView);

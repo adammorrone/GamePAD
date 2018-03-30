@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class NewGame extends Activity {
     private TimeList timeList;
     private TextView disView;
     private TextView balView;
-    private TextView timView;
+    private EditText timView;
     private String address;
     public int index = -1;
     public PatientList masterList = MainActivity.masterList;
@@ -55,11 +56,11 @@ public class NewGame extends Activity {
 
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
-        timView = findViewById(R.id.time_textView);
+        //timView = findViewById(R.id.time_textView);
 
         // Set Default Values
         address = "NULL";
-        timView.setText("time");
+        //timView.setText("time");
         disView.setText("distance");
         balView.setText("weight");
 
@@ -100,10 +101,12 @@ public class NewGame extends Activity {
         else
             ballList = tgson.fromJson(bjson, BallWeightList.class);
 
+
+        timView = findViewById(R.id.time_textView);
         Button next = findViewById(R.id.beginButton);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                if(address == "NULL" || timView.getText() == "time" || disView.getText() == "distance" || balView.getText() == "weight")
+                if(address == "NULL" || timView.getText().equals("") || disView.getText() == "distance" || balView.getText() == "weight")
                     Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
                             Toast.LENGTH_LONG).show();
                 else{

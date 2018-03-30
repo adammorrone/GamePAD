@@ -81,10 +81,10 @@ public class PatientView extends Activity {
 
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
-
+        Toast toast;
 
         if (checkInfo == null) {
-            Toast toast = Toast.makeText(this, "No Timer Set! Game cannot start",
+            toast = Toast.makeText(this, "No Timer Set! Game cannot start",
                     Toast.LENGTH_LONG);
             toast.show();
         }

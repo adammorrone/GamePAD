@@ -117,6 +117,6 @@ public class ResultsActivity extends AppCompatActivity {
 
     public void saveChanges()
     {
-        //MainActivity.saveMasterList(this.getApplicationContext(), masterList);
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
     }
 }

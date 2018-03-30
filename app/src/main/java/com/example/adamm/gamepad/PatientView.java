@@ -96,9 +96,9 @@ public class PatientView extends Activity {
             index = (int)checkInfo.get("Patient");
 
         } // Do something
-        Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
-                + time, Toast.LENGTH_LONG);
-        toast.show();
+        //Toast toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
+        //        + time, Toast.LENGTH_LONG);
+        //toast.show();
         //Init
         timerView = findViewById(R.id.textView2);
         pairedDeviceList = findViewById(R.id.listView);
@@ -165,33 +165,6 @@ public class PatientView extends Activity {
                             String sensor15 = recDataString.substring(15,16);
                             String sensor16 = recDataString.substring(16,17);
 
-
-                            /*
-                            // Use to make sure each sensor data is received
-                            sensorView1.setText(sensor1);
-                            sensorView2.setText(sensor2);
-                            sensorView3.setText(sensor3);
-                            sensorView4.setText(sensor4);
-                            sensorView5.setText(sensor5);
-                            sensorView6.setText(sensor6);
-                            sensorView7.setText(sensor7);
-                            sensorView8.setText(sensor8);
-                            sensorView9.setText(sensor9);
-                            sensorView10.setText(sensor10);
-                            sensorView11.setText(sensor11);
-                            sensorView12.setText(sensor12);
-                            sensorView13.setText(sensor13);
-                            sensorView14.setText(sensor14);
-                            sensorView15.setText(sensor15);
-                            sensorView16.setText(sensor16);
-                            */
-/*
-                            padImage.setVisibility(View.VISIBLE);
-                            padImage1.setVisibility(View.GONE);
-                            padImage2.setVisibility(View.GONE);
-                            padImage3.setVisibility(View.GONE);
-                            padImage4.setVisibility(View.GONE);
-*/
                             if(sensor2.equals("1") || sensor1.equals("1") || sensor16.equals("1")
                                     || sensor15.equals("1")){        // if 2 1 16 15 == 1
                             //imageSensor4.setVisibility(View.GONE);

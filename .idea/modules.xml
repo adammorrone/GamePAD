@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GamePAD.iml" filepath="$PROJECT_DIR$/GamePAD.iml" />
-      <module fileurl="file://C:\Users\adamm\Documents\GitHub\GamePAD\.idea\GamePAD.iml" filepath="C:\Users\adamm\Documents\GitHub\GamePAD\.idea\GamePAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

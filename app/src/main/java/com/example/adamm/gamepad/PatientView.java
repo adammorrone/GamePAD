@@ -318,7 +318,7 @@ public class PatientView extends Activity {
     }
 
     public void startTimer (String time){
-        Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
+        Scanner in = new Scanner(time).useDelimiter("[.][^0-9]+");
         final int timer = in.nextInt();
         new CountDownTimer((timer * 60000), 1000) {
 

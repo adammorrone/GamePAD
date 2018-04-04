@@ -9,7 +9,7 @@ package="com.example.adamm.gamepad">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity">
+    <activity android:name=".MainActivity" android:windowSoftInputMode="stateHidden">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -18,11 +18,11 @@ package="com.example.adamm.gamepad">
     </activity>
     <activity android:name=".PatientOverviewActivity"> </activity>
     <activity android:name=".NewGame"></activity>
-    <activity android:name=".PatientView"></activity>
-    <activity android:name=".EditPatientInfo"></activity>
+    <activity android:name=".PatientView" android:screenOrientation="landscape"></activity>
+    <activity android:name=".EditPatientInfo" android:windowSoftInputMode="stateHidden"></activity>
     <activity android:name=".MoreInfo"></activity>
     <activity android:name=".bluetoothReceiver"></activity>
-    <activity android:name=".ResultsActivity"></activity>
+    <activity android:name=".ResultsActivity" android:windowSoftInputMode="stateHidden"></activity>
 </application>
 
     <uses-permission android:name="android.permission.BLUETOOTH" />

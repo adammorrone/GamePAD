@@ -109,7 +109,8 @@ public class NewGame extends Activity {
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 if(address == "NULL" || timView.getText().equals("") || disView.getText() == "distance" || balView.getText() == "weight")
-                    Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
+                    if(!isFinishing())
+                        Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
                             Toast.LENGTH_LONG).show();
                 else{
                     Intent myIntent = new Intent (view.getContext(), PatientView.class);

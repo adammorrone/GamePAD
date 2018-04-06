@@ -17,7 +17,7 @@ package="com.example.adamm.gamepad">
         </intent-filter>
     </activity>
     <activity android:name=".PatientOverviewActivity"> </activity>
-    <activity android:name=".NewGame" android:screenOrientation="landscape"></activity>
+    <activity android:name=".NewGame"></activity>
     <activity android:name=".PatientView" android:screenOrientation="landscape"></activity>
     <activity android:name=".EditPatientInfo" android:windowSoftInputMode="stateHidden"></activity>
     <activity android:name=".MoreInfo"></activity>

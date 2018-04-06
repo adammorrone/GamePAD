@@ -231,7 +231,7 @@ public class PatientView extends Activity {
                 }
             }
         };
-        Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
+        /*Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
         int timer = in.nextInt();
         timer = (timer * 60000)/1000;   // convert to seconds
 
@@ -239,7 +239,14 @@ public class PatientView extends Activity {
         distanceInt = in.nextInt();
 
         in = new Scanner(weight).useDelimiter("[^0-9]+");
-        weightInt = in.nextInt();
+        weightInt = in.nextInt();*/
+
+       // int timer = 1;
+        distanceInt = 1;
+        weightInt = 1;
+
+
+
         //masterList.getPatient(index).addScore(record);
         //saveChanges();
 
@@ -255,9 +262,11 @@ public class PatientView extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
         try {
+        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+
+
             btSocket = createBluetoothSocket(device);
         } catch (IOException e) {
             Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_LONG).show();
@@ -318,9 +327,11 @@ public class PatientView extends Activity {
     }
 
     public void startTimer (String time){
-        Scanner in = new Scanner(time).useDelimiter("[.][^0-9]+");
-        final int timer = in.nextInt();
-        new CountDownTimer((timer * 60000), 1000) {
+        //Scanner in = new Scanner(time).useDelimiter("[.][^0-9]+");
+       // Scanner in = new Scanner(time).useDelimiter(" ");
+        final double Dtimer = Double.parseDouble(time.substring(0, time.indexOf(" ")));//in.nextInt();
+        final int timer = (int)(Dtimer * 60);
+        new CountDownTimer((timer * 1000), 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timerView.setText("seconds remaining: " + millisUntilFinished / 1000);

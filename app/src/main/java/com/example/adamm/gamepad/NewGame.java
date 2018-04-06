@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.WindowManager;
 
 import com.google.gson.Gson;
 
@@ -120,7 +122,7 @@ public class NewGame extends Activity {
         ballList.fillArray();
         timeList.fillArray();
         distanceList.fillArray();
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     public void newGameInfo(){
@@ -160,6 +162,7 @@ public class NewGame extends Activity {
             }
         });
         dbuilder.show();
+        hideSoftKeyboard(this);
     }
 
     public void openBallList(View v)
@@ -175,6 +178,7 @@ public class NewGame extends Activity {
             }
         });
         bbuilder.show();
+        hideSoftKeyboard(this);
     }
 
     public void openTimeList(View v)
@@ -189,6 +193,7 @@ public class NewGame extends Activity {
             }
         });
         tbuilder.show();
+        hideSoftKeyboard(this);
     }
 
     // Bluetooth Stuff
@@ -248,6 +253,15 @@ public class NewGame extends Activity {
             }
         });
         tbuilder.show();
+    }
+
+    public void hideSoftKeyboard(Activity activity)
+    {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     @Override

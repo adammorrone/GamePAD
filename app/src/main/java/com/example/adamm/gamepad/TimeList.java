@@ -12,7 +12,7 @@ public class TimeList
 
     public void fillArray(){
         if(listOfTimes.size() == 0){
-            listOfTimes.add("30 Seconds");
+            listOfTimes.add("0.2 Minutes");
             listOfTimes.add("1 Minute");
             listOfTimes.add("1.5 Minutes");
             listOfTimes.add("2 Minutes");

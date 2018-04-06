@@ -84,9 +84,9 @@ public class PatientView extends Activity {
         Toast toast;
 
         if (checkInfo == null) {
-            toast = Toast.makeText(this, "No Timer Set! Game cannot start",
-                    Toast.LENGTH_LONG);
-            toast.show();
+            //toast = Toast.makeText(this, "No Timer Set! Game cannot start",
+              //      Toast.LENGTH_LONG);
+            //toast.show();
         }
         else {
             time = checkInfo.get("time").toString();
@@ -96,9 +96,9 @@ public class PatientView extends Activity {
             index = (int)checkInfo.get("Patient");
 
         } // Do something
-        toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
-                + time, Toast.LENGTH_LONG);
-        toast.show();
+       // toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
+         //       + time, Toast.LENGTH_LONG);
+        //toast.show();
         //Init
         timerView = findViewById(R.id.textView2);
         pairedDeviceList = findViewById(R.id.listView);
@@ -269,7 +269,7 @@ public class PatientView extends Activity {
 
             btSocket = createBluetoothSocket(device);
         } catch (IOException e) {
-            Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_LONG).show();
         }
         // Establish the Bluetooth socket connection.
         try
@@ -390,7 +390,7 @@ public class PatientView extends Activity {
                 mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
             } catch (IOException e) {
                 //if you cannot write, close the application
-                Toast.makeText(getBaseContext(), "Connection Failure", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Connection Failure. Please try again. \nIf problem persists check batteries.", Toast.LENGTH_LONG).show();
                 finish();
 
             }

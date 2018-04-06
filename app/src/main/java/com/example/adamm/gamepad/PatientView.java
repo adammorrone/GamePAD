@@ -84,9 +84,9 @@ public class PatientView extends Activity {
         Toast toast;
 
         if (checkInfo == null) {
-            toast = Toast.makeText(this, "No Timer Set! Game cannot start",
-                    Toast.LENGTH_LONG);
-            toast.show();
+            //toast = Toast.makeText(this, "No Timer Set! Game cannot start",
+              //      Toast.LENGTH_LONG);
+            //toast.show();
         }
         else {
             time = checkInfo.get("time").toString();
@@ -96,9 +96,9 @@ public class PatientView extends Activity {
             index = (int)checkInfo.get("Patient");
 
         } // Do something
-        toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
-                + time, Toast.LENGTH_LONG);
-        toast.show();
+       // toast = Toast.makeText(getBaseContext(), "Address: " + address + "  Time: "
+         //       + time, Toast.LENGTH_LONG);
+        //toast.show();
         //Init
         timerView = findViewById(R.id.textView2);
         pairedDeviceList = findViewById(R.id.listView);
@@ -231,7 +231,7 @@ public class PatientView extends Activity {
                 }
             }
         };
-        Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
+        /*Scanner in = new Scanner(time).useDelimiter("[^0-9]+");
         int timer = in.nextInt();
         timer = (timer * 60000)/1000;   // convert to seconds
 
@@ -239,7 +239,14 @@ public class PatientView extends Activity {
         distanceInt = in.nextInt();
 
         in = new Scanner(weight).useDelimiter("[^0-9]+");
-        weightInt = in.nextInt();
+        weightInt = in.nextInt();*/
+
+       // int timer = 1;
+        distanceInt = 1;
+        weightInt = 1;
+
+
+
         //masterList.getPatient(index).addScore(record);
         //saveChanges();
 
@@ -255,12 +262,14 @@ public class PatientView extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
         try {
+        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+
+
             btSocket = createBluetoothSocket(device);
         } catch (IOException e) {
-            Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_LONG).show();
         }
         // Establish the Bluetooth socket connection.
         try
@@ -318,9 +327,11 @@ public class PatientView extends Activity {
     }
 
     public void startTimer (String time){
-        Scanner in = new Scanner(time).useDelimiter("[.][^0-9]+");
-        final int timer = in.nextInt();
-        new CountDownTimer((timer * 60000), 1000) {
+        //Scanner in = new Scanner(time).useDelimiter("[.][^0-9]+");
+       // Scanner in = new Scanner(time).useDelimiter(" ");
+        final double Dtimer = Double.parseDouble(time.substring(0, time.indexOf(" ")));//in.nextInt();
+        final int timer = (int)(Dtimer * 60);
+        new CountDownTimer((timer * 1000), 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timerView.setText("seconds remaining: " + millisUntilFinished / 1000);
@@ -379,7 +390,7 @@ public class PatientView extends Activity {
                 mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
             } catch (IOException e) {
                 //if you cannot write, close the application
-                Toast.makeText(getBaseContext(), "Connection Failure", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Connection Failure. Please try again. \nIf problem persists check batteries.", Toast.LENGTH_LONG).show();
                 finish();
 
             }

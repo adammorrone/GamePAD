@@ -54,7 +54,12 @@ public class ScoreRecord {
         double m = massOfBall * 0.454;
 
         work_kcal = m*g*h * numThrows + (m*d*d)/h;                          //calculates work in J
-        power_watts = work_kcal / (numThrows * Math.sqrt((2*h)/g));         //avg power from work
+
+        if(numThrows == 0)
+            power_watts = 0;                                                //avoids divide by 0
+        else
+            power_watts = work_kcal / (numThrows * Math.sqrt((2*h)/g));         //avg power from work
+
         work_kcal = work_kcal * 0.00024;                                    //convert from J to kcal
     }
 

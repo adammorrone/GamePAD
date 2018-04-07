@@ -396,6 +396,8 @@ public class PatientView extends Activity {
             }
         }
 
+        //send commits
+
 
     }
     public void saveChanges()

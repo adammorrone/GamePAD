@@ -11,56 +11,66 @@
 
     <TextView
         android:id="@+id/scoreView"
-        android:layout_width="196dp"
-        android:layout_height="171dp"
+        android:layout_width="256dp"
+        android:layout_height="217dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="casual"
         android:text="00"
         android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="120sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
 
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="191dp"
-        android:layout_height="86dp"
+        android:layout_width="249dp"
+        android:layout_height="93dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="112dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="casual"
         android:text="Timer"
         android:textAlignment="center"
-        android:textSize="20sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="0.72" />
 
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="249dp"
-        android:layout_height="323dp"
+        android:layout_width="382dp"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toEndOf="@+id/scoreView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/padImage"
@@ -121,14 +131,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Start"
         android:onClick="startGame"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintHorizontal_bias="0.712"
         app:layout_constraintStart_toEndOf="@+id/relativeLayout3"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.591" />
 
 
 </android.support.constraint.ConstraintLayout>

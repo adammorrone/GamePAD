@@ -6,33 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="73dp">
 
     <Button
         android:id="@+id/finish_button"
         android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="225dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
         android:onClick="goto_main"
         android:text="Finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/replay_button" />
+        app:layout_constraintStart_toEndOf="@+id/linearLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/replay_button" />
 
     <TextView
         android:id="@+id/scoreView"
-        android:layout_width="308dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="36dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="casual"
-        android:text="00"
+        android:text="You Scored 00 Points"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="120sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintBottom_toTopOf="@+id/highscoreView"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,37 +47,62 @@
         android:id="@+id/replay_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginRight="143dp"
+        android:layout_marginTop="98dp"
         android:onClick="goto_newGame"
         android:text="Play Again"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/finish_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/finish_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/highscoreView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/highscoreView"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="294dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="294dp"
+        android:layout_marginStart="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/infoText"
+        app:layout_constraintEnd_toStartOf="@+id/replay_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoText" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
 
     <TextView
         android:id="@+id/infoText"
-        android:layout_width="wrap_content"
-        android:layout_height="203dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="35dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
+        app:layout_constraintTop_toBottomOf="@+id/highscoreView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="209dp"
+        android:layout_marginEnd="344dp"
+        android:layout_marginRight="344dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/highscoreView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finish_button"
+        app:layout_constraintStart_toEndOf="@+id/scoreView"
+        app:layout_constraintTop_toBottomOf="@+id/highscoreView">
+
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

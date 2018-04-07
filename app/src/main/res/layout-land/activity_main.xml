@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.adamm.gamepad.MainActivity"
+    tools:layout_editor_absoluteY="73dp">
+
+
+    <Button
+        android:id="@+id/select_patient"
+        android:layout_width="180dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
+        android:onClick="openMasterList"
+        android:text="Select Existing Patient"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <TextView
+        android:id="@+id/scoreView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
+        android:text="GamePAD"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="70sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="221dp"
+        android:layout_height="232dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView"
+        app:layout_constraintVertical_bias="0.293">
+
+        <EditText
+            android:id="@+id/new_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="New Patient Name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="237dp"
+            tools:layout_editor_absoluteY="210dp" />
+
+        <EditText
+            android:id="@+id/new_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Weight (lbs)"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="241dp"
+            tools:layout_editor_absoluteY="332dp" />
+
+        <EditText
+            android:id="@+id/new_dob"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="Date Of Birth"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="237dp"
+            tools:layout_editor_absoluteY="262dp" />
+
+        <EditText
+            android:id="@+id/new_height"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="Height (in)"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="238dp"
+            tools:layout_editor_absoluteY="298dp" />
+
+        <Button
+            android:id="@+id/add_patient"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:fontFamily="casual"
+            android:onClick="createNewPatient"
+            android:text="Add New Patient"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="271dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

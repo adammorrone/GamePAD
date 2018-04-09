@@ -17,36 +17,37 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="casual"
         android:text="Adjustments"
         android:textAlignment="center"
-        android:autoSizeTextType="uniform"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/bluetoothText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/bluetoothText"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:fontFamily="casual"
-        android:text="Select Game"
-        android:textAlignment="center"
         android:autoSizeTextType="uniform"
+        android:fontFamily="casual"
+        android:text="Device Connected: GamePAD"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
     <LinearLayout
@@ -61,32 +62,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Game 1"
-            tools:layout_editor_absoluteX="157dp"
-            tools:layout_editor_absoluteY="430dp" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game 2"
-            tools:layout_editor_absoluteX="180dp"
-            tools:layout_editor_absoluteY="104dp" />
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
@@ -140,7 +126,7 @@
             tools:layout_editor_absoluteX="43dp"
             tools:layout_editor_absoluteY="0dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/time_textView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

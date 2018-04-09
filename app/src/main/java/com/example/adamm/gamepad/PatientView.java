@@ -39,6 +39,8 @@ public class PatientView extends Activity {
     //ImageView imageSensor1, imageSensor2, imageSensor3, imageSensor4;
     ImageView padImage, padImage1, padImage2, padImage3, padImage4;
 
+    Button startButton;
+
 
 
     final int handlerState = 0;             //used to identify handler message
@@ -136,6 +138,9 @@ public class PatientView extends Activity {
         padImage3 = findViewById(R.id.padImage3);
         padImage4 = findViewById(R.id.padImage4);
         //startTimer(time);
+
+        // Button Set up
+        startButton = findViewById(R.id.button);
 
 
         bluetoothIn = new Handler() {
@@ -293,8 +298,10 @@ public class PatientView extends Activity {
     }
 
     public void startGame(View v){
-        scoreView.clearComposingText();
+        scoreView.setText("00");
         ballThrows = 0;
+        scoreKeeper = 0;
+        startButton.setVisibility(View.GONE);
         startTimer(time);
     }
 
@@ -390,7 +397,8 @@ public class PatientView extends Activity {
                 mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
             } catch (IOException e) {
                 //if you cannot write, close the application
-                Toast.makeText(getBaseContext(), "Connection Failure. Please try again. \nIf problem persists check batteries.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Connection Failure. Please try again. " +
+                        "\nIf problem persists check batteries.", Toast.LENGTH_LONG).show();
                 finish();
 
             }

@@ -33,7 +33,7 @@ public class NewGame extends Activity {
     private TimeList timeList;
     private TextView disView;
     private TextView balView;
-    private EditText timView;
+    private TextView timView;
     private String address;
     public int index = -1;
     public PatientList masterList = MainActivity.masterList;
@@ -58,7 +58,7 @@ public class NewGame extends Activity {
 
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
-        //timView = findViewById(R.id.time_textView);
+        timView = findViewById(R.id.time_textView);
 
         // Set Default Values
         address = "NULL";
@@ -103,8 +103,7 @@ public class NewGame extends Activity {
         else
             ballList = tgson.fromJson(bjson, BallWeightList.class);
 
-
-        timView = findViewById(R.id.time_textView);
+        //timView = findViewById(R.id.time_textView);
         Button next = findViewById(R.id.beginButton);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){

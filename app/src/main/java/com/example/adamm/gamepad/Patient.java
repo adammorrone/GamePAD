@@ -14,6 +14,9 @@ public class Patient
     public String dob;
     public int height_inches;
     public double weight_pounds;
+    public String weight_setting;
+    public String distance_setting;
+    public String time_setting;
 
     public ArrayList<ScoreRecord> scores;
 
@@ -24,6 +27,9 @@ public class Patient
         dob = inDOB;
         height_inches = inHeight;
         weight_pounds = inWeight_pounds;
+        weight_setting = "-1";
+        distance_setting = "-1";
+        time_setting = "-1";
     }
 
     public String getName()
@@ -99,5 +105,29 @@ public class Patient
             sum += scores.get(i).getScore();
 
         return sum/scores.size();
+    }
+
+    public String getWeight_setting() {
+        return weight_setting;
+    }
+
+    public void setWeight_setting(String weight_setting) {
+        this.weight_setting = weight_setting;
+    }
+
+    public String getDistance_setting() {
+        return distance_setting;
+    }
+
+    public void setDistance_setting(String distance_setting) {
+        this.distance_setting = distance_setting;
+    }
+
+    public String getTime_setting() {
+        return time_setting;
+    }
+
+    public void setTime_setting(String time_setting) {
+        this.time_setting = time_setting;
     }
 }

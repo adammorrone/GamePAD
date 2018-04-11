@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 import android.media.*;
+import android.widget.Toast;
 
 /**
  * Created by adamm on 2/28/2018.
@@ -85,7 +86,14 @@ public class ResultsActivity extends AppCompatActivity {
 
         masterList.getPatient(index).addScore(scoreRecord);
         //issue here with saving changes
-        saveChanges();
+
+        try {
+            saveChanges();
+        } catch(Exception ex) {
+
+            Toast.makeText(getApplicationContext(), "Something went wrong. The score has not been recorded.",
+                    Toast.LENGTH_LONG).show();
+        }
 
         scoreText.setText(Double.toString(scoreRecord.getScore()));
         //infoText.setText(scoreRecord.toString());

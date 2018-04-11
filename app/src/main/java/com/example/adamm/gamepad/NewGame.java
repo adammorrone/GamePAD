@@ -62,9 +62,8 @@ public class NewGame extends Activity {
 
         // Set Default Values
         address = "NULL";
-        //timView.setText("time");
-        disView.setText("distance");
-        balView.setText("weight");
+
+
 
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
@@ -86,6 +85,20 @@ public class NewGame extends Activity {
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
         index = (int)checkInfo.get("Patient");
+
+
+        if(masterList.getPatient(index).getDistance_setting() == "-1") {
+            timView.setText("time");
+            disView.setText("distance");
+            balView.setText("weight");
+        }
+
+        else
+        {
+            timView.setText("" + masterList.getPatient(index).getTime_setting());
+            disView.setText("" + masterList.getPatient(index).getDistance_setting());
+            balView.setText("" + masterList.getPatient(index).getWeight_setting());
+        }
 
         if(bjson.equals(""))
             ballList = new BallWeightList();
@@ -132,6 +145,11 @@ public class NewGame extends Activity {
         intent.putExtra("address", address);
         intent.putExtra("Patient", index);
 
+        masterList.getPatient(index).setDistance_setting("" + disView.getText());
+        masterList.getPatient(index).setWeight_setting("" + balView.getText());
+        masterList.getPatient(index).setTime_setting("" + timView.getText());
+        MainActivity.saveMasterList(this.getApplicationContext(), masterList);
+
         startActivity(intent);
     }
 
@@ -161,7 +179,7 @@ public class NewGame extends Activity {
             }
         });
         dbuilder.show();
-        hideSoftKeyboard(this);
+       // hideSoftKeyboard(this);
     }
 
     public void openBallList(View v)
@@ -177,7 +195,7 @@ public class NewGame extends Activity {
             }
         });
         bbuilder.show();
-        hideSoftKeyboard(this);
+       // hideSoftKeyboard(this);
     }
 
     public void openTimeList(View v)
@@ -192,7 +210,7 @@ public class NewGame extends Activity {
             }
         });
         tbuilder.show();
-        hideSoftKeyboard(this);
+        //hideSoftKeyboard(this);
     }
 
     // Bluetooth Stuff
@@ -218,7 +236,7 @@ public class NewGame extends Activity {
     }
 
     public void list(View v){
-        //Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
         pairedDeviceList.setVisibility(View.VISIBLE);
         pairedDevices = btAdapter.getBondedDevices();
         ArrayList list = new ArrayList();

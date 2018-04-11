@@ -1,5 +1,9 @@
 package com.example.adamm.gamepad;
 
+import android.widget.Toast;
+import android.content.Context;
+
+
 import java.util.ArrayList;
 
 /**
@@ -56,7 +60,15 @@ public class PatientList
 
     public Patient getPatient(int index)
     {
-        return listOfPatients.get(index);
+        Patient p = new Patient("", "", 0, 0);
+        try {
+            p = listOfPatients.get(index);
+        } catch(Exception ex) {
+
+           // Toast.makeText(getApplicationContext(), "Something went wrong. The score has not been recorded.",
+                  //  Toast.LENGTH_LONG).show();
+        }
+        return p;
     }
 
 }

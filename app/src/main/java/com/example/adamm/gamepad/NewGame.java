@@ -87,7 +87,7 @@ public class NewGame extends Activity {
         index = (int)checkInfo.get("Patient");
 
 
-        if(masterList.getPatient(index).getDistance_setting() == "-1") {
+        if(masterList.getPatient(index).getDistance_setting().equals("-1")) {
             timView.setText("time");
             disView.setText("distance");
             balView.setText("weight");

@@ -36,6 +36,7 @@ public class NewGame extends Activity {
     private TextView timView;
     private String address;
     public int index = -1;
+    private TextView btView;
     public PatientList masterList = MainActivity.masterList;
 
     //Bluetooth
@@ -59,11 +60,9 @@ public class NewGame extends Activity {
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
-
+        btView = findViewById(R.id.btView);
         // Set Default Values
         address = "NULL";
-
-
 
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
@@ -85,6 +84,12 @@ public class NewGame extends Activity {
         Intent info = getIntent();
         Bundle checkInfo = info.getExtras();
         index = (int)checkInfo.get("Patient");
+
+        // Check to see if bluetooth device is selected
+        if(address.equals("NULL"))
+            btView.setText("No Bluetooth Device Selected");
+        else
+            btView.setText("Bluetooth Device connected \n MAC: " + address);
 
 
         if(masterList.getPatient(index).getDistance_setting().equals("-1")) {
@@ -236,14 +241,14 @@ public class NewGame extends Activity {
     }
 
     public void list(View v){
-        Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Getting Bluetooth Devices", Toast.LENGTH_LONG).show();
         pairedDeviceList.setVisibility(View.VISIBLE);
         pairedDevices = btAdapter.getBondedDevices();
         ArrayList list = new ArrayList();
 
         for(BluetoothDevice bt: pairedDevices)
             list.add(bt.getName() + "\n" + bt.getAddress()); // Get the device's name and address
-        Toast.makeText(getApplicationContext(), "Paired Devices", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Paired Devices", Toast.LENGTH_SHORT).show();
 
 
         final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, list);
@@ -253,9 +258,6 @@ public class NewGame extends Activity {
     }
 
     public void openDeviceList(View v){
-        //on(v);
-        //visible(v);
-        //list();
         CharSequence[] times = new CharSequence[paired.size()];
         for (int i = 0; i < paired.size(); i++){
             times[i] = paired.get(i);
@@ -272,15 +274,6 @@ public class NewGame extends Activity {
         tbuilder.show();
     }
 
-    public void hideSoftKeyboard(Activity activity)
-    {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -295,18 +288,15 @@ public class NewGame extends Activity {
             String info = ((TextView) v).getText().toString();
             Toast.makeText(getApplicationContext(),info, Toast.LENGTH_LONG).show();;
             address = info.substring(info.length() - 17);
-            // Make an intent to start next activity.
-            //Intent i = new Intent(NewGame.this, PatientView.class);
-            //Change the activity.
-            //i.putExtra(EX)//this will be received at bluetoothReceiver (class) Activity
-            //i.putExtra("address", address);
-            //startActivity(i);
-
-            // Disappear
             pairedDeviceList.setVisibility(View.GONE);
         }
     };
 
+    public void clearSettings(View v){
+        timView.clearComposingText();
+        disView.clearComposingText();
+        balView.clearComposingText();
+    }
 
 
 }

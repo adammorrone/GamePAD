@@ -95,7 +95,7 @@ public class ResultsActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-        scoreText.setText(Double.toString(scoreRecord.getScore()));
+        scoreText.setText("YOU SCORED " + Double.toString(scoreRecord.getScore()) + "POINTS!");
         //infoText.setText(scoreRecord.toString());
         //temp
         //infoText.setText("NULL");

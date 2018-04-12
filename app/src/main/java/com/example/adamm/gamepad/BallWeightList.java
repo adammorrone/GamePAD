@@ -14,11 +14,20 @@ public class BallWeightList
 
     public void fillArray(){
         int i = 6;
-        if(listOfBalls.size() == 0)
-            while(i<=10) {
-                listOfBalls.add(i + " Ibs");
-                i = i + 2;
-            }
+        if(listOfBalls.size() == 0){
+            listOfBalls.add("2 Ibs");
+            listOfBalls.add("2.2 Ibs");
+            listOfBalls.add("3 Ibs");
+            listOfBalls.add("4 Ibs");
+            listOfBalls.add("4.4 Ibs");
+            listOfBalls.add("5 Ibs");
+            listOfBalls.add("5.5 Ibs");
+            listOfBalls.add("6 Ibs");
+            listOfBalls.add("6.6 Ibs");
+            listOfBalls.add("8 Ibs");
+            listOfBalls.add("8.8 Ibs");
+            listOfBalls.add("10 Ibs");
+        }
         else{} //Do nothing
     }
 

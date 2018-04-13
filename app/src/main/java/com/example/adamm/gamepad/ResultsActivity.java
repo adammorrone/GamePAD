@@ -83,9 +83,8 @@ public class ResultsActivity extends AppCompatActivity {
         if(_score_ == masterList.getPatient(index).getHighScore())
             highscoreLabel.setText("You tied your high score!");
 
-
-        masterList.getPatient(index).addScore(scoreRecord);
-        //issue here with saving changes
+        if(_score_ != 0)
+            masterList.getPatient(index).addScore(scoreRecord);
 
         try {
             saveChanges();

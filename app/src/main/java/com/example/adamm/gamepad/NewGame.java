@@ -91,7 +91,6 @@ public class NewGame extends Activity {
         else
             btView.setText("Bluetooth Device connected \n MAC: " + address);
 
-
         if(masterList.getPatient(index).getDistance_setting().equals("-1")) {
             timView.setText("time");
             disView.setText("distance");

@@ -20,6 +20,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     private PatientList masterList = MainActivity.masterList;
     private TextView patientInfoText;
     private int index = -1;
+    public String address;
 
 
 
@@ -45,6 +46,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
+        address = "NULL";
 
         GraphView graph = findViewById(R.id.graph);
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
@@ -86,6 +88,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     {
         Intent intent = new Intent(this, NewGame.class);
         intent.putExtra("Patient", index);
+        intent.putExtra("Address", address);
         startActivity(intent);
     }
 
@@ -93,6 +96,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     {
         Intent intent = new Intent(PatientOverviewActivity.this, EditPatientInfo.class);
         intent.putExtra("Patient", index);
+        intent.putExtra("Address", address);
         startActivity(intent);
     }
 
@@ -100,6 +104,7 @@ public class PatientOverviewActivity extends AppCompatActivity  {
     {
         Intent intent = new Intent(PatientOverviewActivity.this, MoreInfo.class);
         intent.putExtra("Patient", index);
+        intent.putExtra("Address", address);
         startActivity(intent);
     }
 

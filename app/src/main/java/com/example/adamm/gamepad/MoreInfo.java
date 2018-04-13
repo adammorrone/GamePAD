@@ -39,6 +39,7 @@ public class MoreInfo extends AppCompatActivity {
     private RadioButton rb_score;
     private RadioButton rb_work;
     private RadioButton rb_power;
+    public String address;
     private int index = -1;
 
     /** This application's preferences */
@@ -69,6 +70,7 @@ public class MoreInfo extends AppCompatActivity {
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int)b.get("Patient");
+        address = "NULL";
 
         ArrayList<ScoreRecord> scores = masterList.getPatient(index).getScores();
         DataPoint[] data = new DataPoint[scores.size()];

@@ -57,12 +57,16 @@ public class NewGame extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newgame);
 
+        // Intent
+        Intent info = getIntent();
+        Bundle checkInfo = info.getExtras();
+        address = checkInfo.get("Address").toString();
+        index = (int)checkInfo.get("Patient");
+
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
         btView = findViewById(R.id.btView);
-        // Set Default Values
-        address = "NULL";
 
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
@@ -81,9 +85,6 @@ public class NewGame extends Activity {
         String tjson = sharedPref.getString("stored_time_list", "");
         Gson tgson = new Gson();
 
-        Intent info = getIntent();
-        Bundle checkInfo = info.getExtras();
-        index = (int)checkInfo.get("Patient");
 
         // Check to see if bluetooth device is selected
         if(address.equals("NULL"))
@@ -288,6 +289,7 @@ public class NewGame extends Activity {
             Toast.makeText(getApplicationContext(),info, Toast.LENGTH_LONG).show();;
             address = info.substring(info.length() - 17);
             pairedDeviceList.setVisibility(View.GONE);
+            btView.setText("Bluetooth Device connected \n MAC: " + address);
         }
     };
 

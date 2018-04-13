@@ -29,6 +29,7 @@ public class ResultsActivity extends AppCompatActivity {
     private PatientList masterList = MainActivity.masterList;
     public  TextView scoreText;
     public  TextView highscoreLabel;
+    public String address;
     //public EditText infoText;
     //changed editText to textview
     public TextView infoText;
@@ -53,6 +54,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
+        address = b.get("Address").toString();
         index = (int)b.get("Patient");
         int _score_ = (int)b.get("Score");
         int _throws_ = (int)b.get("Throws");
@@ -119,6 +121,7 @@ public class ResultsActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(ResultsActivity.this, NewGame.class);
         intent.putExtra("Patient", index);
+        intent.putExtra("Address", address);
         startActivity(intent);
     }
 

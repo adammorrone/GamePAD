@@ -23,6 +23,7 @@ public class EditPatientInfo  extends AppCompatActivity  {
     private EditText newHeightText;
     private EditText newWeightText;
     private int index = -1;
+    public String address;
 
 
 
@@ -102,6 +103,7 @@ public class EditPatientInfo  extends AppCompatActivity  {
         Intent iin = getIntent();
         Bundle b = iin.getExtras();
         index = (int) b.get("Patient");
+        address = "NULL";
 
         if (b != null) {
             String name = masterList.getPatient(index).getName();
@@ -128,6 +130,7 @@ public class EditPatientInfo  extends AppCompatActivity  {
         MainActivity.saveMasterList(this.getApplicationContext(), masterList);
         Intent intent = new Intent(EditPatientInfo.this, PatientOverviewActivity.class);
         intent.putExtra("Patient", index);
+        intent.putExtra("Address", address);
         startActivity(intent);
     }
 }

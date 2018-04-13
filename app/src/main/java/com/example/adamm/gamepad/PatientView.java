@@ -317,6 +317,7 @@ public class PatientView extends Activity {
         myIntent.putExtra("Weight", weight);
         myIntent.putExtra("Distance", distance);
         myIntent.putExtra("Time", time);
+        myIntent.putExtra("Address", address);
         startActivityForResult(myIntent, 0);
     }
 

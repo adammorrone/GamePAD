@@ -92,8 +92,7 @@ public class ScoreRecord {
     {
         SimpleDateFormat format = new SimpleDateFormat("EEEE, MMMM d, yyyy 'at' h:mm a");
 
-
-        return  format.format(date.getTime()) +
+        String out = format.format(date.getTime()) +
                 "\nGame = " + gameType +
                 "\nScore = " + score + " points" +
                 "\nWork = " + Double.toString(work_kcal).substring(0, 6) + " kcal" +
@@ -106,6 +105,8 @@ public class ScoreRecord {
                 "\nThrowing Distance = " + throwingDistance + " feet" +
                 "\nTime = " + time + " seconds" +
                 "\n";
+
+        return out;
 
     }
 

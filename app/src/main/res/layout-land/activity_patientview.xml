@@ -13,7 +13,7 @@
         android:id="@+id/scoreView"
         android:layout_width="398dp"
         android:layout_height="261dp"
-        android:textSize="150dp"
+        android:textSize="160dp"
         android:fontFamily="casual"
         android:text="00"
         android:textAlignment="center"

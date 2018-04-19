@@ -128,7 +128,7 @@ public class NewGame extends Activity {
                 if(address.equals("NULL") || timView.getText().equals("") || disView.getText() == "distance" || balView.getText() == "weight")
                     Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
                             Toast.LENGTH_LONG).show();
-                else{
+                else{ // all good to go to game
                     Intent myIntent = new Intent (view.getContext(), PatientView.class);
                     startActivityForResult(myIntent, 0);
                     newGameInfo();

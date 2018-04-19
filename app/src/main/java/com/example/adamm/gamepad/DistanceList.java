@@ -13,10 +13,25 @@ public class DistanceList
 
     public void fillArray(){
         if(listOfDistances.size() == 0){
+            listOfDistances.add("2 Feet");
+            listOfDistances.add("2.5 Feet");
             listOfDistances.add("3 Feet");
+            listOfDistances.add("3.5 Feet");
+            listOfDistances.add("4 Feet");
+            listOfDistances.add("4.5 Feet");
             listOfDistances.add("5 Feet");
+            listOfDistances.add("5.5 Feet");
+            listOfDistances.add("6 Feet");
+            listOfDistances.add("6.5 Feet");
+            listOfDistances.add("7 Feet");
+            listOfDistances.add("7.5 Feet");
             listOfDistances.add("8 Feet");
+            listOfDistances.add("8.5 Feet");
+            listOfDistances.add("9 Feet");
+            listOfDistances.add("9.5 Feet");
             listOfDistances.add("10 Feet");
+            listOfDistances.add("10.5 Feet");
+            listOfDistances.add("11 Feet");
         }
         else{} //Do nothing
     }

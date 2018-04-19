@@ -66,7 +66,7 @@ public class NewGame extends Activity {
         disView = findViewById(R.id.distance_textView);
         balView = findViewById(R.id.weight_textView);
         timView = findViewById(R.id.time_textView);
-        btView = findViewById(R.id.btView);
+        btView = findViewById(R.id.bluetoothText);
 
         //Bluetooth Init
         pairedDeviceList = findViewById(R.id.listView);
@@ -88,7 +88,7 @@ public class NewGame extends Activity {
 
         // Check to see if bluetooth device is selected
         if(address.equals("NULL"))
-            btView.setText("No Bluetooth Device Selected");
+            btView.setText("No Bluetooth Device Connected");
         else
             btView.setText("Bluetooth Device connected \n MAC: " + address);
 
@@ -125,7 +125,7 @@ public class NewGame extends Activity {
         Button next = findViewById(R.id.beginButton);
         next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                if(address == "NULL" || timView.getText().equals("") || disView.getText() == "distance" || balView.getText() == "weight")
+                if(address.equals("NULL") || timView.getText().equals("") || disView.getText() == "distance" || balView.getText() == "weight")
                     Toast.makeText(getApplicationContext(), "Please select a Bluetooth Device and enter all adjustments",
                             Toast.LENGTH_LONG).show();
                 else{
@@ -294,9 +294,9 @@ public class NewGame extends Activity {
     };
 
     public void clearSettings(View v){
-        timView.clearComposingText();
-        disView.clearComposingText();
-        balView.clearComposingText();
+        timView.setText("Time");
+        disView.setText("Distance");
+        balView.setText("Weight");
     }
 
 

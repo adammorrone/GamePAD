@@ -69,6 +69,12 @@ public class PatientView extends Activity {
 
     ScoreRecord record;
 
+    // Media Stuff
+    MediaPlayer mediaPlayer1,
+                mediaPlayer2,
+                mediaPlayer3,
+                mediaPlayer4;
+
 
 
     private TextView timerView;
@@ -142,6 +148,12 @@ public class PatientView extends Activity {
         // Button Set up
         startButton = findViewById(R.id.button);
 
+        // Media Player (Sounds)
+        mediaPlayer1 = MediaPlayer.create(PatientView.this, R.raw.level1);
+        mediaPlayer2 = MediaPlayer.create(PatientView.this, R.raw.level2);
+        mediaPlayer3 = MediaPlayer.create(PatientView.this, R.raw.level3);
+        mediaPlayer4 = MediaPlayer.create(PatientView.this, R.raw.level4);
+
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
@@ -181,12 +193,11 @@ public class PatientView extends Activity {
                             padImage3.setVisibility(View.GONE);
                             padImage4.setVisibility(View.GONE);
 
-                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level1);
-                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                            mediaPlayer1.start(); // no need to call prepare(); create() does that for you
 
                         }
                         if(sensor5.equals("1") || sensor6.equals("1") || sensor11.equals("1")
-                                || sensor12.equals("1")){
+                                || sensor12.equals("1")){           // 2
                             //imageSensor3.setVisibility(View.GONE);
                             scoreKeeper = scoreKeeper + 2;
 
@@ -196,11 +207,11 @@ public class PatientView extends Activity {
                             padImage3.setVisibility(View.GONE);
                             padImage4.setVisibility(View.GONE);
 
-                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
-                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                            //MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level2);
+                            mediaPlayer2.start(); // no need to call prepare(); create() does that for you
                         }
                         if(sensor4.equals("1") || sensor7.equals("1") || sensor10.equals("1")
-                                || sensor13.equals("1")){
+                                || sensor13.equals("1")){           // 3
                             //imageSensor2.setVisibility(View.GONE);
                             scoreKeeper = scoreKeeper + 3;
 
@@ -210,8 +221,8 @@ public class PatientView extends Activity {
                             padImage3.setVisibility(View.VISIBLE);
                             padImage4.setVisibility(View.GONE);
 
-                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
-                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                            //MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level3);
+                            mediaPlayer3.start(); // no need to call prepare(); create() does that for you
                         }
                         if(sensor3.equals("1") || sensor8.equals("1") || sensor9.equals("1")
                                 || sensor14.equals("1")){
@@ -224,8 +235,8 @@ public class PatientView extends Activity {
                             padImage3.setVisibility(View.GONE);
                             padImage4.setVisibility(View.VISIBLE);
 
-                            MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
-                            mediaPlayer.start(); // no need to call prepare(); create() does that for you
+                            //MediaPlayer mediaPlayer = MediaPlayer.create(PatientView.this, R.raw.level4);
+                            mediaPlayer4.start(); // no need to call prepare(); create() does that for you
                         }
                         ballThrows++;
                         scoreView.setText(Integer.toString(scoreKeeper));

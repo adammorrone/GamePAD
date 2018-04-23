@@ -33,6 +33,7 @@ public class ResultsActivity extends AppCompatActivity {
     //public EditText infoText;
     //changed editText to textview
     public TextView infoText;
+    MediaPlayer mediaPlayer;
 
 
     @Override
@@ -40,7 +41,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.high_score_cheer);
+        mediaPlayer = MediaPlayer.create(this, R.raw.high_score_cheer);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
 
         scoreText = findViewById(R.id.scoreView);

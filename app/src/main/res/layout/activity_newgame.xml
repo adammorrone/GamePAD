@@ -51,7 +51,6 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -87,7 +86,6 @@
             tools:layout_editor_absoluteY="71dp">
 
             <Button
-                android:id="@+id/timeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -97,7 +95,6 @@
                 tools:layout_editor_absoluteY="112dp" />
 
             <Button
-                android:id="@+id/ballWeightButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -107,7 +104,6 @@
                 tools:layout_editor_absoluteY="64dp" />
 
             <Button
-                android:id="@+id/distanceButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
